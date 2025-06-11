@@ -299,25 +299,25 @@ body.dark .footer-links a:hover {
   color: #ffffff;
 }
 
-/* Responsive */
+/* ✅ Responsive Adjustments */
 @media (max-width: 768px) {
   .container {
-        flex-direction: column;
-      }
-
-      aside {
-        display: none; /* Hide sidebar on mobile */
-        width: 100%;
-        padding: 20px;
-      }
-
-      main {
-        padding: 20px;
-      }
-
-      nav-wrapper {
     flex-direction: column;
-    align-items: flex-start; /* Align nav links to left on small screens */
+  }
+
+  aside {
+    display: none;
+    width: 100%;
+    padding: 20px;
+  }
+
+  main {
+    padding: 20px;
+  }
+
+  .nav-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
     width: 100%;
     gap: 10px;
   }
@@ -325,14 +325,12 @@ body.dark .footer-links a:hover {
   header nav {
     width: 100%;
     flex-wrap: wrap;
-    justify-content: flex-start; /* Align nav items to left */
+    justify-content: flex-start;
   }
 
   header button {
     align-self: flex-start;
   }
-
-  
 
   .course-grid {
     flex-direction: column;
@@ -343,21 +341,21 @@ body.dark .footer-links a:hover {
     min-width: auto;
   }
 
-  /* Show dropdown menu button for subjects */
   .dropdown {
     display: inline-block;
     position: relative;
   }
 
-  /* Hide the usual subject links (they are in dropdown now) */
-  header nav a[href="#"]:not(:last-child) {
+  header nav a[href="/info/random.html"],
+  header nav a[href="/info/about.html"],
+  header nav a[href="/info/contact.html"] {
     display: none;
   }
 }
 
 /* Dropdown styles */
 .dropdown {
-  display: none; /* hidden by default, shown on mobile */
+  display: none;
 }
 
 .dropdown button {
@@ -370,7 +368,7 @@ body.dark .footer-links a:hover {
   padding: 8px;
 }
 
-.dropdown-menu {  
+.dropdown-menu {
   display: none;
   position: absolute;
   top: 100%;
@@ -405,6 +403,7 @@ body.dark .footer-links a:hover {
   background-color: #2563EB;
 }
 
+/* Animation */
 @keyframes darkBackground {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
