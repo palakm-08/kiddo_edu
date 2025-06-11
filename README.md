@@ -30,7 +30,7 @@ Kiddo is designed to be a beginner-friendly platform with tutorials, tips, and p
 
 ## How to Use 🎯
 
-Just open the site and start exploring the tutorials. Feel free to contribute or suggest topics by opening issues or pull requests! 🤝
+Just open the site and start exploring the tutorials.
 
 ---
 
