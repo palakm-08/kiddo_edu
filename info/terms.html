@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms & Service | Kiddo Learn</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f9f9f9;
+      color: #333;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background: #1E3A8A;
+      color: #fff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo img {
+      width: 50px;
+      height: 50px;
+    }
+
+    .logo span {
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    nav button {
+      background: none;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      color: white;
+    }
+
+    main {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 60px 20px;
+      min-height: 80vh;
+    }
+
+    .legal-container {
+      max-width: 800px;
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .legal-container h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #1E3A8A;
+    }
+
+    .legal-container p {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      background: #f0f0f0;
+      color: #666;
+    }
+
+    /* Dark Mode */
+    body.dark {
+      background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a);
+      color: #e0e0e0;
+    }
+
+    body.dark header {
+      background: #1e1e1e;
+    }
+
+    body.dark .legal-container {
+      background: #1e1e1e;
+      color: #e0e0e0;
+      box-shadow: 0 0 15px 2px rgba(100, 100, 255, 0.1);
+    }
+
+    body.dark .legal-container h2 {
+      color: #93c5fd;
+    }
+
+    body.dark footer {
+      background: #1a1a1a;
+      color: #aaa;
+    }
+
+    @media (max-width: 600px) {
+      .legal-container {
+        padding: 25px 20px;
+      }
+
+      .legal-container h2 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="/assests/logo.png" alt="Kiddo Logo" />
+      <span>Kiddo</span>
+    </div>
+    <nav>
+      <a href="/info/random.html">Home</a>
+      <a href="/info/about.html">About</a>
+      <a href="/info/contact.html">Contact</a>
+      <button id="toggleTheme">🌙</button>
+    </nav>
+  </header>
+
+  <main>
+    <div class="legal-container">
+      <h2>Terms of Service</h2>
+      <p>Welcome to Kiddo Learn! By accessing or using our platform, you agree to comply with and be bound by the following terms and conditions.</p>
+      <p>We provide educational content for learning programming languages and tools. While we strive for accuracy, we do not guarantee the completeness or correctness of the materials.</p>
+      <p>You are responsible for how you use the information. We do not take responsibility for any loss or damage arising from using this site.</p>
+      <p>All content is for personal, non-commercial use only. Redistribution or commercial use without permission is prohibited.</p>
+      <p>We reserve the right to modify these terms at any time, so please review them periodically.</p>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 Kiddo Learn. All rights reserved.
+  </footer>
+
+  <script>
+    const toggleBtn = document.getElementById('toggleTheme');
+
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark');
+      toggleBtn.textContent = '☀️';
+    }
+
+    toggleBtn.onclick = () => {
+      document.body.classList.toggle('dark');
+      const isDark = document.body.classList.contains('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      toggleBtn.textContent = isDark ? '☀️' : '🌙';
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kiddo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="random.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="/assests/logo.png" alt="Kiddo Logo" />
+      <span>Kiddo</span>
+    </div>
+    <div class = "nav-wrapper">
+    <nav>
+      <a href="/info/random.html">Home</a>
+      <a href="/info/about.html">About</a>
+      <a href="/info/contact.html">Contact</a>
+
+      <!-- Dropdown for Subjects (mobile only) -->
+      <div class="dropdown">
+        <button id="dropdownToggle" aria-haspopup="true" aria-expanded="false">Subjects ▼</button>
+        <ul id="dropdownMenu" class="dropdown-menu" aria-label="submenu">
+          <li><a href="#">C Programming</a></li>
+          <li><a href="#">C++</a></li>
+          <li><a href="#">Python</a></li>
+          <li><a href="#">Pandas</a></li>
+          <li><a href="#">Matplotlib</a></li>
+          <li><a href="#">Numpy</a></li>
+        </ul>
+      </div>
+
+      <button id="toggleTheme">🌙</button>
+    </nav>
+  </div>
+  </header>
+
+  <div class="container">
+    <aside>
+      <h3>Subjects</h3>
+      <ul>
+        <li><a href="#">C Programming</a></li>
+        <li><a href="#">C++</a></li>
+        <li><a href="#">Python</a></li>
+        <li><a href="#">Pandas</a></li>
+        <li><a href="#">Matplotlib</a></li>
+        <li><a href="#">Numpy</a></li>
+      </ul>
+    </aside>
+
+    <main>
+      <h1>Welcome to Kiddo !</h1>
+      <p>Your interactive platform for mastering programming.</p>
+
+      <section class="card">
+        <h2>Start Learning Today</h2>
+        <p>Explore these topics to build your programming and data skills:</p>
+        <div class="course-grid">
+          <a href="c.html" class="course-card" target="_blank" rel="noopener noreferrer">
+            <h3>C Programming</h3>
+            <p>Basics and fundamentals of structured programming.</p>
+          </a>
+          <a href="cpp.html" class="course-card" target="_blank" rel="noopener noreferrer">
+            <h3>C++</h3>
+            <p>Master OOP and system-level programming.</p>
+          </a>
+          <a href="python.html" class="course-card" target="_blank" rel="noopener noreferrer">
+            <h3>Python</h3>
+            <p>From basics to data science essentials.</p>
+          </a>
+          <a href="pandas.html" class="course-card" target="_blank" rel="noopener noreferrer">
+            <h3>Pandas</h3>
+            <p>Powerful data analysis and manipulation tools.</p>
+          </a>
+          <a href="matplotlib.html" class="course-card" target="_blank" rel="noopener noreferrer">
+            <h3>Matplotlib</h3>
+            <p>Visualize your data with powerful charts.</p>
+          </a>
+          <a href="numpy.html" class="course-card" target="_blank" rel="noopener noreferrer">
+            <h3>Numpy</h3>
+            <p>Numerical computing made easy and efficient.</p>
+          </a>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- 🌐 Footer -->
+  <footer>
+    <div class="footer-container">
+      <p>&copy; 2025 Kiddo. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="/info/privacy.html">Privacy Policy</a>
+        <a href="/info/terms.html">Terms of Service</a>
+        <a href="/info/contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggleBtn = document.getElementById('toggleTheme');
+    const dropdownToggle = document.getElementById('dropdownToggle');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark');
+      toggleBtn.textContent = '☀️';
+    }
+
+    toggleBtn.onclick = () => {
+      document.body.classList.toggle('dark');
+      const isDark = document.body.classList.contains('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      toggleBtn.textContent = isDark ? '☀️' : '🌙';
+    };
+
+    dropdownToggle.onclick = () => {
+      const expanded = dropdownToggle.getAttribute('aria-expanded') === 'true';
+      dropdownToggle.setAttribute('aria-expanded', !expanded);
+      dropdownMenu.classList.toggle('show');
+    };
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!dropdownToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
+        dropdownMenu.classList.remove('show');
+        dropdownToggle.setAttribute('aria-expanded', false);
+      }
+    });
+  </script>
+</body>
+</html>

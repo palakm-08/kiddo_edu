@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About - Kiddo Learn</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* Reset & Base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f9f9f9;
+      color: #333;
+      transition: background 0.3s ease, color 0.3s ease;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 80px 20px 40px;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: #1E3A8A;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      z-index: 10;
+    }
+    header .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    header .logo img {
+      width: 45px;
+      height: 45px;
+    }
+    header .logo span {
+      font-size: 22px;
+      font-weight: 700;
+    }
+    header nav {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+    header nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 16px;
+    }
+    header nav a:hover {
+      text-decoration: underline;
+    }
+    header button {
+      background: none;
+      border: none;
+      font-size: 22px;
+      cursor: pointer;
+      color: white;
+    }
+
+    /* Main Content Container */
+    main {
+      max-width: 700px;
+      width: 100%;
+      background: white;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      margin-top: 30px;
+      line-height: 1.6;
+    }
+
+    main h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #1E3A8A;
+    }
+
+    main p {
+      margin-bottom: 16px;
+      font-size: 16px;
+      color: #444;
+    }
+
+    /* Dark Mode */
+    body.dark {
+      background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a);
+      color: #e0e0e0;
+    }
+    body.dark header {
+      background: #1e1e1e;
+      box-shadow: 0 2px 10px rgba(255,255,255,0.1);
+    }
+    body.dark main {
+      background: #1e1e1e;
+      box-shadow: 0 0 15px rgba(74,110,177,0.3);
+      color: #ddd;
+    }
+    body.dark main h2 {
+      color: #93c5fd;
+    }
+    body.dark main p {
+      color: #ccc;
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 15px 20px;
+      }
+      main {
+        padding: 25px 20px;
+        margin-top: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="/assests/logo.png" alt="Kiddo Logo" />
+      <span>Kiddo</span>
+    </div>
+    <nav>
+      <a href="/info/random.html">Home</a>
+      <a href="/info/about.html">About</a>
+      <a href="/info/contact.html">Contact</a>
+      <button id="toggleTheme">🌙</button>
+    </nav>
+  </header>
+
+  <main>
+    <h2>About Kiddo Learn</h2>
+    <p>The founder of this platform is currently a dedicated student of AI and Machine Learning engineering, proudly maintaining a CGPA of 8.6.</p>
+    <p>The core mission is to provide high-quality educational content designed to help learners grasp programming concepts quickly and deeply.</p>
+    <p>We believe that understanding foundational ideas clearly is the key to mastering advanced topics, and our goal is to make learning interactive, accessible, and fun.</p>
+    <p>Kiddo Learn aims to empower students everywhere to build strong coding skills and confidence to excel in their academic and professional journeys.</p>
+    <p>Thank you for being part of this community. Together, let's unlock the power of knowledge!</p>
+  </main>
+
+  <script>
+    const toggleBtn = document.getElementById('toggleTheme');
+    if(localStorage.getItem('theme') === 'dark'){
+      document.body.classList.add('dark');
+      toggleBtn.textContent = '☀️';
+    }
+    toggleBtn.onclick = () => {
+      document.body.classList.toggle('dark');
+      const isDark = document.body.classList.contains('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      toggleBtn.textContent = isDark ? '☀️' : '🌙';
+    };
+  </script>
+</body>
+</html>
