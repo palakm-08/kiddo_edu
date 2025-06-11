@@ -300,6 +300,17 @@ body.dark .footer-links a:hover {
 
 /* Responsive */
 @media (max-width: 768px) {
+
+  .logo img {
+      display : none;
+    }
+
+    .logo span {
+      margin-left: 2px;
+      font-size: 24px;
+      font-weight: 600;
+    }
+
   .container {
         flex-direction: column;
       }
