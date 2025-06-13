@@ -100,19 +100,7 @@
       toggleBtn.textContent = isDark ? '☀️' : '🌙';
     };
 
-    dropdownToggle.onclick = () => {
-      const expanded = dropdownToggle.getAttribute('aria-expanded') === 'true';
-      dropdownToggle.setAttribute('aria-expanded', !expanded);
-      dropdownMenu.classList.toggle('show');
-    };
 
-    // Close dropdown when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!dropdownToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
-        dropdownMenu.classList.remove('show');
-        dropdownToggle.setAttribute('aria-expanded', false);
-      }
-    });
   </script>
 </body>
 </html>

@@ -357,55 +357,11 @@ body.dark .footer-links a:hover {
     min-width: auto;
   }
 
-  /* Show dropdown menu button for subjects */
-  .dropdown {
-    display: inline-block;
-    position: relative;
-  }
 
-  /* Hide the usual subject links (they are in dropdown now) */
-  header nav a[href="#"]:not(:last-child) {
-    display: none;
-  }
-}
-
-/* Dropdown styles */
-.dropdown {
-  display: none; /* hidden by default, shown on mobile */
-}
-
-.dropdown button {
-  background: none;
-  border: none;
-  color: white;
-  font-weight: 600;
-  cursor: pointer;
-  font-size: 16px;
-  padding: 8px;
-}
-
-.dropdown-menu.show {
-  display: block;
-}
-
-.dropdown-menu li {
-  margin: 0;
-}
-
-.dropdown-menu li a {
-  display: block;
-  padding: 8px 15px;
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.dropdown-menu li a:hover {
-  background-color: #2563EB;
-}
 
 @keyframes darkBackground {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
+}
 }
