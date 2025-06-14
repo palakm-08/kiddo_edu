@@ -5,23 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kiddo</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="random.css" />
+  <link rel="stylesheet" href = "info/random.css" />
 </head>
 <body>
   <header>
     <div class="logo">
-      <img src="/kiddo_edu/assests/logo.png" alt="Kiddo Logo" />
+      <img src="assests/logo.png" alt="Kiddo Logo" />
       <span>Kiddo</span>
     </div>
-    <div class = "nav-wrapper">
     <nav>
-      <a href="/kiddo_edu/info/random.html">Home</a>
-      <a href="/info/about.html">About</a>
-      <a href="/info/contact.html">Contact</a>
-
+      <a href= "index.html">Home</a>
+      <a href="info/about.html">About</a>
+      <a href="info/contact.html">Contact</a>
       <button id="toggleTheme">🌙</button>
     </nav>
-  </div>
   </header>
 
   <div class="container">
@@ -79,9 +76,9 @@
     <div class="footer-container">
       <p>&copy; 2025 Kiddo. All rights reserved.</p>
       <div class="footer-links">
-        <a href="/info/privacy.html">Privacy Policy</a>
-        <a href="/info/terms.html">Terms of Service</a>
-        <a href="/info/contact.html">Contact</a>
+        <a href="info/privacy.html">Privacy Policy</a>
+        <a href="info/terms.html">Terms of Service</a>
+        <a href="info/contact.html">Contact</a>
       </div>
     </div>
   </footer>
@@ -103,19 +100,7 @@
       toggleBtn.textContent = isDark ? '☀️' : '🌙';
     };
 
-    dropdownToggle.onclick = () => {
-      const expanded = dropdownToggle.getAttribute('aria-expanded') === 'true';
-      dropdownToggle.setAttribute('aria-expanded', !expanded);
-      dropdownMenu.classList.toggle('show');
-    };
 
-    // Close dropdown when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!dropdownToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
-        dropdownMenu.classList.remove('show');
-        dropdownToggle.setAttribute('aria-expanded', false);
-      }
-    });
   </script>
 </body>
 </html>
