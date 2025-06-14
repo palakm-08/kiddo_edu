@@ -3,12 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Learn how to create line graphs using Matplotlib in Python. Beginner-friendly explanation and code examples.">
   <title>Kiddo</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
-    
-    /* styles */
+    /* Your original CSS here */
+    /* Reset & Base Styles */
     * {
       margin: 0;
       padding: 0;
@@ -138,6 +137,7 @@ header button {
       margin-bottom: 30px;
     }
 
+    /* Card styles - removed since not used in new main content */
 
     /* Dark Mode */
     body.dark {
@@ -208,38 +208,80 @@ header button {
     }
 
     /* Responsive */
-    @media (max-width: 768px) {
-      .container {
-        flex-direction: column;
-      }
-
-      aside {
-        display: none; /* Hide sidebar on mobile */
-        width: 100%;
-        padding: 20px;
-      }
-
-      main {
-        padding: 20px;
-      }
-
-      nav-wrapper {
+    @media screen and (max-width: 768px) {
+  header {
     flex-direction: column;
-    align-items: flex-start; /* Align nav links to left on small screens */
-    width: 100%;
+    align-items: flex-start;
+    padding: 15px;
     gap: 10px;
   }
 
-  header nav {
-    width: 100%;
-    flex-wrap: wrap;
-    justify-content: flex-start; /* Align nav items to left */
+  .logo span {
+    font-size: 20px;
   }
 
-  header button {
-    align-self: flex-start;
+  nav a {
+    font-size: 14px;
+    margin-right: 12px;
+  }
+
+  aside {
+    display: none; /* hides sidebar on mobile */
+  }
+
+  main {
+    padding: 20px;
+  }
+
+  main h1 {
+    font-size: 24px;
+  }
+
+  main h2 {
+    font-size: 20px;
+  }
+
+  main p,
+  main li {
+    font-size: 14px;
+  }
+
+  .code-container {
+    font-size: 13px;
+    overflow-x: auto;
+    max-width: 100%;
+  }
+
+  .code-header {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+
+  .copy-btn {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+
+  pre {
+    padding: 12px;
+    font-size: 13px;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+  }
+
+  footer {
+    padding: 15px;
+  }
+
+  .footer-links a {
+    font-size: 13px;
   }
 }
+
     
 
     @keyframes darkBackground {
@@ -341,7 +383,7 @@ header button {
       tab-size: 2;
     }
 
-    
+    /* Code syntax highlight (basic) */
     .keyword { color: #569CD6; font-weight: 600; }
     .function { color: #DCDCAA; }
     .string { color: #CE9178; }
@@ -353,14 +395,14 @@ header button {
 <body>
   <header>
   <div class="logo">
-    <img src="../assests/logo.png" alt="Kiddo Logo" />
+    <img src="/assests/logo.png" alt="Kiddo Logo" />
     <span>Kiddo</span>
   </div>
   <div class="nav-wrapper">
     <nav>
-      <a href="../index.html" target="_blank">Home</a>
-      <a href="../info/about.html">About</a>
-      <a href="../info/contact.html">Contact</a>
+      <a href="/info/random.html" target="_blank">Home</a>
+      <a href="/info/about.html">About</a>
+      <a href="/info/contact.html">Contact</a>
     </nav>
     <button id="darkModeToggle" aria-label="Toggle dark mode">🌓</button>
   </div>
@@ -443,7 +485,7 @@ plt.show()
 
 <h4>Here's the output : </h4>
 <br>
-<img src = "../matplotlib/line-g.png" alter = "graph.png">
+<img src = "/matplotlib/line-g.png" alter = "graph.png">
 <br>
 <br>
 <br>
