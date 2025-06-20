@@ -426,21 +426,25 @@ header button {
     </aside>
 
     <main>
-      <h1>Line graphs in matplotlib</h1>
-      <p>
-    Line graphs are one of the most commonly used types of charts in data visualization.
-    They are great for showing trends or changes over time. In this tutorial, you'll learn
-    how to create a basic line graph using Python's Matplotlib library.
+  <h1>Visualizing with Multiple Line Graphs in Matplotlib</h1>
+  <p>
+    Line graphs are a go-to for showing trends over time — but what if you have more than one set of data to compare? 
+    That’s where multiple line graphs come in. In this tutorial, we’ll walk you through how to create and customize 
+    multiple lines on a single graph using Python’s Matplotlib library.
   </p>
 
-  <h2>When to Use a Line Graph?</h2>
+  <h2>Why Use Multiple Line Graphs?</h2>
   <p>
-    Use a line graph when you want to visualize continuous data — such as stock prices,
-    temperatures, or website traffic — over a period of time or a sequence.
+    Multiple line graphs are perfect when you want to compare different data series over the same time period or sequence. 
+    For example, you might want to track the temperature in several cities, compare website traffic across different sources, 
+    or see how various stocks are performing. Displaying them on the same graph makes it easier to spot patterns, 
+    differences, and trends.
   </p>
 
   <h2>Step-by-Step Code Example</h2>
-  <p>Here’s a simple example of how to create a line graph in Matplotlib:</p>
+  <p>Here’s a simple example of how to create a multiple line graph in Matplotlib:
+    <br>
+  </p>
 
       <div class="code-container" aria-label="Code example for Pandas groupby method">
         <div class="code-header">
@@ -450,43 +454,53 @@ header button {
         </div>
         <pre><code>
 import matplotlib.pyplot as plt
+import numpy as np
 
-# Sample data
+jaiswal = np.array([28, 62, 15, 110, 33, 8, 70, 92, 45, 60,
+                  81, 39, 20, 75, 13, 18, 67, 41, 99, 50,
+                  103, 58, 36, 61, 49, 88, 4, 10, 29, 73])
 
-Category= ['A', 'B', 'C', 'D', 'E', 'F']
-Values = [10, 20, 15, 25, 10, 30]
+abhishek  = np.array([23, 55, 47, 29, 83, 17, 66, 87, 40, 34,
+                   51, 27, 90, 63, 36, 31, 21, 60, 70, 44,
+                   78, 69, 48, 57, 39, 74, 12, 97, 65, 26])
 
-#use 'Category' as x-axis and 'Values' as y-axis
+plt.figure(figsize = (10, 5))
+x = np.arange(1, 31)
 
-plt.plot(Category, Values, marker="o", linestyle="--")
+plt.plot(x, jaiswal, label = 'Jaiswal',color = '#184452', marker = 'o')
+plt.plot(x, abhishek, label = 'Abhishek', color = '#77cce6', marker = 'o')
 
+plt.title('Jaiswal vs Abhishek')
+plt.xlabel('Matches', fontdict = {'fontname' : 'Comic Sans MS', 'fontsize' : 15})
+plt.ylabel('Scores', fontdict = {'fontname' : 'Comic Sans MS', 'fontsize' : 15})
+
+plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
+plt.grid(True, alpha = 0.7, linestyle = '--')
 plt.show()
         </code></pre>
       </div>
-<p><b>Marker : </b> Marker is used to mark the data points</p>
-<ul>
-  <b>Types of marker : </b>
-  <li>'o' - circle</li>
-  <li>'.' - point</li>
-  <li>'+' - plus</li>
-  <li>'*' - star</li>
-</ul>
-<br>
 
-<p><b>Linestyle : </b> linestyle in a plot just means how the line connecting the points looks.</p>
+<p>We've taken two arrays named Abhishek and Jaiswal, which contain the scores of these two players (don’t take it too seriously — it’s just dummy data).</p>
+
+<p><b>Points to be noted : </b></p>
 <ul>
-  <b>Types of linestyle : </b>
-  <li>'-' - solid line</li>
-  <li>'--' - dashed line</li>
-  <li>':' - dotted line</li>
+  <li>This dataset contains the results of 30 matches, which is why we've defined x as x = np.arange(1, 31).</li>
+  <li>First, we plotted Jaiswal's data, followed by Abhishek's data.</li>
+  <li>We've used two different colors to clearly distinguish between the lines.</li>
+  <li>Next, we customized the graph by adding a title, x-label, and y-label.</li>
+  <li>plt.legend() is important for showing labels on the graph.</li>
+  <li>We further customized the legend by setting the position of the label box using bbox_to_anchor=(1.05, 1) and loc='upper left'.</li>
+  <li>And at last, we have added the grid because it looks beautiful.</li>
 </ul>
+
 <br>
 <br>
 
 <h4>Here's the output : </h4>
 <br>
-<img src = "../matplotlib/line-g.png" alter = "graph.png">
+<img src = "../matplotlib/multi-line-g.png" alter = "graph.png">
 <br>
+<i>Ommo, this looks so cool!</i>
 <br>
 <br>
 <br>
@@ -495,7 +509,7 @@ plt.show()
 
 <p><b><i>More educational content : </i></b></p>
 <ul>
-  <li><a href="../matplotlib/multi-line-g.html" style="color: #6a8ea7;"><i>Click here - To learn how to plot multiple line graphs</i></a></li>
+  <li><a href="" style="color: #6a8ea7;"><i>Click here - To learn how to plot bar graphs</i></a></li>
   <li><a href="" style="color: #6a8ea7;"><i>Click here - to learn to customize the graphs by adding title, labels, grid, and many more</i></a></li>
 </ul>
    </main>
