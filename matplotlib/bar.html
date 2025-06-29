@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="Master Matplotlib customization! Learn how to add titles, axis labels, gridlines, and style your Python graphs using fontdict. Ideal for beginners!" />
-  <title>Customize Matplotlib Graphs in Python: Title, Axis Labels, Grid & Fonts</title>
+  <meta name="description" content="Visualize crime data across countries using bar graphs in Python with Matplotlib. A fun, beginner-friendly project to master data visualization on Kiddo.">
+  <title>Learn Bar Graphs with a Crime Data Analysis Project | Matplotlib Tutorial – Kiddo</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     
@@ -136,6 +136,22 @@ header button {
       font-size: 16px;
       margin-bottom: 30px;
     }
+    
+    ul.explainer-points li {
+  margin-bottom: 14px;
+  padding: 10px 15px;
+  border-left: 4px solid #1E3A8A;
+  border-radius: 6px;
+  background: #f4f4f4;
+  color: #1a1a1a;
+  transition: all 0.3s ease;
+}
+
+body.dark ul.explainer-points li {
+  background: #1f2937; /* Tailwind gray-800 */
+  color: #e5e7eb;       /* Tailwind gray-200 */
+  border-left: 4px solid #3b82f6; /* Tailwind blue-500 */
+}
 
     /* Card styles - removed since not used in new main content */
 
@@ -426,15 +442,26 @@ header button {
     </aside>
 
     <main>
-  <h1>Customize Matplotlib Graphs in Python: Add Title, Labels, Grid & Fonts</h1>
-  <p> Making a graph is cool and all — but making it *look good*? That’s a whole other level. Whether you're showing off a data project or just want your charts to make sense at first glance, customizing your Matplotlib graphs is key. In this tutorial, we’ll show you how to glow up your plots by adding titles, labeling your axes, turning on gridlines (so your data isn’t just floating in space), and styling everything with custom fonts. It’s all about turning basic into polished — and trust, your graphs will be serving pro vibes in no time. </p>
+  <h1>Learn Bar Graphs with a Crime Data Analysis Project in Python</h1>
+  <p>
+    Bar graphs are super handy for comparing stuff — like which country has more crime and who’s leading the chaos chart. 
+    Instead of drowning in a sea of boring numbers, you get clean visuals that actually make sense. 
+    They're simple to create, fun to read, and lowkey make you look smart while analyzing serious stuff. So yeah, bar graphs? Totally underrated.
+  </p>
 
-  <h2>Why Use  Customization?</h2>
-  <p> A basic graph shows the data, but a customized one makes it *make sense*. With Matplotlib, adding titles, labels, gridlines, and font styling helps your plot look clean, clear, and actually readable. Customization isn’t just about looks — it’s about making your data speak. </p>
+  <h2>Why Use Bar Graphs?</h2>
+  <p>
+    Bar graphs aren't just for school projects — they’re your go-to tool when you wanna flex data in a clean and loud way. 
+    They help you spot trends, compare stuff at a glance, and tell a story without saying a word. Whether it's crime stats, fav snacks, or top songs — bar graphs make boring numbers look cool and easy to digest. 
+    If clarity had a visual BFF, it's definitely a bar graph.
+
+  </p>
 
   <h2>Step-by-Step Code Example</h2>
-
-
+  <p>Here’s a simple example of how to create a bar graph in Matplotlib:
+    <br>
+  </p>
+  <h3>🔹 For plotting only one data at a time (e.g., 2023):</h3>
       <div class="code-container" aria-label="Code example for Pandas groupby method">
         <div class="code-header">
           <span>Python</span>
@@ -443,73 +470,127 @@ header button {
         </div>
         <pre><code>
 import matplotlib.pyplot as plt
+import numpy as np
 
-# Days of the week
+countries = [
+    "United States", "Brazil", "India", "Germany", "South Africa", "Australia",
+    "Canada", "Russia", "Japan", "United Kingdom", "France", "Mexico"
+]
 
-days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-
-mobile_visitors = [70, 90, 85, 100, 120, 140, 110]
-desktop_visitors = [50, 60, 45, 70, 80, 80, 70]
-
-plt.figure(figsize = (8, 4))
-plt.plot(days, mobile_visitors, marker="o")
-plt.plot(days, desktop_visitors, marker="o")
-
-plt.show()
- </code></pre>
-      </div>
+crime_2023 = [6800, 7200, 4900, 3500, 7500, 4200, 3900, 5500, 2800, 4700, 4600, 6900]
 
 
+plt.figure(figsize=(10, 5))
 
-<p>1. First up, let’s add a title to the graph.</p>
+plt.bar(countries, crime_2023, label="2023", zorder=3, width=0.5, color="#376dc5")
 
-<div class="code-container" aria-label="Code example for Pandas groupby method">
-        <pre><code>
-plt.title("Website Visitors Over a Week", fontdict={'fontsize': 14, 'family': 'Comic Sans MS'})
- </code></pre>
-      </div>
-<p><strong>Quick tip:</strong> <code>fontdict</code> lets you style your text in Matplotlib — you can change the font size, font family (like <code>'Comic Sans MS'</code>), and more. It helps make your titles and labels look just the way you want.</p>
+plt.xticks(rotation=40, ha='right')
+plt.title("Crime Rates Across Countries in 2023")
+plt.xlabel("Countries")
+plt.ylabel("Number of Crimes")
 
-
-<p>2. Next, let’s label the axes so everyone knows what each part of the graph represents — the days on the bottom and visitors on the side.</p>
-
-<div class="code-container" aria-label="Code example for Pandas groupby method">
-        <pre><code>
-plt.xlabel("Days")
-plt.ylabel("Visitors")
- </code></pre>
-      </div>
-
-    <p>3. To make the graph easier to read and way more attractive, let’s add gridlines — they help your eyes follow the data points like a pro.</p>
-
-<div class="code-container" aria-label="Code example for Pandas groupby method">
-        <pre><code>
-plt.grid(True, aplha = 0.7, linestyle="--")
- </code></pre>
-      </div>
-<p><strong>Quick tip:</strong> <code>alpha</code> controls the transparency of the gridlines (0 is invisible, 1 is solid), and <code>linestyle="--"</code> makes the gridlines dashed instead of solid.</p>
-
-
-<p>4. Finally, let’s add labels directly on the lines to clearly show what each data set represents — making your graph super easy to understand at a glance.</p>
-
-<div class="code-container" aria-label="Code example for Pandas groupby method">
-        <pre><code>
-plt.plot(days, mobile_visitors, label="Mobile Visitors")
-plt.plot(days, desktop_visitors, label="Desktop Visitors", color = "tab:red") #you can also change the color of the line
-
+# Lighter grid behind bars
+plt.grid(True, linestyle='--', alpha=0.5, zorder=0)
 plt.legend()
- </code></pre>
+
+plt.tight_layout()
+plt.show()
+
+        </code></pre>
       </div>
-<p><strong>Quick tip:</strong> Don’t forget to add <code>plt.legend()</code> — it’s what actually makes the labels show up on the graph. Without it, your lines will have names but no one will ever see them!</p>
+
+<h4>And here’s what we got : </h4>
+<br>
+<br>
+<img src="../matplotlib/bar1.png" alter="output">
+<br>
+<br>
+<br>
+<ul class="explainer-points">
+  <li><strong>Imports:</strong> We bring in <code>matplotlib.pyplot</code> for plotting and <code>numpy</code> (just in case we need it for advanced stuff later).</li>
+  
+  <li><strong>Data Setup:</strong> We create two lists — one for <code>countries</code> and another for their crime stats in <code>2023</code>.</li>
+  
+  <li><strong>Chart Size:</strong> <code>figsize=(10, 5)</code> makes sure our chart has enough space and doesn’t look cramped.</li>
+  
+  <li><strong>Plotting Bars:</strong> <code>plt.bar()</code> draws the bars. We use a clean blue color (<code>#376dc5</code>) and set <code>width=0.5</code> so they’re not too chunky.</li>
+  
+  <li><strong>Rotation Fix:</strong> <code>plt.xticks(rotation=40)</code> tilts the x-axis labels so they don’t overlap — clean and readable.</li>
+  
+  <li><strong>Labels & Title:</strong> Add labels using <code>plt.xlabel()</code>, <code>plt.ylabel()</code>, and <code>plt.title()</code> to give context.</li>
+  
+  <li><strong>Light Grid:</strong> <code>plt.grid(True, alpha=0.5)</code> adds subtle horizontal lines that help read values without being distracting.</li>
+  
+  <li><strong>Legend:</strong> Even though there's only one year now, <code>plt.legend()</code> helps when comparing years later.</li>
+  
+  <li><strong>Layout Fix:</strong> <code>plt.tight_layout()</code> prevents text from getting cut off — super useful for labels and titles.</li>
+  
+  <li><strong>Show It:</strong> Finally, <code>plt.show()</code> displays the plot — your clean and clear visual!</li>
+</ul>
 <br>
 <br>
 <br>
 <br>
-<h4>And here’s what the graph looks like</h4>
+<h3>🔹 For plotting 2023 & 2024 side by side (dual plots):</h3>
+      <div class="code-container" aria-label="Code example for Pandas groupby method">
+        <div class="code-header">
+          <span>Python</span>
+          <button class="copy-btn" aria-label="Copy code snippet">Copy</button>
+          <div class="tooltip" role="alert" aria-live="assertive">Copied!</div>
+        </div>
+        <pre><code>
+import matplotlib.pyplot as plt
+import numpy as np
+
+countries = [
+    "United States", "Brazil", "India", "Germany", "South Africa", "Australia",
+    "Canada", "Russia", "Japan", "United Kingdom", "France", "Mexico"
+]
+
+crime_2023 = [6800, 7200, 4900, 3500, 7500, 4200, 3900, 5500, 2800, 4700, 4600, 6900]
+crime_2024 = [6500, 7000, 4700, 3300, 7100, 4000, 3800, 5300, 2600, 4500, 4300, 6600]
+
+plt.figure(figsize=(10, 6))
+
+x = np.arange(len(countries))
+width = 0.3  
+
+plt.bar(x - width / 2, crime_2023, width=width, label="2023", color="#262F58", zorder=3)
+plt.bar(x + width / 2, crime_2024, width=width, label="2024", color="#247FC9", zorder=3)
+
+plt.xticks(x, countries, rotation=45, ha='right')
+plt.title('Crime Comparison (2023 vs 2024)')
+plt.xlabel("Countries")
+plt.ylabel("Number of Crimes")
+plt.grid(True, linestyle='--', alpha=0.6, zorder=0)
+plt.legend(loc="upper right")
+
+plt.tight_layout()
+plt.show()
+
+        </code></pre>
+      </div>
+<h4 style="margin-bottom: 5px;">And here’s what we got : </h4>
 <br>
-<img src = "../matplotlib/customise.png" alter = "graph.png">
 <br>
-<i>Ommo, this looks so cool!</i>
+<img src="../matplotlib/bar2.png" alter="output">
+<br>
+<br>
+<br>
+<ul class="explainer-points">
+  <li><strong>Double Trouble (aka Year Comparison):</strong> We’re plotting both <code>crime_2023</code> and <code>crime_2024</code> side by side so you can spot the glow-up (or crime-down) for each country at a glance.</li>
+
+  <li><strong>X-axis Vibes with <code>np.arange()</code>:</strong> <code>x = np.arange(len(countries))</code> basically gives each country its own stage position on the x-axis. It’s like assigning seats at a concert — no chaos, just clean spacing.</li>
+
+  <li><strong>Side-by-Side Bars = Better Visuals:</strong> We're not stacking these bars, nah — we're placing them side by side like besties. <code>x - width / 2</code> handles 2023, <code>x + width / 2</code> takes care of 2024. Boom — instant side-by-side clarity.</li>
+
+  <li><strong>Bar Width On Point:</strong> <code>width = 0.3</code> keeps it tight and tidy. Not too thicc, not too skinny — just the right fit so bars don’t bump into each other like it's rush hour.</li>
+
+  <li><strong>Color Coding, But Make It Aesthetic:</strong> We gave 2023 a moody navy blue (<code>#262F58</code>) and 2024 a poppin’ sky blue (<code>#247FC9</code>). Helps your brain process the data without crying.</li>
+
+  <li><strong>Legend Placement (Because UX Matters):</strong> Tossed the legend in the top right with <code>loc="upper right"</code>. Keeps it outta the way but still visible enough to decode the chart like a pro.</li>
+</ul>
+
 <br>
 <br>
 <br>
@@ -518,8 +599,8 @@ plt.legend()
 
 <p><b><i>More educational content : </i></b></p>
 <ul>
-  <li><a href="../matplotlib/bar.html" style="color: #6a8ea7;", target="_blank"><i>Click here - To learn how to plot bar graphs</i></a></li>
   <li><a href="" style="color: #6a8ea7;", target="_blank"><i>Click here - To learn how to plot pie charts</i></a></li>
+  <li><a href="../matplotlib/customise.html" style="color: #6a8ea7;", target="_blank"><i>Click here - To learn how to plot Histogram</i></a></li>
 </ul>
    </main>
   </div>
