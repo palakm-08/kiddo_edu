@@ -159,6 +159,15 @@ main p {
   cursor: pointer;
 }
 
+@media (max-width: 768px) {
+  .course-card {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 100% !important;  /* Take up full width */
+    max-width: 100% !important;   /* Ensure max-width is 100% */
+    min-width: auto;              /* Remove any min-width */
+  }
+}
 
 /* Light Mode Backgrounds */
 .course-card:nth-child(1) { background-color: #dbeafe; }
@@ -227,7 +236,7 @@ body.dark .course-card:nth-child(3) { background-color: #78350f; color: #fde68a;
 body.dark .course-card:nth-child(4) { background-color: #2e3440; color: #d8dee9; }
 body.dark .course-card:nth-child(5) { background-color: #4c1d95; color: #ddd6fe; }
 body.dark .course-card:nth-child(6) { background-color: #164e63; color: #a5f3fc; }
-body.dark .course-card:nth-child(7) { background-color: #883e7c; color: #fff9fe;}
+body.dark .course-card:nth-child(7) { background-color: #da9dd0; color: #fff9fe}
 
 body.dark .course-card h3,
 body.dark .course-card p {
