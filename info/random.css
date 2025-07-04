@@ -143,18 +143,22 @@ main p {
 }
 
 .course-card {
-  flex: 1 1 30%;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: calc((100% / 3) - 16px);
+  max-width: calc((100% / 3) - 16px);
+  min-width: 250px;
   padding: 28px 22px;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  min-width: 250px;
   text-decoration: none;
   display: flex;
   flex-direction: column;
   justify-content: center;
   cursor: pointer;
 }
+
 
 /* Light Mode Backgrounds */
 .course-card:nth-child(1) { background-color: #dbeafe; }
@@ -163,6 +167,7 @@ main p {
 .course-card:nth-child(4) { background-color: #f0f4f8; }
 .course-card:nth-child(5) { background-color: #ede9fe; }
 .course-card:nth-child(6) { background-color: #cffafe; }
+.course-card:nth-child(7) { background-color: #ffebfc; }
 
 .course-card h3 {
   margin-bottom: 12px;
@@ -222,6 +227,7 @@ body.dark .course-card:nth-child(3) { background-color: #78350f; color: #fde68a;
 body.dark .course-card:nth-child(4) { background-color: #2e3440; color: #d8dee9; }
 body.dark .course-card:nth-child(5) { background-color: #4c1d95; color: #ddd6fe; }
 body.dark .course-card:nth-child(6) { background-color: #164e63; color: #a5f3fc; }
+body.dark .course-card:nth-child(7) { background-color: #da9dd0; color: #fff9fe;}
 
 body.dark .course-card h3,
 body.dark .course-card p {
