@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="Master Matplotlib customization! Learn how to add titles, axis labels, gridlines, and style your Python graphs using fontdict. Ideal for beginners!" />
-  <title>Customize Matplotlib Graphs in Python: Title, Axis Labels, Grid & Fonts</title>
+<meta name="description" content="Visualize your data the delicious way with Python and Matplotlib pie charts. This fun, beginner-friendly guide makes pie charts simple, colorful, and unforgettable.">
+  <title>Learn Pie Charts in Python with Matplotlib | Fun, Easy & Visual Guide</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     
@@ -426,14 +426,35 @@ header button {
     </aside>
 
     <main>
-  <h1>Customize Matplotlib Graphs in Python: Add Title, Labels, Grid & Fonts</h1>
-  <p> Making a graph is cool and all — but making it *look good*? That’s a whole other level. Whether you're showing off a data project or just want your charts to make sense at first glance, customizing your Matplotlib graphs is key. In this tutorial, we’ll show you how to glow up your plots by adding titles, labeling your axes, turning on gridlines (so your data isn’t just floating in space), and styling everything with custom fonts. It’s all about turning basic into polished — and trust, your graphs will be serving pro vibes in no time. </p>
+  <h1>Plot Pie Charts in Python with Matplotlib — A Tasty Guide for Beginners </h1>
+  <p>
+    Ever wondered how to make pie charts in Python that don’t look like your math textbook from 6th grade?
+Well, you’re in for a treat  — because we’re serving some sweet plots with Matplotlib today.
+Whether you’re a data newbie or just here to make things look cute, this guide’s got you covered.
+Let’s slice through the code and make your data deliciously visual 
+  </p>
 
-  <h2>Why Use  Customization?</h2>
-  <p> A basic graph shows the data, but a customized one makes it *make sense*. With Matplotlib, adding titles, labels, gridlines, and font styling helps your plot look clean, clear, and actually readable. Customization isn’t just about looks — it’s about making your data speak. </p>
+  <h2>Why Use Pie Charts?</h2>
+  <p>
+   Because sometimes, you just want to show how the cake is divided . Pie charts make it super easy to visualize proportions — who got the biggest slice, who got none, and everything in between. They're quick, clean, and instantly understandable, especially when dealing with simple categorical data.
+  </p>
+
+<h2>What You’ll Learn</h2>
+<ul>
+  <li>How to plot pie charts with just a few lines of Python</li>
+  <li>Customize slices with colors, labels, and explode effects</li>
+  <li>When to use pie charts (and when not to)</li>
+  <li>Pro tips to make your visuals pop for presentations & projects</li>
+  <li>Master <code>plt.pie()</code> with multiple data slices — one chart, many stories</li>
+</ul>
+<br>
+<br>
+<br>
 
   <h2>Step-by-Step Code Example</h2>
-
+  <p>Here’s a simple example of how to create a pie chart in Matplotlib:
+    <br>
+  </p>
 
       <div class="code-container" aria-label="Code example for Pandas groupby method">
         <div class="code-header">
@@ -444,82 +465,146 @@ header button {
         <pre><code>
 import matplotlib.pyplot as plt
 
-# Days of the week
+# Meme names
+memes = [
+    "Pepe the Frog",
+    "Doge",
+    "This Is Fine Dog",
+    "Distracted Boyfriend",
+    "Woman Yelling at a Cat",
+    "Grumpy Cat"
+]
 
-days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+# Years they've been famous (as of 2025)
+years_famous = [17, 12, 12, 8, 6, 13]
 
-mobile_visitors = [70, 90, 85, 100, 120, 140, 110]
-desktop_visitors = [50, 60, 45, 70, 80, 80, 70]
+colors = ['#9fcbf5', '#67a6e0', '#2b85d9', '#1862a8', '#1b4f80', '#073b6b']
 
-plt.figure(figsize = (8, 4))
-plt.plot(days, mobile_visitors, marker="o")
-plt.plot(days, desktop_visitors, marker="o")
-
+plt.pie(years_famous, labels=memes, autopct='%1.1f%%', startangle=140, colors=colors)
+plt.title("Top 6 Memes by Years of Popularity (as of 2025)", fontdict={'fontsize': 16, 'fontname': 'Comic Sans MS'})
 plt.show()
- </code></pre>
+
+        </code></pre>
       </div>
 
+<p>This pie chart visualizes how long the top 6 legendary internet memes have been famous (as of 2025). Instead of numbers or dry stats, it celebrates meme culture with flair.</p>
+
+<p style="font-size: 20px;"><b>Quick Highlights:</b></p>
+<ul style="line-height: 1.6;">
+  <li>
+    <code style="font-size: 16px;">memes = [...]</code><br>
+    🔹We’ve got 6 legendary memes — each one’s a certified icon 
+  </li>
+
+  <li>
+    <code style="font-size: 16px;">years_famous = [...]</code><br>
+    🔹This list stores how many years each meme has ruled the internet (as of 2025).
+  </li>
+
+  <li>
+    <code style="font-size: 16px;">colors = [...]</code><br>
+    🔹Custom pastel shades to keep things cute and not chaotic.
+  </li>
+
+  <li>
+    <code style="font-size: 16px;">plt.pie(...)</code><br>
+    🔹This draws the pie. We added labels, % values, custom colors, and a starting angle for flair.
+  </li>
+
+  <li>
+    <code style="font-size: 16px;">autopct='%1.1f%%'</code><br>
+    🔹Shows percentage with 1 decimal — because details matter 
+  </li>
+
+  <li>
+    <code style="font-size: 16x;">startangle=140</code><br>
+    🔹Rotates the pie for better balance and ✨aesthetic vibes✨
+  </li>
+
+  <li>
+    <code style="font-size: 16px;">plt.title(...)</code><br>
+    🔹Adds a fun title in Comic Sans — because memes deserve drama 
+  </li>
+
+  <li>
+    <code style="font-size: 16px;">plt.show()</code><br>
+    🔹Opens up the final pie chart. Boom. Done.
+  </li>
+</ul>
 
 
-<p>1. First up, let’s add a title to the graph.</p>
+<br>
+<br>
 
+<h4>Here's the output : </h4>
+<br>
+<img src = "../matplotlib/pie.png" alter = "graph.png">
+<br>
+<i>Not gonna lie, my color palette feels pretty pro.</i>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h3 style="color: #7b9ebe; text-align: center;">Brace yourself — cool pie chart stuff incoming</h3>
+<br>
+<br>
+<br>
+<h4>🔹Exploding Slices: Making One Piece Pop</h4>
 <div class="code-container" aria-label="Code example for Pandas groupby method">
         <pre><code>
-plt.title("Website Visitors Over a Week", fontdict={'fontsize': 14, 'family': 'Comic Sans MS'})
- </code></pre>
+explodes = [0, 0.1, 0, 0, 0, 0]
+        </code></pre>
       </div>
-<p><strong>Quick tip:</strong> <code>fontdict</code> lets you style your text in Matplotlib — you can change the font size, font family (like <code>'Comic Sans MS'</code>), and more. It helps make your titles and labels look just the way you want.</p>
-
-
-<p>2. Next, let’s label the axes so everyone knows what each part of the graph represents — the days on the bottom and visitors on the side.</p>
-
+<p>Sometimes, you want a slice of the pie to stand out — maybe it’s the most important, or you just want it to scream “look at me!”
+That’s where explode comes in — it pulls out specific slices to grab attention.</p>
+<img src = "../matplotlib/explode.png" alter = "explode pie chart">
+<br>
+<br>
+<br>
+<h4>🔹Separate Legends, Clearer Vibes</h4>
 <div class="code-container" aria-label="Code example for Pandas groupby method">
         <pre><code>
-plt.xlabel("Days")
-plt.ylabel("Visitors")
- </code></pre>
+plt.legend(memes, title="Memes", loc="upper left", bbox_to_anchor=(1, 1))
+        </code></pre>
       </div>
-
-    <p>3. To make the graph easier to read and way more attractive, let’s add gridlines — they help your eyes follow the data points like a pro.</p>
-
+<p>Instead of crowding the pie chart with labels inside the slices (which can get messy), we used plt.legend() to place the labels outside the chart — neat and clear.</p>
+<ul>
+    <li><code style="font-size: 16px;">memes</code> → The list of labels.</li>
+    <li><code style="font-size: 16px;">title="Memes"</code> → Adds a cute title to the legend box.</li>
+    <li><code style="font-size: 16px;">loc="upper left"</code> → Places the legend near the top-left.</li>
+    <li><code style="font-size: 16px;">bbox_to_anchor=(1, 1)</code> → Pushes the legend outside the chart so it doesn’t overlap.</li>
+</ul>
+<br>
+<br>
+<img src = "../matplotlib/label.png" alter = "pie chart">
+<br>
+<br>
+<br>
+<h4>🔹Donut Vibes with wedgeprops</h4>
 <div class="code-container" aria-label="Code example for Pandas groupby method">
         <pre><code>
-plt.grid(True, aplha = 0.7, linestyle="--")
- </code></pre>
+plt.pie(data, wedgeprops=dict(width=0.7))
+        </code></pre>
       </div>
-<p><strong>Quick tip:</strong> <code>alpha</code> controls the transparency of the gridlines (0 is invisible, 1 is solid), and <code>linestyle="--"</code> makes the gridlines dashed instead of solid.</p>
-
-
-<p>4. Finally, let’s add labels directly on the lines to clearly show what each data set represents — making your graph super easy to understand at a glance.</p>
-
-<div class="code-container" aria-label="Code example for Pandas groupby method">
-        <pre><code>
-plt.plot(days, mobile_visitors, label="Mobile Visitors")
-plt.plot(days, desktop_visitors, label="Desktop Visitors", color = "tab:red") #you can also change the color of the line
-
-plt.legend()
- </code></pre>
-      </div>
-<p><strong>Quick tip:</strong> Don’t forget to add <code>plt.legend()</code> — it’s what actually makes the labels show up on the graph. Without it, your lines will have names but no one will ever see them!</p>
+<p>Want to turn your regular pie chart into a <i>donut chart?</i> That’s where wedgeprops comes in!</p>
+<ul>
+    <li><code style="font-size: 16px;">wedgeprops</code> lets you style the pie slices.</li>
+    <li><code style="font-size: 16px;">width=0.7 </code>hollows out the center — making it look like a donut.</li>
+</ul>
 <br>
 <br>
-<br>
-<br>
-<h4>And here’s what the graph looks like</h4>
-<br>
-<img src = "../matplotlib/customise.png" alter = "graph.png">
-<br>
-<i>Ommo, this looks so cool!</i>
-<br>
-<br>
+<img src = "../matplotlib/wedgeprops.png" alter = "wedgeprops image">
 <br>
 <br>
 <br>
 
-<p><b><i>More educational content : </i></b></p>
+
+<p><b><i>Looking to level up? Explore more premium learning content through the links below : </i></b></p>
 <ul>
   <li><a href="../matplotlib/bar.html" style="color: #6a8ea7;", target="_blank"><i>Click here - To learn how to plot bar graphs</i></a></li>
-  <li><a href="../matplotlib/pie.html" style="color: #6a8ea7;", target="_blank"><i>Click here - To learn how to plot pie charts</i></a></li>
+  <li><a href="../matplotlib/scatter.html" style="color: #6a8ea7;", target="_blank"><i>Click here - to learn how to plot scatter graphs</i></a></li>
 </ul>
    </main>
   </div>
