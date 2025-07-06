@@ -6,3 +6,5 @@ https://palakm-08.github.io/kiddo_edu/info/contact.html
 https://palakm-08.github.io/kiddo_edu/matplotlib/line-g.html
 https://palakm-08.github.io/kiddo_edu/matplotlib/multi-line-g.html
 https://palakm-08.github.io/kiddo_edu/matplotlib/customise.html
+https://palakm-08.github.io/kiddo_edu/matplotlib/bar.html
+https://palakm-08.github.io/kiddo_edu/matplotlib/pie.html
