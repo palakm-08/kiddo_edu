@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Learn how to plot line graphs using Matplotlib with a clear Python example and explanation. Great for beginners!">
-  <title>Kiddo</title>
+  <meta name="description" content="Master line graphs in Python with Matplotlib using fun examples, clear visuals, and a screen time mini project! Perfect for beginners in data science and coding.">
+  <title>Line Graphs in Python with Matplotlib — Beginner Guide + Mini Project</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     
@@ -208,80 +208,38 @@ header button {
     }
 
     /* Responsive */
-    @media screen and (max-width: 768px) {
-  header {
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+
+      aside {
+        display: none; /* Hide sidebar on mobile */
+        width: 100%;
+        padding: 20px;
+      }
+
+      main {
+        padding: 20px;
+      }
+
+      nav-wrapper {
     flex-direction: column;
-    align-items: flex-start;
-    padding: 15px;
+    align-items: flex-start; /* Align nav links to left on small screens */
+    width: 100%;
     gap: 10px;
   }
 
-  .logo span {
-    font-size: 20px;
+  header nav {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-start; /
   }
 
-  nav a {
-    font-size: 14px;
-    margin-right: 12px;
-  }
-
-  aside {
-    display: none; /* hides sidebar on mobile */
-  }
-
-  main {
-    padding: 20px;
-  }
-
-  main h1 {
-    font-size: 24px;
-  }
-
-  main h2 {
-    font-size: 20px;
-  }
-
-  main p,
-  main li {
-    font-size: 14px;
-  }
-
-  .code-container {
-    font-size: 13px;
-    overflow-x: auto;
-    max-width: 100%;
-  }
-
-  .code-header {
-    font-size: 14px;
-    padding: 8px 12px;
-  }
-
-  .copy-btn {
-    padding: 5px 10px;
-    font-size: 12px;
-  }
-
-  pre {
-    padding: 12px;
-    font-size: 13px;
-  }
-
-  img {
-    max-width: 100%;
-    height: auto;
-    margin-top: 10px;
-  }
-
-  footer {
-    padding: 15px;
-  }
-
-  .footer-links a {
-    font-size: 13px;
+  header button {
+    align-self: flex-start;
   }
 }
-
     
 
     @keyframes darkBackground {
@@ -413,31 +371,71 @@ header button {
     <aside>
       <h3>Topics</h3>
       <ul>
-        <li><a href="../matplotlib/line-g.html", target="_blank">Line Graphs</a></li>
-        <li><a href="../matplotlib/multi-line-g.html", target="_blank">Multiple Line Graphs</a></li>
-        <li><a href="../matplotlib/customise.html", target="_blank">Customize the graphs</a></li>
-        <li><a href="../matplotlib/bar.html", target="_blank">Bar Graphs</a></li>
-        <li><a href="#", target="_blank">Scatter graphs</a></li>
-        <li><a href="#", target="_blank">Histogram</a></li>
-        <li><a href="../matplotlib/pie.html", target="_blank">Pie charts</a></li>
-        <li><a href="", target="_blank">Subplots</a></li>
-        <li><a href="", target="_blank">Legends and Annotations</a></li>
+        <li><a href="/matplotlib/line-g.html">Line Graphs</a></li>
+        <li><a href="../matplotlib/multi-line-g.html">Multiple Line Graphs</a></li>
+        <li><a href="../matplotlib/customise.html">Customize the graphs</a></li>
+        <li><a href="../matplotlib/bar.html">Bar Graphs</a></li>
+        <li><a href="#">Scatter graphs</a></li>
+        <li><a href="#">Histogram</a></li>
+        <li><a href="../matplotlib/pie.html">Pie charts</a></li>
+        <li><a href="">Subplots</a></li>
+        <li><a href="">Legends and Annotations</a></li>
       </ul>
     </aside>
 
     <main>
-      <h1>Line graphs in matplotlib</h1>
-      <p>
-    Line graphs are one of the most commonly used types of charts in data visualization.
-    They are great for showing trends or changes over time. In this tutorial, you'll learn
-    how to create a basic line graph using Python's Matplotlib library.
-  </p>
+      <h1>Line Graphs in Matplotlib (Python)</h1>
 
-  <h2>When to Use a Line Graph?</h2>
-  <p>
-    Use a line graph when you want to visualize continuous data — such as stock prices,
-    temperatures, or website traffic — over a period of time or a sequence.
-  </p>
+<p>
+Hey coder! Ever wanted to plot how your progress, your followers, or even your mood changes over time? 
+Line graphs are your best buds for that — smooth, simple, and so visual.
+</p>
+
+<p>
+In this guide, we’re gonna chill with <b>Matplotlib</b> — a super handy Python library — and learn how to draw clean, easy-to-understand line charts.
+Perfect if you’re just starting out or want to spice up your data game .
+</p>
+
+
+  <h2>When Should You Use a Line Graph?</h2>
+
+<p>
+Use a line graph when you want to **show change over time** — like how something increases, decreases, or trends. 
+Think of it as a time-traveling chart: you’re looking at what happened yesterday, today, and where things might be going tomorrow.
+</p>
+
+<p>
+Here are some classic examples:
+</p>
+<ul>
+  <li>Tracking daily temperatures</li>
+  <li>Watching your website traffic grow (hopefully)</li>
+  <li>Showing how COVID cases went up or down</li>
+  <li>Plotting stock prices or your monthly expenses</li>
+  <li>Visualizing your study hours over the week</li>
+</ul>
+
+<p>
+Basically, anytime you have something that moves through **time** — a line graph can help you make sense of it.
+</p>
+
+<h2>What You'll Learn</h2>
+
+<p>
+By the end of this quick and cozy tutorial, you'll know how to:
+</p>
+
+<ul>
+  <li>Create your first line graph using <code>matplotlib</code></li>
+  <li>Label your axes and add a neat title</li>
+  <li>Customize your lines with different colors, markers, and styles</li>
+  <li>Show your graph like a pro using <code>plt.show()</code></li>
+  <li>And feel super proud when it finally works (that feeling hits different)</li>
+</ul>
+
+<p>
+This is the kind of stuff that turns a boring list of numbers into a beautiful, storytelling graph. So get ready to bring your data to life!
+</p>
 
   <h2>Step-by-Step Code Example</h2>
   <p>Here’s a simple example of how to create a line graph in Matplotlib:</p>
@@ -452,36 +450,87 @@ header button {
 import matplotlib.pyplot as plt
 
 # Sample data
-
-Category= ['A', 'B', 'C', 'D', 'E', 'F']
+Category = ['A', 'B', 'C', 'D', 'E', 'F']
 Values = [10, 20, 15, 25, 10, 30]
 
-#use 'Category' as x-axis and 'Values' as y-axis
+# Create the plot
+plt.figure(figsize=(8, 5))  # Adjust the size of the plot
+plt.plot(Category, Values, 
+         color='#1f77b4',         # A soft blue line
+         marker='o',              # Circular markers
+         linestyle='-',           # Solid line
+         linewidth=2, 
+         markersize=8)
 
-plt.plot(Category, Values, marker="o", linestyle="--")
+# Add labels and title
+plt.xlabel("Category", fontsize=12)
+plt.ylabel("Values", fontsize=12)
+plt.title("Basic Line Graph Example", fontsize=14, fontweight='bold')
 
+# Add grid for better readability
+plt.grid(True, linestyle='--', alpha=0.5)
+
+# Display the plot
+plt.tight_layout()
 plt.show()
+
         </code></pre>
       </div>
-<p><b>Marker : </b> Marker is used to mark the data points</p>
-<ul>
-  <b>Types of marker : </b>
-  <li>'o' - circle</li>
-  <li>'.' - point</li>
-  <li>'+' - plus</li>
-  <li>'*' - star</li>
+<h2>Understanding the Code Step-by-Step</h2>
+<ul style="line-height: 1.7;">
+  <li><b>Import library:</b> <code>matplotlib.pyplot</code> is used to create visualizations.</li>
+  <li><b>Define data:</b> Categories (X-axis) and their corresponding values (Y-axis).</li>
+  <li><b>Plot:</b> <code>plt.plot()</code> draws the line graph with markers, color, and style.</li>
+  <li><b>Labels & Title:</b> <code>xlabel</code>, <code>ylabel</code>, and <code>title</code> describe the graph.</li>
+  <li><b>Grid:</b> Adds dashed grid lines for better readability.</li>
+  <li><b>Display:</b> <code>plt.show()</code> renders the graph on the screen.</li>
 </ul>
+<br>
+<br>
+<h2>What is Linestyle?</h2>
+<p>
+  <b>Linestyle</b> controls how the line appears between data points — solid, dashed, or dotted.
+</p>
+
+<ul>
+  <li><code>'-'</code> → Solid line</li>
+  <li><code>'--'</code> → Dashed line</li>
+  <li><code>':'</code> → Dotted line</li>
+  <li><code>'-.'</code> → Dash-dot line</li>
+</ul>
+<br>
 <br>
 
-<p><b>Linestyle : </b> linestyle in a plot just means how the line connecting the points looks.</p>
+<h2>What is a Marker?</h2>
+<p>
+  <b>Marker</b> highlights each data point on the graph — like dots, stars, or squares.
+</p>
+
 <ul>
-  <b>Types of linestyle : </b>
-  <li>'-' - solid line</li>
-  <li>'--' - dashed line</li>
-  <li>':' - dotted line</li>
+  <li><code>'o'</code> → Circle</li>
+  <li><code>'.'</code> → Point</li>
+  <li><code>'*'</code> → Star</li>
+  <li><code>'s'</code> → Square</li>
+  <li><code>'^'</code> → Triangle up</li>
+  <li><code>'+'</code> → Plus</li>
 </ul>
 <br>
 <br>
+<h2>Marker Size & Line Width</h2>
+<p>
+  Want to make your graph pop a bit more? That's where <b>markersize</b> and <b>linewidth</b> come in!
+</p>
+
+<ul>
+  <li><b>markersize</b>: Controls how *big or small* each marker (dot/star/whatever) appears on the graph.</li>
+  <li><b>linewidth</b>: Adjusts how *thick or thin* the line is that connects your data points.</li>
+</ul>
+
+<p>
+  Just add them like this: <br>
+  <code>plt.plot(x, y, marker='o', markersize=10, linewidth=2)</code>
+</p>
+
 
 <h4>Here's the output : </h4>
 <br>
@@ -492,11 +541,35 @@ plt.show()
 <br>
 <br>
 <br>
+<h2>🔹Mini Project: Track Your Screen Time!</h2>
+<p>
+  Wanna try out your new matplotlib skills? Here's a chill project idea:
+</p>
 
+<p>
+  Track your screen time for a week (be honest), then plot it using a line graph!
+</p>
+
+<ul>
+  <li>X-axis: Days of the week (like Mon, Tue, Wed...)</li>
+  <li>Y-axis: Hours you spent on your phone/tablet</li>
+</ul>
+
+<p>
+  This is a cool way to visualize your habits—and maybe get that little reality check we all need.
+</p>
+
+<p>
+  Bonus points if you color-code it or add a title like “How Much I Scrolled This Week” 
+</p>
+<br>
+<br>
+<br>
 <p><b><i>More educational content : </i></b></p>
 <ul>
-  <li><a href="../matplotlib/multi-line-g.html" style="color: #6a8ea7;" target="_blank"><i>Click here - To learn how to plot multiple line graphs</i></a></li>
-  <li><a href="../matplotlib/customise.html" style="color: #6a8ea7;", target="_blank"><i>Click here - to learn to customize the graphs by adding title, labels, grid, and many more</i></a></li>
+  <li><a href="../matplotlib/multi-line-g.html" style="color: #6a8ea7;"><i>Click here - To learn how to plot multiple line graphs</i></a></li>
+  <li><a href="../matplotlib/customise.html" style="color: #6a8ea7;"><i>Click here - to learn to customize the graphs by adding title, labels, grid, and many more</i></a></li>
+  <li><a href="../matplotlib/pie.html" style="color: #6a8ea7;"><i>Click here - To learn how to plot pie charts</i></a></li>
 </ul>
    </main>
   </div>
@@ -505,9 +578,9 @@ plt.show()
     <div class="footer-container">
       <p>© 2025 Kiddo. All rights reserved.</p>
       <div class="footer-links">
-        <a href="../info/privacy.html">Privacy Policy</a>
-        <a href="../info/terms.html">Terms of Service</a>
-        <a href="../info/contact.html">Contact</a>
+        <a href="/info/privacy.html">Privacy Policy</a>
+        <a href="/info/terms.html">Terms of Service</a>
+        <a href="/info/contact.html">Contact</a>
       </div>
     </div>
   </footer>

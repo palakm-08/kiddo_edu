@@ -468,21 +468,21 @@ header button {
 import matplotlib.pyplot as plt
 import numpy as np
 
-jaiswal = np.array([28, 62, 15, 110, 33, 8, 70, 92, 45, 60,
+Joe_Root = np.array([28, 62, 15, 110, 33, 8, 70, 92, 45, 60,
                   81, 39, 20, 75, 13, 18, 67, 41, 99, 50,
                   103, 58, 36, 61, 49, 88, 4, 10, 29, 73])
 
-abhishek  = np.array([23, 55, 47, 29, 83, 17, 66, 87, 40, 34,
+Steve_Smith  = np.array([23, 55, 47, 29, 83, 17, 66, 87, 40, 34,
                    51, 27, 90, 63, 36, 31, 21, 60, 70, 44,
                    78, 69, 48, 57, 39, 74, 12, 97, 65, 26])
 
 plt.figure(figsize = (10, 5))
 x = np.arange(1, 31)
 
-plt.plot(x, jaiswal, label = 'Jaiswal',color = '#184452', marker = 'o')
-plt.plot(x, abhishek, label = 'Abhishek', color = '#77cce6', marker = 'o')
+plt.plot(x, Joe_Root, label = 'Joe Root',color = '#184452', marker = 'o')
+plt.plot(x, Steve_Smith, label = 'Steve_Smith', color = '#77cce6', marker = 'o')
 
-plt.title('Jaiswal vs Abhishek')
+plt.title('Joe Root vs Steve_Smith')
 plt.xlabel('Matches', fontdict = {'fontname' : 'Comic Sans MS', 'fontsize' : 15})
 plt.ylabel('Scores', fontdict = {'fontname' : 'Comic Sans MS', 'fontsize' : 15})
 
@@ -492,18 +492,81 @@ plt.show()
         </code></pre>
       </div>
 
-<p>We've taken two arrays named Abhishek and Jaiswal, which contain the scores of these two players (don’t take it too seriously — it’s just dummy data).</p>
-
-<p><b>Points to be noted : </b></p>
-<ul>
-  <li>This dataset contains the results of 30 matches, which is why we've defined x as x = np.arange(1, 31).</li>
-  <li>First, we plotted Jaiswal's data, followed by Abhishek's data.</li>
-  <li>We've used two different colors to clearly distinguish between the lines.</li>
-  <li>Next, we customized the graph by adding a title, x-label, and y-label.</li>
-  <li>plt.legend() is important for showing labels on the graph.</li>
-  <li>We further customized the legend by setting the position of the label box using bbox_to_anchor=(1.05, 1) and loc='upper left'.</li>
-  <li>And at last, we have added the grid because it looks beautiful.</li>
+<p>We've taken two arrays named Steve_Smith and Joe_Root, which contain the scores of these two players (don’t take it too seriously — it’s just dummy data).</p>
+<br>
+<h2>Understanding the Code Step-by-Step</h2>
+<br>
+<ul style="line-height: 1.7;">
+  <li>
+    <b>Import libraries:</b> <code>matplotlib.pyplot</code> (aka <code>plt</code>) is for plotting pretty graphs, 
+    and <code>numpy</code> (aka <code>np</code>) helps us handle numerical data like a pro.
+  </li>
+  
+  <li>
+    <b>Define the data:</b> We’ve got two arrays here — <code>Joe_Root</code> and <code>Steve_Smith</code> — 
+    each with 30 scores (probably match runs). These are the stats we’ll be visualizing.
+  </li>
+  
+  <li>
+    <b>Set up the X-axis:</b> <code>np.arange(1, 31)</code> gives us a range of match numbers from 1 to 30. 
+    This is the base for our X-axis — each number repping a match.
+  </li>
+  
+  <li>
+    <b>Plot the lines:</b> <code>plt.plot()</code> is doing the magic here. We plot both players’ scores with 
+    different colors and markers so we can tell them apart easily. Root gets a deep blue, and Smith gets a chill light blue.
+  </li>
+  
+  <li>
+    <b>Add labels & title:</b> We slap on a title and label the X and Y axes using a fun font (Comic Sans MS, of course). 
+    This helps make the graph way more readable.
+  </li>
+  
+  <li>
+    <b>Legend time:</b> <code>plt.legend()</code> drops a little key to the side so we know which line is whose. 
+    Positioned top-right but outside the main graph area.
+  </li>
+  
+  <li>
+    <b>Grid it out:</b> The <code>plt.grid()</code> function adds light dashed lines across the plot. 
+    Makes everything easier to read — and lowkey aesthetic.
+  </li>
+  
+  <li>
+    <b>Show it off:</b> <code>plt.show()</code> finally displays the graph on screen. Boom — data visualized!
+  </li>
 </ul>
+<br>
+<br>
+<br>
+<h2>When to Use Multiple Line Graphs</h2>
+<br>
+<ul style="line-height: 1.7;">
+  <li>
+    <b>Compare multiple subjects:</b> Useful when comparing two or more individuals, groups, or entities 
+    — like players, products, or locations — across the same timeline.
+  </li>
+  
+  <li>
+    <b>Track changes over time:</b> When you want to visualize how different variables change in parallel 
+    over days, months, or years.
+  </li>
+  
+  <li>
+    <b>Spot trends and patterns:</b> Helps in identifying common trends, divergences, or anomalies between datasets.
+  </li>
+  
+  <li>
+    <b>Analyze performance gaps:</b> Ideal for showing who’s leading, catching up, or falling behind 
+    (e.g. team rankings or revenue comparisons).
+  </li>
+  
+  <li>
+    <b>Tell a story visually:</b> Multiple lines on one graph can clearly show narrative moments 
+    — like a comeback, a crossover point, or consistent dominance.
+  </li>
+</ul>
+
 
 <br>
 <br>
@@ -517,8 +580,42 @@ plt.show()
 <br>
 <br>
 <br>
-<br>
+<h2>🔹Mini Project: Track Your Favorite Players This Season</h2>
 
+<p>
+  Ready to flex your matplotlib skills and your sports obsession? Here’s a graph idea that’s way more fun:
+</p>
+
+<p>
+  Pick 2–3 of your favorite players (from cricket, football, basketball—whatever you vibe with) and track how they performed match by match.
+</p>
+
+<ul style="line-height: 1.7;">
+  <li><b>X-axis:</b> Match number (or match dates)</li>
+  <li><b>Y-axis:</b> Performance metric — like goals, runs, assists, wickets, etc.</li>
+  <li>Each player gets a different colored line so you can easily compare their season.</li>
+</ul>
+
+<p>
+  This graph gives you a cool visual of who's been consistent, who had a comeback, and who’s been ghosting.
+</p>
+
+<p>
+  Bonus points if you:
+</p>
+
+<ul style="line-height: 1.7;">
+  <li>Add team logos as markers (if you're feeling spicy)</li>
+  <li>Highlight best & worst games with annotations</li>
+  <li>Use a title like <code>“Battle of the GOATs: 2025 Season Stats”</code></li>
+</ul>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
 <p><b><i>More educational content : </i></b></p>
 <ul>
   <li><a href="../matplotlib/bar.html" style="color: #6a8ea7;", target="_blank"><i>Click here - To learn how to plot bar graphs</i></a></li>
