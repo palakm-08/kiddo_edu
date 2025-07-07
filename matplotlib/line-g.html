@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Master line graphs in Python with Matplotlib using fun examples, clear visuals, and a screen time mini project! Perfect for beginners in data science and coding.">
-  <title>Line Graphs in Python with Matplotlib — Beginner Guide + Mini Project</title>
+  <meta name="description" content="Create multiple line graphs in Python using Matplotlib. Step-by-step guide with code, visuals, and beginner-friendly explanations.">
+  <title>Multiple Line Graphs in Python – Matplotlib Tutorial for Beginners</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     
@@ -208,38 +208,80 @@ header button {
     }
 
     /* Responsive */
-    @media (max-width: 768px) {
-      .container {
-        flex-direction: column;
-      }
-
-      aside {
-        display: none; /* Hide sidebar on mobile */
-        width: 100%;
-        padding: 20px;
-      }
-
-      main {
-        padding: 20px;
-      }
-
-      nav-wrapper {
+    @media screen and (max-width: 768px) {
+  header {
     flex-direction: column;
-    align-items: flex-start; /* Align nav links to left on small screens */
-    width: 100%;
+    align-items: flex-start;
+    padding: 15px;
     gap: 10px;
   }
 
-  header nav {
-    width: 100%;
-    flex-wrap: wrap;
-    justify-content: flex-start; /
+  .logo span {
+    font-size: 20px;
   }
 
-  header button {
-    align-self: flex-start;
+  nav a {
+    font-size: 14px;
+    margin-right: 12px;
+  }
+
+  aside {
+    display: none; /* hides sidebar on mobile */
+  }
+
+  main {
+    padding: 20px;
+  }
+
+  main h1 {
+    font-size: 24px;
+  }
+
+  main h2 {
+    font-size: 20px;
+  }
+
+  main p,
+  main li {
+    font-size: 14px;
+  }
+
+  .code-container {
+    font-size: 13px;
+    overflow-x: auto;
+    max-width: 100%;
+  }
+
+  .code-header {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+
+  .copy-btn {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+
+  pre {
+    padding: 12px;
+    font-size: 13px;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+  }
+
+  footer {
+    padding: 15px;
+  }
+
+  .footer-links a {
+    font-size: 13px;
   }
 }
+
     
 
     @keyframes darkBackground {
@@ -371,15 +413,15 @@ header button {
     <aside>
       <h3>Topics</h3>
       <ul>
-        <li><a href="/matplotlib/line-g.html">Line Graphs</a></li>
-        <li><a href="../matplotlib/multi-line-g.html">Multiple Line Graphs</a></li>
-        <li><a href="../matplotlib/customise.html">Customize the graphs</a></li>
-        <li><a href="../matplotlib/bar.html">Bar Graphs</a></li>
-        <li><a href="#">Scatter graphs</a></li>
-        <li><a href="#">Histogram</a></li>
-        <li><a href="../matplotlib/pie.html">Pie charts</a></li>
-        <li><a href="">Subplots</a></li>
-        <li><a href="">Legends and Annotations</a></li>
+        <li><a href="../matplotlib/line-g.html", target="_blank">Line Graphs</a></li>
+        <li><a href="../matplotlib/multi-line-g.html", target="_blank">Multiple Line Graphs</a></li>
+        <li><a href="../matplotlib/customise.html", target="_blank">Customize the graphs</a></li>
+        <li><a href="../matplotlib/bar.html", target="_blank">Bar Graphs</a></li>
+        <li><a href="#", target="_blank">Scatter graphs</a></li>
+        <li><a href="#", target="_blank">Histogram</a></li>
+        <li><a href="../matplotlib/pie.html", target="_blank">Pie charts</a></li>
+        <li><a href="", target="_blank">Subplots</a></li>
+        <li><a href="", target="_blank">Legends and Annotations</a></li>
       </ul>
     </aside>
 
@@ -534,7 +576,7 @@ plt.show()
 
 <h4>Here's the output : </h4>
 <br>
-<img src = "../matplotlib/line-g.png" alter = "graph.png">
+<img src = "/matplotlib/line-g.png" alter = "graph.png">
 <br>
 <br>
 <br>
@@ -565,11 +607,12 @@ plt.show()
 <br>
 <br>
 <br>
+
 <p><b><i>More educational content : </i></b></p>
 <ul>
-  <li><a href="../matplotlib/multi-line-g.html" style="color: #6a8ea7;"><i>Click here - To learn how to plot multiple line graphs</i></a></li>
-  <li><a href="../matplotlib/customise.html" style="color: #6a8ea7;"><i>Click here - to learn to customize the graphs by adding title, labels, grid, and many more</i></a></li>
-  <li><a href="../matplotlib/pie.html" style="color: #6a8ea7;"><i>Click here - To learn how to plot pie charts</i></a></li>
+  <li><a href="" style="color: #6a8ea7;"><i>Click here - To learn how to plot multiple line graphs</i></a></li>
+  <li><a href="" style="color: #6a8ea7;"><i>Click here - to learn to customize the graphs by adding title, labels, grid, and many more</i></a></li>
+  <li><a href="" style="color: #6a8ea7;"><i>Click here - To learn how to plot pie charts</i></a></li>
 </ul>
    </main>
   </div>
@@ -578,9 +621,9 @@ plt.show()
     <div class="footer-container">
       <p>© 2025 Kiddo. All rights reserved.</p>
       <div class="footer-links">
-        <a href="/info/privacy.html">Privacy Policy</a>
-        <a href="/info/terms.html">Terms of Service</a>
-        <a href="/info/contact.html">Contact</a>
+        <a href="../info/privacy.html">Privacy Policy</a>
+        <a href="../info/terms.html">Terms of Service</a>
+        <a href="../info/contact.html">Contact</a>
       </div>
     </div>
   </footer>
