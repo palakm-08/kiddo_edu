@@ -279,38 +279,6 @@ header button {
   .footer-links a {
     font-size: 13px;
   }
-  /* FAQ tagline on top, center-aligned, smaller on mobile */
-  .faq-intro {
-    max-width: 100%;
-    padding: 15px;
-    font-size: 0.95rem;
-    border-radius: 12px;
-    margin-top: 10px;
-    margin-bottom: 20px;
-  }
-
-  /* Make tables scrollable */
-  table {
-    display: block;
-    overflow-x: auto;
-    white-space: nowrap;
-  }
-
-  table thead {
-    background-color: #eef2ff;
-  }
-
-  table th,
-  table td {
-    min-width: 140px;
-    font-size: 13px;
-  }
-
-  /* Improve mobile readability for table cells */
-  table td code {
-    word-break: break-word;
-    font-size: 13px;
-  }
 }
 
     
@@ -413,13 +381,74 @@ header button {
       word-wrap: break-word;
       tab-size: 2;
     }
-
-body.dark table thead th {
-  background-color: #334155;
-  color: #ffffff; /* light text for visibility */
-  border-color: #475569; /* subtle border for dark */
-}
     
+    .mobile-table {
+      display: none;
+    }
+
+    /* Dark Mode Table Fixes */
+body.dark table,
+body.dark th,
+body.dark td {
+  background-color: #1e293b !important;
+  color: #f1f5f9 !important;
+  border-color: #475569 !important;
+}
+
+/* Mobile Specific Tables Fix */
+@media screen and (max-width: 768px) {
+  .mobile-table {
+    display: table;
+    margin: 20px 0;
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+
+  .mobile-table th,
+  .mobile-table td {
+    padding: 12px;
+    border: 1px solid #ccc;
+  }
+
+  .mobile-table th {
+    background-color: #eef2ff;
+    text-align: left;
+  }
+
+  .mobile-table caption {
+    caption-side: top;
+    font-weight: bold;
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+  }
+
+  /* Dark mode for mobile tables */
+  body.dark .mobile-table th,
+  body.dark .mobile-table td {
+    background-color: #1e293b;
+    color: #f1f5f9;
+    border-color: #475569;
+  }
+
+  /* Hide full table on mobile */
+  .full-table {
+    display: none;
+  }
+}
+
+/* Desktop view - show full table, hide mobile */
+@media screen and (min-width: 769px) {
+  .mobile-table {
+    display: none;
+  }
+
+  .full-table {
+    display: table;
+  }
+}
+
+
   </style>
 </head>
 <body>
@@ -452,41 +481,78 @@ body.dark table thead th {
 
    <main>
   <h3 style="color: rgb(161, 161, 161); font-family: 'Inter', sans-serif; font-style: italic; text-align: center;">
-    Welcome to the FAQ Zone — Got questions? We got receipts
-  </h3>
-  <br><br><br>
+        Welcome to the FAQ Zone — Got questions? We got receipts
+      </h3>
+      <br><br><br>
 
-  <h1>= vs == in Python: What’s the Difference?</h1>
+      <h1>= vs == in Python: What’s the Difference?</h1>
 
-  <p style="margin-top: 20px; font-size: 1.1rem;">
-    This is one of the <strong>most common beginner confusions</strong> in Python! Don’t worry — by the end of this page, you’ll never mix these two up again
-  </p>
+      <p style="margin-top: 20px; font-size: 1.1rem;">
+        This is one of the <strong>most common beginner confusions</strong> in Python! Don’t worry — by the end of this page, you’ll never mix these two up again
+      </p>
 
-  <h2 style="margin-top: 40px;">Key Difference (Comparison Table)</h2>
-  <table style="width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 1.05rem;">
-    <thead style="background-color: #eef2ff;">
-      <tr>
-        <th style="padding: 12px; border: 1px solid #ccc;">Operator</th>
-        <th style="padding: 12px; border: 1px solid #ccc;">Name</th>
-        <th style="padding: 12px; border: 1px solid #ccc;">Function</th>
-        <th style="padding: 12px; border: 1px solid #ccc;">Example</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="padding: 12px; border: 1px solid #ccc;"><code>=</code></td>
-        <td style="padding: 12px; border: 1px solid #ccc;">Assignment Operator</td>
-        <td style="padding: 12px; border: 1px solid #ccc;">Gives a value to a variable</td>
-        <td style="padding: 12px; border: 1px solid #ccc;"><code>x = 10</code> → x becomes 10</td>
-      </tr>
-      <tr>
-        <td style="padding: 12px; border: 1px solid #ccc;"><code>==</code></td>
-        <td style="padding: 12px; border: 1px solid #ccc;">Comparison Operator</td>
-        <td style="padding: 12px; border: 1px solid #ccc;">Checks if two values are equal</td>
-        <td style="padding: 12px; border: 1px solid #ccc;"><code>x == 10</code> → True if x is 10</td>
-      </tr>
-    </tbody>
-  </table>
+      <h2 style="margin-top: 40px;">Key Difference (Comparison Table)</h2>
+
+<!-- Desktop Table -->
+<table class="full-table" style="width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 1.05rem;">
+  <thead style="background-color: #eef2ff;">
+    <tr>
+      <th style="padding: 12px; border: 1px solid #ccc;">Operator</th>
+      <th style="padding: 12px; border: 1px solid #ccc;">Name</th>
+      <th style="padding: 12px; border: 1px solid #ccc;">Function</th>
+      <th style="padding: 12px; border: 1px solid #ccc;">Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 12px; border: 1px solid #ccc;"><code>=</code></td>
+      <td style="padding: 12px; border: 1px solid #ccc;">Assignment Operator</td>
+      <td style="padding: 12px; border: 1px solid #ccc;">Gives a value to a variable</td>
+      <td style="padding: 12px; border: 1px solid #ccc;"><code>x = 10</code> → x becomes 10</td>
+    </tr>
+    <tr>
+      <td style="padding: 12px; border: 1px solid #ccc;"><code>==</code></td>
+      <td style="padding: 12px; border: 1px solid #ccc;">Comparison Operator</td>
+      <td style="padding: 12px; border: 1px solid #ccc;">Checks if two values are equal</td>
+      <td style="padding: 12px; border: 1px solid #ccc;"><code>x == 10</code> → True if x is 10</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Mobile Tables -->
+<table class="mobile-table">
+  <caption>Operator & Name</caption>
+  <thead>
+    <tr><th>Operator</th><th>Name</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>=</td><td>Assignment Operator</td></tr>
+    <tr><td>==</td><td>Comparison Operator</td></tr>
+  </tbody>
+</table>
+
+<table class="mobile-table">
+  <caption>Operator & Function</caption>
+  <thead>
+    <tr><th>Operator</th><th>Function</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>=</td><td>Gives a value to a variable</td></tr>
+    <tr><td>==</td><td>Checks if two values are equal</td></tr>
+  </tbody>
+</table>
+
+<table class="mobile-table">
+  <caption>Operator & Example</caption>
+  <thead>
+    <tr><th>Operator</th><th>Example</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>=</td><td><code>x = 10</code> → x becomes 10</td></tr>
+    <tr><td>==</td><td><code>x == 10</code> → True if x is 10</td></tr>
+  </tbody>
+</table>
+
 
   <h2 style="margin-top: 40px;">= (Assignment Operator)</h2>
   <p>
