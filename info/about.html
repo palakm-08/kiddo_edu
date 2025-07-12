@@ -6,12 +6,12 @@
   <title>About - Kiddo Learn</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
-  
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
+
     body {
       font-family: 'Inter', sans-serif;
       background: #f9f9f9;
@@ -20,125 +20,135 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      padding: 80px 20px 40px;
     }
 
-    /* Header */
     header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      background: #1E3A8A;
-      color: white;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 15px 30px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-      z-index: 10;
+      background: #1E3A8A;
+      color: #fff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
+
     header .logo {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 15px;
     }
+
     header .logo img {
-      width: 45px;
-      height: 45px;
+      width: 50px;
+      height: 50px;
     }
+
     header .logo span {
-      font-size: 22px;
-      font-weight: 700;
+      font-size: 24px;
+      font-weight: 600;
     }
+
     header nav {
       display: flex;
-      gap: 20px;
       align-items: center;
+      gap: 20px;
     }
+
     header nav a {
-      color: white;
+      color: #fff;
       text-decoration: none;
       font-weight: 500;
-      font-size: 16px;
     }
+
     header nav a:hover {
       text-decoration: underline;
     }
+
     header button {
       background: none;
       border: none;
-      font-size: 22px;
+      font-size: 20px;
       cursor: pointer;
       color: white;
     }
 
-    /* Main Content Container */
     main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    .about-container {
       max-width: 700px;
-      width: 100%;
       background: white;
       padding: 30px 40px;
-      border-radius: 12px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-      margin-top: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
       line-height: 1.6;
     }
 
-    main h2 {
+    .about-container h2 {
       font-size: 28px;
       margin-bottom: 20px;
       color: #1E3A8A;
+      text-align: center;
     }
 
-    main p {
-      margin-bottom: 16px;
+    .about-container p {
       font-size: 16px;
+      margin-bottom: 15px;
       color: #444;
     }
 
     /* Dark Mode */
     body.dark {
       background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a);
+      background-size: 400% 400%;
+      animation: darkBackground 20s ease infinite;
       color: #e0e0e0;
     }
+
     body.dark header {
       background: #1e1e1e;
-      box-shadow: 0 2px 10px rgba(255,255,255,0.1);
     }
-    body.dark main {
+
+    body.dark .about-container {
       background: #1e1e1e;
-      box-shadow: 0 0 15px rgba(74,110,177,0.3);
-      color: #ddd;
+      color: #e0e0e0;
+      box-shadow: 0 0 15px 3px rgba(74, 110, 177, 0.2);
     }
-    body.dark main h2 {
+
+    body.dark .about-container h2 {
       color: #93c5fd;
     }
-    body.dark main p {
+
+    body.dark .about-container p {
       color: #ccc;
     }
 
-    /* Responsive */
-    @media (max-width: 480px) {
-
-      .logo img {
-      display : none;
+    @keyframes darkBackground {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
-    .logo span {
-      margin-left: 2px;
-      font-size: 24px;
-      font-weight: 600;
-    }
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-        padding: 15px 20px;
+    @media (max-width: 600px) {
+      nav a {
+        display: none;
       }
+      .logo span {
+        font-size: 24px;
+        font-weight: 600;
+      }
+
       main {
-        padding: 25px 20px;
-        margin-top: 20px;
+        padding: 20px 15px;
+      }
+
+      .about-container {
+        padding: 20px 25px;
       }
     }
   </style>
@@ -150,7 +160,7 @@
       <span>Kiddo</span>
     </div>
     <nav>
-      <a href= "../index.html">Home</a>
+      <a href="../index.html">Home</a>
       <a href="../info/about.html">About</a>
       <a href="../info/contact.html">Contact</a>
       <button id="toggleTheme">🌙</button>
@@ -158,20 +168,24 @@
   </header>
 
   <main>
-    <h2>About Kiddo Learn</h2>
-    <p>The founder of this platform is currently a dedicated student of AI and Machine Learning engineering, proudly maintaining a CGPA of 8.6.</p>
-    <p>The core mission is to provide high-quality educational content designed to help learners grasp programming concepts quickly and deeply.</p>
-    <p>We believe that understanding foundational ideas clearly is the key to mastering advanced topics, and our goal is to make learning interactive, accessible, and fun.</p>
-    <p>Kiddo Learn aims to empower students everywhere to build strong coding skills and confidence to excel in their academic and professional journeys.</p>
-    <p>Thank you for being part of this community. Together, let's unlock the power of knowledge!</p>
+    <div class="about-container">
+      <h2>About Kiddo Learn</h2>
+      <p>The founder of this platform is currently a dedicated student of AI and Machine Learning engineering, proudly maintaining a CGPA of 8.6.</p>
+      <p>The core mission is to provide high-quality educational content designed to help learners grasp programming concepts quickly and deeply.</p>
+      <p>We believe that understanding foundational ideas clearly is the key to mastering advanced topics, and our goal is to make learning interactive, accessible, and fun.</p>
+      <p>Kiddo Learn aims to empower students everywhere to build strong coding skills and confidence to excel in their academic and professional journeys.</p>
+      <p>Thank you for being part of this community. Together, let's unlock the power of knowledge!</p>
+    </div>
   </main>
 
   <script>
     const toggleBtn = document.getElementById('toggleTheme');
-    if(localStorage.getItem('theme') === 'dark'){
+
+    if (localStorage.getItem('theme') === 'dark') {
       document.body.classList.add('dark');
       toggleBtn.textContent = '☀️';
     }
+
     toggleBtn.onclick = () => {
       document.body.classList.toggle('dark');
       const isDark = document.body.classList.contains('dark');
