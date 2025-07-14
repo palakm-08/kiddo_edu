@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Confused by if __name__ == '__main__' in Python? Learn what it means, why it’s used, and how it helps with reusable code. Clear and beginner-friendly.">
+  <title>What Does if __name__ == '__main__' Mean in Python? Explained Simply</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f9f9f9;
+      color: #333;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    /* Header */
+    header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background:#8398cf;
+  color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+header .logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+header .logo img {
+  width: 50px;
+  height: 50px;
+}
+
+header .logo span {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+header nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+header nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+header nav a:hover {
+  text-decoration: underline;
+}
+
+header button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: white;
+}
+
+.nav-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-left: auto; /* Pushes to the right */
+}
+
+    /* Layout */
+    .container {
+      display: flex;
+      min-height: calc(100vh - 80px);
+    }
+
+    /* Sidebar */
+    aside {
+      width: 250px;
+      background: #e6eeff;
+      padding: 30px 20px;
+    }
+
+    aside h3 {
+      margin-bottom: 15px;
+      font-size: 20px;
+      color: #7793d3;
+    }
+
+    aside ul {
+      list-style: none;
+    }
+
+    aside ul li {
+      margin-bottom: 12px;
+    }
+
+    aside ul li a {
+      color: #1E40AF;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+
+    aside ul li a:hover {
+      padding-left: 6px;
+      color: #2563EB;
+    }
+
+    /* Main Content */
+    main {
+      flex: 1;
+      padding: 40px 30px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    main h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    main p {
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
+
+    /* Card styles - removed since not used in new main content */
+
+    /* Dark Mode */
+    body.dark {
+      background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a);
+      background-size: 400% 400%;
+      animation: darkBackground 20s ease infinite;
+      color: #e0e0e0;
+    }
+
+    body.dark header {
+      background: #1e1e1e;
+    }
+
+    body.dark aside {
+      background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a);
+      box-shadow: 0 0 15px 0px rgba(139, 154, 179, 0.2);
+    }
+
+    body.dark aside h3,
+    body.dark aside ul li a {
+      color: #93c5fd;
+    }
+
+    /* Footer */
+    footer {
+      background: #8398cf;
+      color: white;
+      padding: 20px 30px;
+      text-align: center;
+    }
+
+    .footer-container {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .footer-links {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .footer-links a:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+    /* Dark Mode Footer */
+    body.dark footer {
+      background: #111827;
+      color: #d1d5db;
+    }
+
+    body.dark .footer-links a {
+      color: #9ca3af;
+    }
+
+    body.dark .footer-links a:hover {
+      color: #ffffff;
+    }
+
+    /* Responsive */
+    @media screen and (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+    gap: 10px;
+  }
+
+  .logo span {
+    font-size: 20px;
+  }
+
+  nav a {
+    font-size: 14px;
+    margin-right: 12px;
+  }
+
+  aside {
+    display: none; /* hides sidebar on mobile */
+  }
+
+  main {
+    padding: 20px;
+  }
+
+  main h1 {
+    font-size: 24px;
+  }
+
+  main h2 {
+    font-size: 20px;
+  }
+
+  main p,
+  main li {
+    font-size: 14px;
+  }
+
+  .code-container {
+    font-size: 13px;
+    overflow-x: auto;
+    max-width: 100%;
+  }
+
+  .code-header {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+
+  .copy-btn {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+
+  pre {
+    padding: 12px;
+    font-size: 13px;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+  }
+
+  footer {
+    padding: 15px;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+  }
+}
+
+    
+
+    @keyframes darkBackground {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* === New Styles for Code Block === */
+    .code-container {
+      position: relative;
+      background: linear-gradient(145deg, #1e1e1e, #252526);
+      border-radius: 12px;
+      box-shadow:
+        0 4px 8px rgba(0,0,0,0.3),
+        inset 0 1px 0 rgba(255,255,255,0.1);
+      padding: 0;
+      margin: 20px 0 40px;
+      overflow: hidden;
+      transition: box-shadow 0.3s ease;
+    }
+    .code-container:hover {
+      box-shadow:
+        0 8px 16px rgba(0,0,0,0.5),
+        inset 0 1px 0 rgba(255,255,255,0.15);
+    }
+
+    .code-header {
+      background: #007acc;
+      color: #fff;
+      padding: 10px 16px;
+      font-weight: 600;
+      font-family: 'Segoe UI Semibold', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+    }
+
+    .copy-btn {
+      background: #0a66c2;
+      border: none;
+      color: white;
+      padding: 6px 14px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      box-shadow: 0 3px 6px rgba(0,102,194,0.4);
+      transition: background 0.25s ease, box-shadow 0.25s ease;
+      position: relative;
+      outline: none;
+    }
+    .copy-btn:hover {
+      background: #004a8f;
+      box-shadow: 0 5px 12px rgba(0,74,143,0.7);
+    }
+    .copy-btn:active {
+      background: #003366;
+      box-shadow: 0 2px 6px rgba(0,51,102,0.8);
+    }
+
+    .tooltip {
+      position: absolute;
+      top: -32px;
+      right: 16px;
+      background: #007acc;
+      color: white;
+      padding: 5px 10px;
+      font-size: 12px;
+      border-radius: 6px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      white-space: nowrap;
+      z-index: 10;
+    }
+    .tooltip.show {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    pre {
+      margin: 0;
+      padding: 20px 16px 24px 16px;
+      overflow-x: auto;
+      font-family: 'Fira Code', 'Courier New', Courier, monospace;
+      font-size: 15px;
+      line-height: 1.5;
+      color: #d4d4d4;
+      background: transparent;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      tab-size: 2;
+    }
+    
+    .mobile-table {
+      display: none;
+    }
+
+    /* Dark Mode Table Fixes */
+body.dark table,
+body.dark th,
+body.dark td {
+  background-color: #1e293b !important;
+  color: #f1f5f9 !important;
+  border-color: #475569 !important;
+}
+
+/* Mobile Specific Tables Fix */
+@media screen and (max-width: 768px) {
+  .mobile-table {
+    display: table;
+    margin: 20px 0;
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+
+  .mobile-table th,
+  .mobile-table td {
+    padding: 12px;
+    border: 1px solid #ccc;
+  }
+
+  .mobile-table th {
+    background-color: #eef2ff;
+    text-align: left;
+  }
+
+  .mobile-table caption {
+    caption-side: top;
+    font-weight: bold;
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+  }
+
+  /* Dark mode for mobile tables */
+  body.dark .mobile-table th,
+  body.dark .mobile-table td {
+    background-color: #1e293b;
+    color: #f1f5f9;
+    border-color: #475569;
+  }
+
+  /* Hide full table on mobile */
+  .full-table {
+    display: none;
+  }
+}
+
+/* Desktop view - show full table, hide mobile */
+@media screen and (min-width: 769px) {
+  .mobile-table {
+    display: none;
+  }
+
+  .full-table {
+    display: table;
+  }
+}
+
+
+  </style>
+</head>
+<body>
+  <header>
+  <div class="logo">
+    <img src="../assests/logo.png" alt="Kiddo Logo" />
+    <span>Kiddo</span>
+  </div>
+  <div class="nav-wrapper">
+    <nav>
+      <a href="../index.html" target="_blank">Home</a>
+      <a href="../info/about.html">About</a>
+      <a href="../info/contact.html">Contact</a>
+    </nav>
+    <button id="darkModeToggle" aria-label="Toggle dark mode">🌓</button>
+  </div>
+</header>
+
+
+  <div class="container">
+    <aside>
+      <h3>Topics</h3>
+      <ul>
+        <li><a href="../faq/doubt1.html", target="_blank">What’s the difference between = and == in Python?</a></li>
+        <li><a href="../doubt3.html", target="_blank">What’s the difference between a list and a tuple?</a></li>
+        <li><a href="../doubt4.html", target="_blank">How is None different from False or 0?</a></li>
+        <li><a href="../doubt5.html", target="_blank">Why is indentation important in Python?</a></li>
+        <li><a href="../faq/doubt2.html", target="_blank">What does if name == 'main' mean in Python?</a></li>
+      </ul>
+    </aside>
+
+   <main>
+  <h3 style="color: rgb(161, 161, 161); font-family: 'Inter', sans-serif; font-style: italic; text-align: center;">
+        Welcome to the FAQ Zone — Got questions? We got receipts
+      </h3>
+      <br><br><br>
+
+      <h1>Understanding if __name__ == '__main__' in Python</h1>
+
+      <p style="margin-top: 20px; font-size: 1.1rem;">
+        This is one of the <strong>most confusing Python lines</strong> for beginners — but don't worry, we’ll break it down with <strong>real examples</strong> and make it crystal clear!
+      </p>
+
+
+
+
+      <h2>🔹What does <code>if __name__ == "__main__"</code> mean in Python?</h2>
+
+<p style="margin-top: 10px; font-size: 1.1rem;">
+  Imagine you're writing a Python file — maybe a fun game or a simple calculator.
+  Now ask yourself: should this file run some code <strong>only when</strong> it's opened directly?
+  Or stay quiet if someone else imports it into their own project?
+</p>
+
+<p style="margin-top: 10px;">
+  That’s exactly what <code>if __name__ == "__main__"</code> does!
+  It's Python’s way of saying: <br>
+  <strong>“Run this part only when the file is executed directly — not when it’s imported.”</strong>
+</p>
+
+<p style="margin-top: 10px;">
+  This line checks a built-in variable called <code>__name__</code>.
+  If you're running the file by double-clicking it or using <code>python filename.py</code>,
+  then <code>__name__</code> becomes <code>"__main__"</code>.
+  But if someone imports your file into another Python script,
+  <code>__name__</code> becomes the name of your file instead.
+</p>
+
+<h3 style="margin-top: 30px;">🔹So why should you care?</h3>
+
+<p>
+  This small line is super useful when:
+</p>
+
+<ul>
+  <li>You're writing utility functions that others might import.</li>
+  <li>You want to test your code with print statements or small examples.</li>
+  <li>You’re building Python scripts and want better control of when things happen.</li>
+</ul>
+
+
+
+  <h2 style="margin-top: 40px;">Let’s understand with an example</h2>
+  <div class="code-container">
+    <div class="code-header">
+      <span>Python</span>
+      <button class="copy-btn">Copy</button>
+      <div class="tooltip">Copied!</div>
+    </div>
+    <pre><code class="language-python">
+# file: greet.py
+
+def say_hello():
+    print("Hello, world!")
+
+if __name__ == "__main__":
+    say_hello()
+</code></pre>
+  </div>
+
+<p style="margin-top: 15px;">
+  If you run <code>greet.py</code> directly, it will print <code>Hello, world!</code>.
+  <br />
+  But if you import <code>greet</code> into another file like this:
+</p>
+
+  <div class="code-container">
+    <div class="code-header">
+      <span>Python</span>
+      <button class="copy-btn">Copy</button>
+      <div class="tooltip">Copied!</div>
+    </div>
+    <pre><code class="language-python">
+# file: app.py
+
+import greet
+</code></pre>
+  </div>
+
+<p>
+  Nothing will happen! Why? Because the code inside <code>if __name__ == "__main__"</code> block is ignored when the file is imported.
+  <br />
+  This helps keep your code clean and avoids running unwanted code when using modules.
+</p>
+
+
+  <h2 style="margin-top: 40px;">Common Mistakes (Don’t fall for these traps!)</h2>
+<ul style="margin-top: 15px; padding-left: 20px; line-height: 2.0;">
+  <li>
+    <strong>Using = instead of ==</strong>: 
+    <code>if __name__ = "__main__"</code> is a syntax error. Always use <code>==</code> for comparison.
+  </li>
+  <li>
+    <strong>Indentation Errors:</strong> 
+    The code inside the <code>if</code> block must be properly indented.
+  </li>
+  <li>
+    <strong>Expecting code to run when imported:</strong> 
+    Remember, code inside <code>if __name__ == "__main__"</code> won't run when the file is imported.
+  </li>
+  <li>
+    <strong>Forgetting the underscores:</strong> 
+    Don’t type <code>if name == "main"</code> — it must be <code>__name__</code> and <code>"__main__"</code>.
+  </li>
+</ul>
+
+
+ <h2 style="margin-top: 50px;">Wrap Up: You’ve Got This!</h2>
+
+<p style="margin-top: 15px; font-size: 1.05rem; line-height: 1.6;">
+  So now you know what <code>if __name__ == "__main__"</code> means in Python! 
+  It’s not as scary as it looked, right? Think of it as a way to tell Python: 
+  “Only run this part when I’m executing the file directly.”
+</p>
+
+<p style="margin-top: 12px; font-size: 1.05rem; line-height: 1.6;">
+  This little line becomes really powerful when your projects grow or when you're sharing your code with others.
+  Keep practicing, and you'll soon start using it like a pro without even thinking!
+</p>
+
+<p style="margin-top: 12px; font-size: 1.05rem; line-height: 1.6;">
+  If you’re still unsure or got stuck somewhere — don’t worry. Scroll up, re-read slowly, and try it out in a small Python file. You’ll get the hang of it!
+</p>
+
+
+  <br><br>
+  <p style="font-style: italic; text-align: center;">
+    Hope this cleared your doubt! <br>
+  </p>
+
+  <h2 style="margin-top: 50px;">Explore More FAQs Like This</h2>
+
+
+<ul style="margin-top: 15px; padding-left: 20px; font-size: 1.05rem; line-height: 1.8;">
+  <li><a href="../faq/doubt1.html" style="color: #6a8ea7; text-decoration: none; font-style: italic;">Why does Python use = and == differently?</a></li>
+  <li><a href="doubt2.html" style="color: #6a8ea7; text-decoration: none; font-style: italic;">What’s the difference between list and tuple?</a></li>
+  <li><a href="doubt3.html" style="color: #6a8ea7; text-decoration: none; font-style: italic;">What does `None` mean in Python?</a></li>
+  <li><a href="doubt4.html" style="color: #6a8ea7; text-decoration: none; font-style: italic;">How is Python interpreted line by line?</a></li>
+</ul>
+
+<p style="margin-top: 20px; font-size: 1.1rem; font-weight: 600;">
+  More coming soon — stay tuned and keep learning with Kiddo! 
+</p>
+
+</main>
+
+  </div>
+
+  <footer>
+    <div class="footer-container">
+      <p>© 2025 Kiddo. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="../info/privacy.html">Privacy Policy</a>
+        <a href="../info/terms.html">Terms of Service</a>
+        <a href="../info/contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Dark Mode Toggle
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    darkModeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+    });
+
+    // Copy to Clipboard functionality
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const code = btn.closest('.code-container').querySelector('pre code').innerText;
+    navigator.clipboard.writeText(code).then(() => {
+      const tooltip = btn.nextElementSibling;
+      tooltip.classList.add('show');
+      setTimeout(() => tooltip.classList.remove('show'), 1500);
+    });
+  });
+});
+  </script>
+</body>
+</html>
