@@ -1,0 +1,26 @@
+City,Avg_Time,Common_Crime_Of_City,Avg_Age_Of_Victim,Total_Reports
+Delhi,02:30 PM,Theft,32,5400
+Mumbai,04:15 PM,Fraud,45,4415
+Bangalore,01:00 PM,Robbery,29,3588
+Hyderabad,03:45 PM,Assault,38,2881
+Chennai,11:30 AM,Burglary,41,2493
+Kolkata,06:00 PM,Theft,36,2518
+Pune,12:00 PM,Harassment,27,2212
+Ahmedabad,09:30 AM,Theft,30,1817
+Jaipur,05:15 PM,Fraud,34,1900
+Lucknow,02:00 PM,Burglary,33,1650
+Patna,10:00 AM,Assault,39,1450
+Indore,03:00 PM,Cybercrime,28,1600
+Bhopal,11:45 AM,Robbery,35,1320
+Nagpur,06:30 PM,Theft,31,1500
+Thane,12:15 PM,Fraud,40,1200
+Kanpur,01:45 PM,Harassment,26,1100
+Surat,04:30 PM,Robbery,37,900
+Vadodara,10:15 AM,Burglary,42,875
+Ranchi,02:45 PM,Cybercrime,24,820
+Guwahati,09:00 AM,Assault,44,700
+Amritsar,05:00 PM,Theft,31,600
+Ludhiana,06:15 PM,Fraud,29,580
+Coimbatore,01:30 PM,Robbery,33,550
+Vijayawada,02:10 PM,Burglary,36,510
+Chandigarh,03:25 PM,Cybercrime,30,480

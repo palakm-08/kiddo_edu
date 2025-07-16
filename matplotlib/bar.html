@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Visualize crime data across countries using bar graphs in Python with Matplotlib. A fun, beginner-friendly project to master data visualization on Kiddo.">
-  <title>Learn Bar Graphs with a Crime Data Analysis Project | Matplotlib Tutorial – Kiddo</title>
+<meta name="description" content="Learn how to create a horizontal bar chart in Python using matplotlib. Includes a beginner-friendly mini project, downloadable CSV dataset, and Pandas guide.">
+<title>Horizontal Bar Chart in Python (with Mini Project & CSV Data)</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     
@@ -605,7 +605,44 @@ plt.show()
 <br>
 <br>
 <br>
-<br>
+<h2 style="margin-top: 50px;">🔹Mini Project: Visualize Top Crime Cities</h2>
+
+<p style="margin-top: 15px; font-size: 1.05rem;">
+  Let’s build a real-world horizontal bar chart using an actual crime dataset!
+  This project shows the Indian cities with the highest number of reported crimes.
+</p>
+
+<p style="margin-top: 15px; font-size: 1rem;">
+  <a href="../assests/crime_city_insights.csv" download style="color: #2563eb; text-decoration: underline;">Click here to download the dataset (CSV)</a>
+</p>
+<h2 style="margin-top: 40px;">How to Use This Dataset (Beginner Friendly Guide)</h2>
+<p style="font-size: 1.05rem; margin-top: 10px;">
+  Not familiar with <strong>Pandas</strong>? Don’t worry! Here’s a quick guide to get you started 
+</p>
+
+<ul style="font-size: 1.05rem; line-height: 1.8; padding-left: 20px;">
+  <li><strong>Step 1:</strong> First, download the CSV file above.</li>
+  <li><strong>Step 2:</strong> Drag and drop the downloaded file into your code editor (like VS Code).</li>
+  <li><strong>Step 3:</strong> In your Python file, write the following code to import and read the data:</li>
+</ul>
+
+<div class="code-container">
+  <div class="code-header">
+    <span>Python</span>
+    <button class="copy-btn">Copy</button>
+    <div class="tooltip">Copied!</div>
+  </div>
+  <pre><code class="language-python">
+import pandas as pd
+
+crime = pd.read_csv("crime_city_insights.csv")
+</code></pre>
+</div>
+
+<p style="font-size: 1.05rem; margin-top: 15px;">
+  That’s it! You can now use the variable <code>crime</code> to explore the dataset using Pandas. 
+  Try things like <code>crime.head()</code> to view the top rows or <code>crime.describe()</code> for basic stats.
+</p>
 
 <p><b><i>More educational content : </i></b></p>
 <ul>
