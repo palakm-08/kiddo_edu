@@ -224,7 +224,13 @@ body.dark ul.explainer-points li {
     }
 
     /* Responsive */
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 480px) {
+      main {
+    padding: 20px;
+    width: 100%;
+    max-width: 100%;
+  }
+
   header {
     flex-direction: column;
     align-items: flex-start;
@@ -259,7 +265,7 @@ body.dark ul.explainer-points li {
 
   main p,
   main li {
-    font-size: 14px;
+    font-size: 15px;
   }
 
   .code-container {
@@ -296,6 +302,11 @@ body.dark ul.explainer-points li {
   .footer-links a {
     font-size: 13px;
   }
+  main img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
 }
 
     
@@ -639,7 +650,7 @@ crime = pd.read_csv("crime_city_insights.csv")
 </code></pre>
 </div>
 
-<p style="font-size: 1.05rem; margin-top: 15px;">
+<p style="margin-top: 15px;">
   That’s it! You can now use the variable <code>crime</code> to explore the dataset using Pandas. 
   Try things like <code>crime.head()</code> to view the top rows or <code>crime.describe()</code> for basic stats.
 </p>
