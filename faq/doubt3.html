@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="Confused by if __name__ == '__main__' in Python? Learn what it means, why it’s used, and how it helps with reusable code. Clear and beginner-friendly.">
-  <title>What Does if __name__ == '__main__' Mean in Python? Explained Simply</title>
+<meta name="description" content="Learn how to start coding from zero. Master Python basics fast, build beginner projects, and become job-ready—no degree or tech background needed.">
+<title>How to Start Coding with Zero Experience (Beginner’s Guide)</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     
@@ -486,132 +486,38 @@ body.dark td {
       </h3>
       <br><br>
 
-      <h1>Understanding if __name__ == '__main__' in Python</h1>
+      <h1>How do I start coding if I have <em>zero experience</em>?</h1>
+<p><strong>Real talk — I’ve been exactly where you are.</strong> I didn’t come from some techie background or fancy coaching. I was just a student, confused and Googling “how to start coding” at 2AM. So here’s what actually works (no gatekeeping):</p>
 
-      <p style="margin-top: 20px; font-size: 1.1rem;">
-        This is one of the <strong>most confusing Python lines</strong> for beginners — but don't worry, we’ll break it down with <strong>real examples</strong> and make it crystal clear!
-      </p>
+<h3 style="margin-top: 1.5rem;">🔹Step 1: Pick a language — just one.</h3>
+<p><strong>Start with Python.</strong> It’s clean, simple, and honestly feels like English. You don’t need to learn 10 things at once. Just start small. Python was my first too.</p>
 
-
-
-
-      <h2>🔹What does <code>if __name__ == "__main__"</code> mean in Python?</h2>
-
-<p style="margin-top: 10px; font-size: 1.1rem;">
-  Imagine you're writing a Python file — maybe a fun game or a simple calculator.
-  Now ask yourself: should this file run some code <strong>only when</strong> it's opened directly?
-  Or stay quiet if someone else imports it into their own project?
-</p>
-
-<p style="margin-top: 10px;">
-  That’s exactly what <code>if __name__ == "__main__"</code> does!
-  It's Python’s way of saying: <br>
-  <strong>“Run this part only when the file is executed directly — not when it’s imported.”</strong>
-</p>
-
-<p style="margin-top: 10px;">
-  This line checks a built-in variable called <code>__name__</code>.
-  If you're running the file by double-clicking it or using <code>python filename.py</code>,
-  then <code>__name__</code> becomes <code>"__main__"</code>.
-  But if someone imports your file into another Python script,
-  <code>__name__</code> becomes the name of your file instead.
-</p>
-
-<h3 style="margin-top: 30px;">🔹So why should you care?</h3>
-
-<p>
-  This small line is super useful when:
-</p>
-
-<ul>
-  <li>You're writing utility functions that others might import.</li>
-  <li>You want to test your code with print statements or small examples.</li>
-  <li>You’re building Python scripts and want better control of when things happen.</li>
+<h3 style="margin-top: 1.5rem;">🔹Step 2: Learn the baby steps — not the whole textbook.</h3>
+<ul style="padding-left: 1.2rem;">
+  <li>Print stuff with <code>print()</code></li>
+  <li>Create some variables</li>
+  <li>Mess around with <code>if</code> statements</li>
+  <li>Loop it up with <code>for</code> or <code>while</code></li>
+  <li>Try writing small functions</li>
 </ul>
+<p>Don’t try to “master” coding. Try to “understand” it. Just keep clicking ‘Run’ and watching what happens.</p>
+
+<h3 style="margin-top: 1.5rem;">🔹Step 3: Build dumb little projects</h3>
+<p>Seriously. Forget building the next Facebook. Make a calculator. A quiz. A number guessing game.<br>
+Every time you break something and fix it — you’re leveling up</p>
+
+<h3 style="margin-top: 1.5rem;">🔹Step 4: Google is your coding partner</h3>
+<p>I still Google things <strong>daily</strong>. So do professional developers. StackOverflow is basically therapy.</p>
+
+<h3 style="margin-top: 1.5rem;">🔹Step 5: Stay chill, but consistent</h3>
+<p>You don’t need to code 5 hours a day. Even 20–30 mins daily will make you a different person in 6 months. Keep showing up.</p>
+
+<h2>Bonus: Learn with me on <a href="https://palakm-08.github.io/kiddo_edu/" target="_blank" style="color:#1a73e8; text-decoration: underline;">Kiddo</a></h2>
+<p>I’ve made this website for beginners like us — where every single line of code is explained the way I wish someone had explained it to me.<br>
+Plus, I drop <strong>mini projects</strong> regularly to help you actually apply what you learn (because just reading won’t make you a coder).<br>
+<em>The site is still new, so I’m dropping new lessons every week. Stick around 🌱</em></p>
 
 
-
-  <h2 style="margin-top: 40px;">Let’s understand with an example</h2>
-  <div class="code-container">
-    <div class="code-header">
-      <span>Python</span>
-      <button class="copy-btn">Copy</button>
-      <div class="tooltip">Copied!</div>
-    </div>
-    <pre><code class="language-python">
-# file: greet.py
-
-def say_hello():
-    print("Hello, world!")
-
-if __name__ == "__main__":
-    say_hello()
-</code></pre>
-  </div>
-
-<p style="margin-top: 15px;">
-  If you run <code>greet.py</code> directly, it will print <code>Hello, world!</code>.
-  <br />
-  But if you import <code>greet</code> into another file like this:
-</p>
-
-  <div class="code-container">
-    <div class="code-header">
-      <span>Python</span>
-      <button class="copy-btn">Copy</button>
-      <div class="tooltip">Copied!</div>
-    </div>
-    <pre><code class="language-python">
-# file: app.py
-
-import greet
-</code></pre>
-  </div>
-
-<p>
-  Nothing will happen! Why? Because the code inside <code>if __name__ == "__main__"</code> block is ignored when the file is imported.
-  <br />
-  This helps keep your code clean and avoids running unwanted code when using modules.
-</p>
-
-
-  <h2 style="margin-top: 40px;">Common Mistakes (Don’t fall for these traps!)</h2>
-<ul style="margin-top: 15px; padding-left: 20px; line-height: 2.0;">
-  <li>
-    <strong>Using = instead of ==</strong>: 
-    <code>if __name__ = "__main__"</code> is a syntax error. Always use <code>==</code> for comparison.
-  </li>
-  <li>
-    <strong>Indentation Errors:</strong> 
-    The code inside the <code>if</code> block must be properly indented.
-  </li>
-  <li>
-    <strong>Expecting code to run when imported:</strong> 
-    Remember, code inside <code>if __name__ == "__main__"</code> won't run when the file is imported.
-  </li>
-  <li>
-    <strong>Forgetting the underscores:</strong> 
-    Don’t type <code>if name == "main"</code> — it must be <code>__name__</code> and <code>"__main__"</code>.
-  </li>
-</ul>
-
-
- <h2 style="margin-top: 50px;">Wrap Up: You’ve Got This!</h2>
-
-<p style="margin-top: 15px; font-size: 1.05rem; line-height: 1.6;">
-  So now you know what <code>if __name__ == "__main__"</code> means in Python! 
-  It’s not as scary as it looked, right? Think of it as a way to tell Python: 
-  “Only run this part when I’m executing the file directly.”
-</p>
-
-<p style="margin-top: 12px; font-size: 1.05rem; line-height: 1.6;">
-  This little line becomes really powerful when your projects grow or when you're sharing your code with others.
-  Keep practicing, and you'll soon start using it like a pro without even thinking!
-</p>
-
-<p style="margin-top: 12px; font-size: 1.05rem; line-height: 1.6;">
-  If you’re still unsure or got stuck somewhere — don’t worry. Scroll up, re-read slowly, and try it out in a small Python file. You’ll get the hang of it!
-</p>
 
 
   <br><br>
@@ -626,7 +532,7 @@ import greet
   <li><a href="../faq/doubt1.html" style="color: #6a8ea7; text-decoration: none; font-style: italic;">Why does Python use = and == differently?</a></li>
   <li><a href="doubt2.html" style="color: #6a8ea7; text-decoration: none; font-style: italic;">What’s the difference between list and tuple?</a></li>
   <li><a href="doubt3.html" style="color: #6a8ea7; text-decoration: none; font-style: italic;">What does `None` mean in Python?</a></li>
-  <li><a href="../faq/doubt3.html" style="color: #6a8ea7; text-decoration: none; font-style: italic;">coding roadmap with no experience</a></li>
+  <li><a href="../faq/doubt2.html" style="color: #6a8ea7; text-decoration: none; font-style: italic;">What does if name == 'main' mean in Python?</a></li>
 </ul>
 
 <p style="margin-top: 20px; font-size: 1.1rem; font-weight: 600;">
