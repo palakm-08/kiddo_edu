@@ -476,19 +476,19 @@ aside {
 
 
     <main>
-  <h1>Python List Comprehension Explained with 7 Real-Life Examples</h1><br>
-  <p class="meta" >⏱ 5 min read · Skill: Beginner</p>
-  <p class="last-updated">Last Updated: July 2025</p>
+   <h1>Python Lists Explained with 6 Beginner Examples</h1>
+  <p class="meta">⏱ 6 min read · Skill: Beginner</p>
+  <p class="last-updated">Last Updated: August 2025</p>
 
-    <p>
-      Ever seen something like <code>[x for x in items]</code> in Python and thought, “Wait, what sorcery is this?”  
-      Don’t worry — list comprehension isn’t scary. In fact, it’s one of the coolest Python tricks to write cleaner, shorter, and more readable code.
-    </p>
+  <br>
+  <p>Ever wanted to store multiple things — like your top 5 snacks — in one place? That’s exactly what Python lists do. Think of them like boxes that can hold anything: numbers, text, even other boxes!</p>
 
-    <h2>What is List Comprehension?</h2>
-    <p>
-      List comprehension is just a fancy way to build a list in one line. Instead of writing a full for loop, you can condense it into a single, readable expression.
-    </p>
+  <br><br>
+  <h2>What’s a List in Python?</h2>
+  <p>Lists are ordered collections. You can change them, grow them, shrink them, sort them — super flexible. And they’re written using square brackets like <code>[ ]</code>.</p>
+
+  <br>
+  <h2>Example 1: Creating a List</h2>
 
      <div class="code-container" aria-label="Code example for Pandas groupby method">
         <div class="code-header">
@@ -497,158 +497,113 @@ aside {
           <div class="tooltip" role="alert" aria-live="assertive">Copied!</div>
         </div>
         <pre><code>
-[expression for item in iterable if condition]
+fruits = ["apple", "banana", "mango"]
+print(fruits)
  </code></pre>
       </div>
 
-<p>Yeah, that’s the whole syntax. Simple once you see it in action.</p>
+<p>🔹This creates a list of fruits. Pretty straightforward, right?</p>
 
-<h2>7 Real-Life Examples</h2><br><br>
-<h3>1. Convert Names to Uppercase</h3>
-<div class="code-container" aria-label="Code example for Pandas groupby method">
-        <div class="code-header">
-          <span>Python</span>
-          <button class="copy-btn" aria-label="Copy code snippet">Copy</button>
-          <div class="tooltip" role="alert" aria-live="assertive">Copied!</div>
-        </div>
-        <pre><code>
-names = ["alice", "bob", "charlie"]
-upper_names = [name.upper() for name in names]
-print(upper_names)
- </code></pre>
-      </div>
-<p>🔹Output: <code>['ALICE', 'BOB', 'CHARLIE']</code></p>
-
-
-    <h3>2. Filter Even Numbers</h3>
-    <div class="code-container" aria-label="Code example for Pandas groupby method">
-        <div class="code-header">
-          <span>Python</span>
-          <button class="copy-btn" aria-label="Copy code snippet">Copy</button>
-          <div class="tooltip" role="alert" aria-live="assertive">Copied!</div>
-        </div>
-        <pre><code>
-nums = [1, 2, 3, 4, 5, 6]
-evens = [n for n in nums if n % 2 == 0]
-print(evens)
- </code></pre>
-    </div>
-     <p>🔹Output: <code>[2, 4, 6]</code></p>
-
-
-     <h3>3. Extract Domain Names from Emails</h3>
-<div class="code-container" aria-label="Code example for Pandas groupby method">
-        <div class="code-header">
-          <span>Python</span>
-          <button class="copy-btn" aria-label="Copy code snippet">Copy</button>
-          <div class="tooltip" role="alert" aria-live="assertive">Copied!</div>
-        </div>
-        <pre><code>
-emails = ["alice@gmail.com", "bob@yahoo.com"]
-domains = [email.split("@")[1] for email in emails]
-print(domains)
- </code></pre>
-    </div>
-    <p>🔹Output: <code>['gmail.com', 'yahoo.com']</code></p>
-
-
-    <h3>4. Flatten a Nested List</h3>
-    <div class="code-container" aria-label="Code example for Pandas groupby method">
-        <div class="code-header">
-          <span>Python</span>
-          <button class="copy-btn" aria-label="Copy code snippet">Copy</button>
-          <div class="tooltip" role="alert" aria-live="assertive">Copied!</div>
-        </div>
-        <pre><code>
-matrix = [[1, 2], [3, 4], [5, 6]]
-flat = [num for row in matrix for num in row]
-print(flat)
- </code></pre>
-    </div>
-    <p>🔹Output: <code>[1, 2, 3, 4, 5, 6]</code></p>
-
-
-    <h3>5. Create a List of Squares</h3>
-    <div class="code-container" aria-label="Code example for Pandas groupby method">
-        <div class="code-header">
-          <span>Python</span>
-          <button class="copy-btn" aria-label="Copy code snippet">Copy</button>
-          <div class="tooltip" role="alert" aria-live="assertive">Copied!</div>
-        </div>
-        <pre><code>
-squares = [n**2 for n in range(1, 6)]
-print(squares)
- </code></pre>
-    </div>
-    <p>🔹Output: <code>[1, 4, 9, 16, 25]</code></p>
-
-
-    <h3>6. Remove Punctuation from a Sentence</h3>
-    <div class="code-container" aria-label="Code example for Pandas groupby method">
-        <div class="code-header">
-          <span>Python</span>
-          <button class="copy-btn" aria-label="Copy code snippet">Copy</button>
-          <div class="tooltip" role="alert" aria-live="assertive">Copied!</div>
-        </div>
-        <pre><code>
-sentence = "Hello, world!"
-clean = [ch for ch in sentence if ch.isalnum() or ch.isspace()]
-print("".join(clean))
- </code></pre>
-    </div>
-    <p>🔹Output: <code>Hello world</code></p>
-
-
-    <h3>7. Filter Available Products</h3>
-    <div class="code-container" aria-label="Code example for Pandas groupby method">
-        <div class="code-header">
-          <span>Python</span>
-          <button class="copy-btn" aria-label="Copy code snippet">Copy</button>
-          <div class="tooltip" role="alert" aria-live="assertive">Copied!</div>
-        </div>
-        <pre><code>
-products = {"pen": True, "pencil": False, "eraser": True}
-available = [item for item, in_stock in products.items() if in_stock]
-print(available)
- </code></pre>
-    </div>
-    <p>🔹Output: <code>['pen', 'eraser']</code></p><br>
-
-
-    <h2>When *Not* to Use List Comprehension</h2>
-    <p>
-      Just because you can, doesn’t mean you should!  
-      If your comprehension looks like a spaghetti mess of <code>for</code> and <code>if</code>, consider using a regular loop for readability. Clean code > short code.
-    </p>
-    <br><br>
-     <h2>🔹Bonus: Dictionary Comprehension</h2>
-    <p>You can do the same thing with dictionaries too!</p>
-    <div class="code-container" aria-label="Code example for Pandas groupby method">
-        <div class="code-header">
-          <span>Python</span>
-          <button class="copy-btn" aria-label="Copy code snippet">Copy</button>
-          <div class="tooltip" role="alert" aria-live="assertive">Copied!</div>
-        </div>
-        <pre><code>
-original = {"a": 1, "b": 2, "c": 3}
-squared = {k: v**2 for k, v in original.items()}
-print(squared)
- </code></pre>
-    </div>
-<p>🔹Output: <code>{'a': 1, 'b': 4, 'c': 9}</code></p>
 <br>
+  <h2>Example 2: Accessing Items</h2>
+<div class="code-container" aria-label="Code example for Pandas groupby method">
+        <div class="code-header">
+          <span>Python</span>
+          <button class="copy-btn" aria-label="Copy code snippet">Copy</button>
+          <div class="tooltip" role="alert" aria-live="assertive">Copied!</div>
+        </div>
+        <pre><code>
+print(fruits[0])  # apple
+print(fruits[-1]) # mango
+ </code></pre>
+      </div>
+<p>🔹Use indexes to grab specific items. Index <code>0</code> is the first item, and <code>-1</code> gives you the last one.</code></p>
 
-<h2>Conclusion</h2>
-    <p>
-      List comprehension might look intimidating at first, but once you practice it a few times, it becomes second nature.
-      It's clean, powerful, and just a bit magical.
-    </p>
 
-    <p>
-      Which example was your favorite? Or got a real-life use case of your own?  
-      Let me know — and don’t forget to check out <a href="/python-lambda-functions" style="font-style: italic; color: rgb(88, 167, 204);">Python Lambda Functions</a> next!
-    </p>
+    <br>
+  <h2>Example 3: Adding to the List</h2>
+    <div class="code-container" aria-label="Code example for Pandas groupby method">
+        <div class="code-header">
+          <span>Python</span>
+          <button class="copy-btn" aria-label="Copy code snippet">Copy</button>
+          <div class="tooltip" role="alert" aria-live="assertive">Copied!</div>
+        </div>
+        <pre><code>
+fruits.append("orange")
+print(fruits)
+ </code></pre>
+    </div>
+     <p>🔹<code>append()</code> sticks something at the end. There’s also <code>insert()</code> if you want to sneak it in somewhere specific.</p>
 
+
+     <br>
+  <h2>Example 4: Removing Items</h2>
+<div class="code-container" aria-label="Code example for Pandas groupby method">
+        <div class="code-header">
+          <span>Python</span>
+          <button class="copy-btn" aria-label="Copy code snippet">Copy</button>
+          <div class="tooltip" role="alert" aria-live="assertive">Copied!</div>
+        </div>
+        <pre><code>
+fruits.remove("banana")
+print(fruits)
+ </code></pre>
+    </div>
+    <p>🔹Say goodbye to “banana”! You can also use <code>pop()</code> or <code>del</code> depending on what you're trying to do.</code></p>
+
+
+    <br>
+  <h2>Example 5: Looping Through a List</h2>
+    <div class="code-container" aria-label="Code example for Pandas groupby method">
+        <div class="code-header">
+          <span>Python</span>
+          <button class="copy-btn" aria-label="Copy code snippet">Copy</button>
+          <div class="tooltip" role="alert" aria-live="assertive">Copied!</div>
+        </div>
+        <pre><code>
+for fruit in fruits:
+    print(fruit)
+ </code></pre>
+    </div>
+    <p>🔹This will print each fruit one at a time. Perfect for when you want to do something with every item.</code></p>
+
+
+    <br>
+  <h2>Example 6: Sorting the List</h2>
+    <div class="code-container" aria-label="Code example for Pandas groupby method">
+        <div class="code-header">
+          <span>Python</span>
+          <button class="copy-btn" aria-label="Copy code snippet">Copy</button>
+          <div class="tooltip" role="alert" aria-live="assertive">Copied!</div>
+        </div>
+        <pre><code>
+numbers = [4, 1, 9, 3]
+numbers.sort()
+print(numbers)  # [1, 3, 4, 9]
+ </code></pre>
+    </div>
+    <p>🔹<code>sort()</code> organizes things in-place. Use <code>sorted()</code> if you don’t want to mess with the original list.</code></p>
+
+
+    <br><br>
+  <h2>Why Should You Learn Lists?</h2>
+  <br>
+  <ul style="line-height: 1.8;">
+    <li>They're everywhere — in websites, games, apps, data science… you name it.</li>
+    <li>They keep your code clean and organized instead of creating 100 separate variables.</li>
+    <li>You’ll need lists in *literally* every real-world Python project.</li>
+  </ul>
+
+  <br><br>
+  <h2>Ready to Practice?</h2>
+  <br>
+  <p>Try this mini challenge: Create a list of your favorite movies, add two more, remove one, then print them all with a <code>for</code> loop. You’ll be surprised how easy it gets!</p>
+
+  <br><br>
+  <div class="bg-yellow-100 p-4 rounded-lg">
+    <strong>Want to level up?</strong> Try our beginner mini project:
+    <a href="../python/password.html" class="underline text-blue-600">Build a Random Password Generator</a>
+  </div>
    </main>
   </div>
 
