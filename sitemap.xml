@@ -8,63 +8,93 @@
 
 
 <url>
-  <loc>https://palakm-08.github.io/kiddo_edu/</loc>
-  <lastmod>2025-07-06T13:13:48+00:00</lastmod>
+  <loc>https://kiddoedu.org/</loc>
+  <lastmod>2025-08-04T13:26:05+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://palakm-08.github.io/kiddo_edu/index.html</loc>
-  <lastmod>2025-07-06T13:13:48+00:00</lastmod>
+  <loc>https://kiddoedu.org/index.html</loc>
+  <lastmod>2025-08-04T13:26:05+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://palakm-08.github.io/kiddo_edu/info/about.html</loc>
-  <lastmod>2025-07-06T13:13:48+00:00</lastmod>
+  <loc>https://kiddoedu.org/info/about.html</loc>
+  <lastmod>2025-08-04T13:26:05+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://palakm-08.github.io/kiddo_edu/info/contact.html</loc>
-  <lastmod>2025-07-06T13:13:48+00:00</lastmod>
+  <loc>https://kiddoedu.org/info/contact.html</loc>
+  <lastmod>2025-08-04T13:26:05+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://palakm-08.github.io/kiddo_edu/brainrot/july25.html</loc>
-  <lastmod>2025-07-06T13:13:48+00:00</lastmod>
+  <loc>https://kiddoedu.org/faq/doubt1.html</loc>
+  <lastmod>2025-08-04T13:26:05+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://palakm-08.github.io/kiddo_edu/matplotlib/line-g.html</loc>
-  <lastmod>2025-07-06T13:13:48+00:00</lastmod>
+  <loc>https://kiddoedu.org/python/list-comp.html</loc>
+  <lastmod>2025-08-04T13:26:05+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://palakm-08.github.io/kiddo_edu/info/privacy.html</loc>
-  <lastmod>2025-07-06T13:13:48+00:00</lastmod>
+  <loc>https://kiddoedu.org/matplotlib/line-g.html</loc>
+  <lastmod>2025-08-04T13:26:05+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://palakm-08.github.io/kiddo_edu/info/terms.html</loc>
-  <lastmod>2025-07-06T13:13:48+00:00</lastmod>
+  <loc>https://kiddoedu.org/info/privacy.html</loc>
+  <lastmod>2025-08-04T13:26:05+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://palakm-08.github.io/kiddo_edu/matplotlib/multi-line-g.html</loc>
-  <lastmod>2025-07-06T13:13:48+00:00</lastmod>
+  <loc>https://kiddoedu.org/info/terms.html</loc>
+  <lastmod>2025-08-04T13:26:05+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kiddoedu.org/faq/doubt3.html</loc>
+  <lastmod>2025-08-04T13:26:05+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://palakm-08.github.io/kiddo_edu/matplotlib/customise.html</loc>
-  <lastmod>2025-07-06T13:13:48+00:00</lastmod>
+  <loc>https://kiddoedu.org/faq/doubt4.html</loc>
+  <lastmod>2025-08-04T13:26:05+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://palakm-08.github.io/kiddo_edu/matplotlib/bar.html</loc>
-  <lastmod>2025-07-06T13:13:48+00:00</lastmod>
+  <loc>https://kiddoedu.org/faq/doubt2.html</loc>
+  <lastmod>2025-08-04T13:26:05+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://palakm-08.github.io/kiddo_edu/matplotlib/pie.html</loc>
-  <lastmod>2025-07-06T13:13:48+00:00</lastmod>
+  <loc>https://kiddoedu.org/python/list.html</loc>
+  <lastmod>2025-08-04T13:26:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kiddoedu.org/python/password.html</loc>
+  <lastmod>2025-08-04T13:26:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kiddoedu.org/matplotlib/multi-line-g.html</loc>
+  <lastmod>2025-08-04T13:26:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kiddoedu.org/matplotlib/customise.html</loc>
+  <lastmod>2025-08-04T13:26:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kiddoedu.org/matplotlib/bar.html</loc>
+  <lastmod>2025-08-04T13:26:05+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kiddoedu.org/matplotlib/pie.html</loc>
+  <lastmod>2025-08-04T13:26:05+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 
