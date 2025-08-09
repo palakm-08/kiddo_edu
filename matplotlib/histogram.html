@@ -3,17 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="Master pie charts in Python using Matplotlib with this beginner-friendly guide! Includes simple code, colorful charts, and a fun social media usage mini project.">
-<title>Pie Charts in Python (Matplotlib) – Beginner Guide + Fun Mini Project</title>
-<link rel="canonical" href="https://kiddoedu.org/matplotlib/pie.html">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-ESNWS8F9HE"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-ESNWS8F9HE');
-</script>
+  <meta name="description" content="Master histograms in Python using Matplotlib with this beginner-friendly guide. Learn when to use them, see a real example, and build your own mini project. Perfect for students, analysts, and data beginners!">
+  <title>Learn Histograms in Python (Matplotlib) – Easy Tutorial with Example + Mini Project</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     
@@ -427,7 +418,7 @@ header button {
         <li><a href="../matplotlib/customise.html", target="_blank">Customize the graphs</a></li>
         <li><a href="../matplotlib/bar.html", target="_blank">Bar Graphs</a></li>
         <li><a href="#", target="_blank">Scatter graphs</a></li>
-        <li><a href="../matplotlib/histogram.html", target="_blank">Histogram</a></li>
+        <li><a href="#", target="_blank">Histogram</a></li>
         <li><a href="../matplotlib/pie.html", target="_blank">Pie charts</a></li>
         <li><a href="", target="_blank">Subplots</a></li>
         <li><a href="", target="_blank">Legends and Annotations</a></li>
@@ -435,41 +426,33 @@ header button {
     </aside>
 
     <main>
-  <h1>Plot Pie Charts in Python with Matplotlib — A Tasty Guide for Beginners </h1>
-  <p>
-    Ever wondered how to make pie charts in Python that don’t look like your math textbook from 6th grade?
-Well, you’re in for a treat  — because we’re serving some sweet plots with Matplotlib today.
-Whether you’re a data newbie or just here to make things look cute, this guide’s got you covered.
-Let’s slice through the code and make your data deliciously visual 
-  </p>
+      <h1>Learn Histograms in Python with Matplotlib – Step-by-Step with Code</h1>
 
-  <h2>Why Use Pie Charts?</h2>
-  <p>
-   Because sometimes, you just want to show how the cake is divided . Pie charts make it super easy to visualize proportions — who got the biggest slice, who got none, and everything in between. They're quick, clean, and instantly understandable, especially when dealing with simple categorical data.
-  </p>
+<p>
+  A histogram is like a bar chart’s nerdy cousin — it doesn’t just compare things, it shows how your numbers are spread out. Instead of labels like "Apples" or "Oranges," you get ranges like 0–10, 10–20, and so on. It’s perfect when you want to see patterns in things like test scores, survey results, or even the ages of your favorite superheroes.
+</p>
 
-<h2>What You’ll Learn</h2>
-<ul>
-  <li>How to plot pie charts with just a few lines of Python</li>
-  <li>Customize slices with colors, labels, and explode effects</li>
-  <li>When to use pie charts (and when not to)</li>
-  <li>Pro tips to make your visuals pop for presentations & projects</li>
-  <li>Master <code>plt.pie()</code> with multiple data slices — one chart, many stories</li>
+
+  <h2>When should you use a histogram?</h2>
+
+<p>
+  Use a histogram when you want to understand how your data is spread out — like figuring out what range most test scores fall into, or how often certain temperatures occur. It’s your go-to graph for spotting trends, clusters, or outliers in numeric data. If your data is continuous (like age, marks, height, time), a histogram is way more helpful than a pie chart or line graph.
+</p>
+
+<h2>Real-Life Examples of Histograms</h2>
+<ul style="line-height: 1.8;">
+  <li><strong>Student scores:</strong> Want to know how many students scored between 60–70 or 90–100? A histogram makes it crystal clear.</li>
+  <li><strong>Fitness tracking:</strong> Track how many days you ran for 10–20 mins vs 30–40 mins in a month.</li>
+  <li><strong>Weather data:</strong> See how often the temperature stayed between 20–30°C this summer.</li>
+  <li><strong>App usage:</strong> Curious how much time people spend on your app each day? A histogram shows the most common time ranges.</li>
+  <li><strong>Salary analysis:</strong> Understand how many employees earn within specific salary brackets — super useful in HR reports!</li>
 </ul>
-<br>
-<br>
-<br>
-<details>
-  <summary><b>New to Python?</b> Don't worry — installing Matplotlib is super easy </summary>
-  <p>Just open your terminal and run: <code>pip install matplotlib</code>. That’s all you need to get started!</p>
-</details>
-<br>
-<br>
 
+
+
+<br><br>
   <h2>Step-by-Step Code Example</h2>
-  <p>Here’s a simple example of how to create a pie chart in Matplotlib:
-    <br>
-  </p>
+  <p>Here’s a simple example of how to create a histogram graph in Matplotlib:</p>
 
       <div class="code-container" aria-label="Code example for Pandas groupby method">
         <div class="code-header">
@@ -480,198 +463,128 @@ Let’s slice through the code and make your data deliciously visual
         <pre><code>
 import matplotlib.pyplot as plt
 
-# Meme names
-memes = [
-    "Pepe the Frog",
-    "Doge",
-    "This Is Fine Dog",
-    "Distracted Boyfriend",
-    "Woman Yelling at a Cat",
-    "Grumpy Cat"
-]
+# Sample data: Ages of 200 people
+ages = [22, 25, 29, 30, 32, 33, 35, 36, 38, 40,
+        42, 44, 45, 48, 50, 52, 55, 58, 60, 65] * 10
 
-# Years they've been famous (as of 2025)
-years_famous = [17, 12, 12, 8, 6, 13]
+# Create the histogram
+plt.hist(ages, bins=8, color='skyblue', edgecolor='black')
 
-colors = ['#9fcbf5', '#67a6e0', '#2b85d9', '#1862a8', '#1b4f80', '#073b6b']
+# Add titles and labels
+plt.title("Age Distribution of Survey Participants")
+plt.xlabel("Age Groups")
+plt.ylabel("Number of People")
 
-plt.pie(years_famous, labels=memes, autopct='%1.1f%%', startangle=140, colors=colors)
-plt.title("Top 6 Memes by Years of Popularity (as of 2025)", fontdict={'fontsize': 16, 'fontname': 'Comic Sans MS'})
+# Show the plot
 plt.show()
 
         </code></pre>
       </div>
 
-<p>This pie chart visualizes how long the top 6 legendary internet memes have been famous (as of 2025). Instead of numbers or dry stats, it celebrates meme culture with flair.</p>
-
-<p style="font-size: 20px;"><b>Quick Highlights:</b></p>
-<ul style="line-height: 1.6;">
-  <li>
-    <code style="font-size: 16px;">memes = [...]</code><br>
-    🔹We’ve got 6 legendary memes — each one’s a certified icon 
-  </li>
-
-  <li>
-    <code style="font-size: 16px;">years_famous = [...]</code><br>
-    🔹This list stores how many years each meme has ruled the internet (as of 2025).
-  </li>
-
-  <li>
-    <code style="font-size: 16px;">colors = [...]</code><br>
-    🔹Custom pastel shades to keep things cute and not chaotic.
-  </li>
-
-  <li>
-    <code style="font-size: 16px;">plt.pie(...)</code><br>
-    🔹This draws the pie. We added labels, % values, custom colors, and a starting angle for flair.
-  </li>
-
-  <li>
-    <code style="font-size: 16px;">autopct='%1.1f%%'</code><br>
-    🔹Shows percentage with 1 decimal — because details matter 
-  </li>
-
-  <li>
-    <code style="font-size: 16x;">startangle=140</code><br>
-    🔹Rotates the pie for better balance and ✨aesthetic vibes✨
-  </li>
-
-  <li>
-    <code style="font-size: 16px;">plt.title(...)</code><br>
-    🔹Adds a fun title in Comic Sans — because memes deserve drama 
-  </li>
-
-  <li>
-    <code style="font-size: 16px;">plt.show()</code><br>
-    🔹Opens up the final pie chart. Boom. Done.
-  </li>
-</ul>
 
 
-<br>
-<br>
+  <h2>Understanding the Code Step-by-Step</h2>
+  <p>Let’s break down what’s happening in our histogram code, one line at a time — no boring jargon, just clear logic!</p>
 
-<h4>Here's the output : </h4>
-<br>
-<img src = "../matplotlib/pie.png" alter = "graph.png">
-<br>
-<i>Not gonna lie, my color palette feels pretty pro.</i>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<h3 style="color: #7b9ebe; text-align: center;">Brace yourself — cool pie chart stuff incoming</h3>
-<br>
-<br>
-<br>
-<h4>🔹Exploding Slices: Making One Piece Pop</h4>
-<div class="code-container" aria-label="Code example for Pandas groupby method">
-        <pre><code>
-explodes = [0, 0.1, 0, 0, 0, 0]
-        </code></pre>
-      </div>
-<p>Sometimes, you want a slice of the pie to stand out — maybe it’s the most important, or you just want it to scream “look at me!”
-That’s where explode comes in — it pulls out specific slices to grab attention.</p>
-<img src = "../matplotlib/explode.png" alter = "explode pie chart">
-<br>
-<br>
-<br>
-<h4>🔹Separate Legends, Clearer Vibes</h4>
-<div class="code-container" aria-label="Code example for Pandas groupby method">
-        <pre><code>
-plt.legend(memes, title="Memes", loc="upper left", bbox_to_anchor=(1, 1))
-        </code></pre>
-      </div>
-<p>Instead of crowding the pie chart with labels inside the slices (which can get messy), we used plt.legend() to place the labels outside the chart — neat and clear.</p>
-<ul>
-    <li><code style="font-size: 16px;">memes</code> → The list of labels.</li>
-    <li><code style="font-size: 16px;">title="Memes"</code> → Adds a cute title to the legend box.</li>
-    <li><code style="font-size: 16px;">loc="upper left"</code> → Places the legend near the top-left.</li>
-    <li><code style="font-size: 16px;">bbox_to_anchor=(1, 1)</code> → Pushes the legend outside the chart so it doesn’t overlap.</li>
-</ul>
-<br>
-<br>
-<img src = "../matplotlib/label.png" alter = "pie chart">
-<br>
-<br>
-<br>
-<h4>🔹Donut Vibes with wedgeprops</h4>
-<div class="code-container" aria-label="Code example for Pandas groupby method">
-        <pre><code>
-plt.pie(data, wedgeprops=dict(width=0.7))
-        </code></pre>
-      </div>
-<p>Want to turn your regular pie chart into a <i>donut chart?</i> That’s where wedgeprops comes in!</p>
-<ul>
-    <li><code style="font-size: 16px;">wedgeprops</code> lets you style the pie slices.</li>
-    <li><code style="font-size: 16px;">width=0.7 </code>hollows out the center — making it look like a donut.</li>
-</ul>
-<br>
-<br>
-<img src = "../matplotlib/wedgeprops.png" alter = "wedgeprops image">
-<br>
-<br>
-<br>
-<h2>When to Use Pie Charts (And When You Definitely Shouldn’t)</h2>
-<p>Pie charts are great, but not for every situation. Let’s break it down:</p>
+  <code style="font-size: 16px;">🔹import matplotlib.pyplot as plt</code><br><br>
+  <p><strong>We’re grabbing Matplotlib’s plotting tools.</strong> Think of this like opening your paintbox before making a graph.</p>
 
-<ul>
-  <li><b>🔹Use pie charts when:</b>
-    <ul>
-      <li>You’re showing parts of a whole (like budget, votes, or proportions).</li>
-      <li>There are fewer categories (ideally less than 6).</li>
-      <li>You want a quick, visual idea of “who got the biggest slice.”</li>
-    </ul>
-  </li>
+  <code style="font-size: 16px;">🔹ages = [22, 25, 29, ..., 65] * 10</code><br><br>
+  <p><strong>Our sample data:</strong> a list of ages repeated 10 times. It mimics a group of 200 people for better visualization.</p>
+
+  <code style="font-size: 16px;">🔹plt.hist(ages, bins=8, color='skyblue', edgecolor='black')</code><br><br>
+  <p>
+    <strong>This is where the histogram is made:</strong><br>
+    • <code>ages</code> → the data we’re visualizing<br>
+    • <code>bins=8</code> → groups data into 8 age ranges<br>
+    • <code>color</code> and <code>edgecolor</code> make it neat and readable
+  </p>
+
+  <code style="font-size: 16px;">
+🔹plt.title("Age Distribution")
+plt.xlabel("Age Groups")
+plt.ylabel("Number of People")
+  </code><br><br>
+  <p><strong>We’re adding context:</strong> a title and axis labels so the chart makes perfect sense at a glance.</p>
+
+  <code style="font-size: 16px;">🔹plt.show()</code><br><br>
+  <p><strong>This line says:</strong> “All set — now show me the chart!”</p>
+
   <br>
-<br>
+<h4 style="text-align: center;"><i>Output of the above code : </i></h4><br>
+<img src="../matplotlib/hist.png" alt="Output">
+<br><br><br>
+<h2>Customize Your Histogram</h2><br>
+<p>Histograms don’t have to be boring! You can tweak colors, borders, transparency, and even the style of bars to make your data look clear and beautiful. Here’s how you can style it up:</p>
 
-  <li><b>🔹Avoid pie charts when:</b>
-    <ul>
-      <li>You have too many categories — it’ll look like a pizza explosion.</li>
-      <li>The values are very close — bar charts will show the differences better.</li>
-      <li>You’re doing serious analysis — pie charts are for quick vibes, not deep insights.</li>
-    </ul>
-  </li>
+<div class="code-container" aria-label="Code example for Pandas groupby method">
+        <div class="code-header">
+          <span>Python</span>
+          <button class="copy-btn" aria-label="Copy code snippet">Copy</button>
+          <div class="tooltip" role="alert" aria-live="assertive">Copied!</div>
+        </div>
+        <pre><code>
+import matplotlib.pyplot as plt
+
+ages = [21, 23, 25, 22, 26, 29, 21, 25, 27, 30, 24, 23, 22, 28, 26]
+
+plt.hist(
+    ages,
+    bins=8,                       # Number of bars
+    color='#4db6ac',              # Soft teal fill color
+    edgecolor='white',            # White borders between bars
+    linewidth=1.2,                # Border thickness
+    alpha=0.85,                   # Slight transparency
+    histtype='bar'                # Try 'step' or 'barstacked' too!
+)
+
+plt.title("Age Distribution of Classmates")
+plt.xlabel("Age")
+plt.ylabel("Frequency")
+plt.grid(True, linestyle='--', alpha=0.4)
+plt.show()
+
+        </code></pre>
+      </div>
+
+
+<p><strong>What’s Happening Here?</strong></p>
+<ul style="line-height: 1.7;">
+  <li><code style="font-size: 15px;">color</code>: changes the fill color of each bar.</li>
+  <li><code style="font-size: 15px;">edgecolor</code> & <code>linewidth</code>: adds clean white borders between bars.</li>
+  <li><code style="font-size: 15px;">alpha</code>: controls transparency, useful when overlaying data.</li>
+  <li><code style="font-size: 15px;">histtype</code>: try values like <code>'step'</code> or <code>'barstacked'</code> for fun experiments!</li>
 </ul>
-<br>
-<br>
-<br>
-<br>
-  <h1 class="text-3xl md:text-4xl font-bold mb-6 text-purple-600">Mini Project: Visualize Your Social Media Usage</h1>
 
-  <p class="text-lg mb-4">
-    Ever wondered how much time you spend scrolling through Instagram or watching YouTube shorts? In this mini project, you'll create a simple Python pie chart that shows how you spend your time on different social media apps.
-  </p>
+<p>Go ahead and play with these — tweak the colors, bin count, and styles to make your graph match your vibe.</p>
+<br><br>
+<h4 style="text-align: center;"><i>Output of the above code : </i></h4><br>
+<img src="../matplotlib/hist2.png" alt="Output 2">
+<br><br><br>
+<h2>Mini Project: Visualize Exam Score Distribution</h2>
+<p>
+  Let’s say you’ve got the exam scores of 50 students. Build a histogram to visualize how those scores are spread out — who’s topping, who’s in the middle, and how many are lagging behind.
+</p>
 
-  <h2 class="text-2xl font-semibold mt-6 mb-3 text-teal-600">Your Challenge</h2>
-  <p class="mb-4">
-    Try building the chart yourself! You can use any sample data — maybe the time you spent on Instagram, WhatsApp, YouTube, Twitter, and Snapchat last week.
-  </p>
+<p><strong>What You’ll Do:</strong></p>
+<ul style="line-height: 1.8;">
+  <li>Take a list of 50 student scores (random or user input).</li>
+  <li>Create a histogram with 5 or 10 bins to see score distribution.</li>
+  <li>Customize it with colors, gridlines, titles, and more.</li>
+  <li>Make it readable and beautiful for a quick classroom insights dashboard.</li>
+</ul>
 
-  <h2 class="text-2xl font-semibold mt-6 mb-3 text-teal-600">Bonus Ideas</h2>
-  <ul class="list-disc ml-6 mb-8">
-    <li>Use real data from your phone's screen time tracker</li>
-    <li>Add your own custom colors to the pie chart</li>
-    <li>Animate or export the chart as an image</li>
-  </ul>
+<p>
+  Bonus: Try grouping scores like <code>0–20</code>, <code>21–40</code>, etc., and label them smartly!
+</p>
 
-  <div class="border-l-4 border-purple-500 pl-4 text-purple-900 bg-purple-50 p-4 rounded">
-    <p class="font-medium">Once you're done, try applying the same logic to other areas of life — study time, expenses, or hobbies. This is just the start.</p>
-  </div>
-
-<br>
-<br>
-<br>
-<p><b><i>Looking to level up? Explore more premium learning content through the links below : </i></b></p>
+<p>Perfect for teachers, students analyzing trends, or just for Python practice.</p>
+<br><br><br><br>
+<p><b><i>More educational content : </i></b></p>
 <ul>
-  <li><a href="../matplotlib/bar.html" style="color: #6a8ea7;", target="_blank"><i>Click here - To learn how to plot bar graphs</i></a></li>
-  <li><a href="../matplotlib/scatter.html" style="color: #6a8ea7;", target="_blank"><i>Click here - to learn how to plot scatter graphs</i></a></li>
-    <li><a href="../matplotlib/multi-line-g.html" style="color: #6a8ea7;", target="_blank"><i>Click here - To learn how to plot multiple line graphs</i></a></li>
-    <li><a href="../matplotlib/line-g.html" style="color: #6a8ea7;", target="_blank"><i>Click here - To learn how to plot line graphs</i></a></li>
-    <li><a href="../matplotlib/histogram.html" style="color: #6a8ea7;", target="_blank"><i>Click here - To learn how to plot histogram charts</i></a></li>
+  <li><a href="" style="color: #6a8ea7;"><i>Click here - To learn how to plot multiple line graphs</i></a></li>
+  <li><a href="" style="color: #6a8ea7;"><i>Click here - to learn to customize the graphs by adding title, labels, grid, and many more</i></a></li>
+  <li><a href="" style="color: #6a8ea7;"><i>Click here - To learn how to plot pie charts</i></a></li>
 </ul>
    </main>
   </div>
