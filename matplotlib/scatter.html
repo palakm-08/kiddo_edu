@@ -3,17 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="Master pie charts in Python using Matplotlib with this beginner-friendly guide! Includes simple code, colorful charts, and a fun social media usage mini project.">
-<title>Pie Charts in Python (Matplotlib) – Beginner Guide + Fun Mini Project</title>
-<link rel="canonical" href="https://kiddoedu.org/matplotlib/pie.html">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-ESNWS8F9HE"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-ESNWS8F9HE');
-</script>
+  <meta name="description" content="Learn how to create scatter plots in Python using Matplotlib. Step-by-step guide with a mini project to track and highlight weekly temperatures.">
+  <title>Scatter Plot in Python with Matplotlib | Tutorial + Project</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     
@@ -435,41 +426,35 @@ header button {
     </aside>
 
     <main>
-  <h1>Plot Pie Charts in Python with Matplotlib — A Tasty Guide for Beginners </h1>
-  <p>
-    Ever wondered how to make pie charts in Python that don’t look like your math textbook from 6th grade?
-Well, you’re in for a treat  — because we’re serving some sweet plots with Matplotlib today.
-Whether you’re a data newbie or just here to make things look cute, this guide’s got you covered.
-Let’s slice through the code and make your data deliciously visual 
-  </p>
+      <h1>Scatter Plot in Python with Matplotlib – Tutorial and Mini Project</h1>
 
-  <h2>Why Use Pie Charts?</h2>
-  <p>
-   Because sometimes, you just want to show how the cake is divided . Pie charts make it super easy to visualize proportions — who got the biggest slice, who got none, and everything in between. They're quick, clean, and instantly understandable, especially when dealing with simple categorical data.
-  </p>
+<p>
+  A scatter plot is your quick “does X relate to Y?” detector. Each dot is one data point,
+  plotted by two values (like <em>hours studied</em> vs <em>exam score</em>). If the dots form a
+  pattern (slanting up, clustering, curving), there’s a story worth exploring.</p>
 
-<h2>What You’ll Learn</h2>
-<ul>
-  <li>How to plot pie charts with just a few lines of Python</li>
-  <li>Customize slices with colors, labels, and explode effects</li>
-  <li>When to use pie charts (and when not to)</li>
-  <li>Pro tips to make your visuals pop for presentations & projects</li>
-  <li>Master <code>plt.pie()</code> with multiple data slices — one chart, many stories</li>
+
+  <h2 style="margin-bottom: 5px;">When should you use a scatter plot?</h2>
+  <ul style="line-height:1.8;">
+    <li>You have <strong>two numeric variables</strong> and want to check if they move together.</li>
+    <li>You suspect a <strong>trend, cluster, or outliers</strong> (the oddballs) in your data.</li>
+    <li>You want to compare groups by color/shape without making 3 different charts.</li>
+  </ul>
+
+  <br><br>
+<h2 style="margin-bottom: 5px;">Real-Life Examples of Histograms</h2>
+<ul style="line-height: 1.8;">
+  <li><strong>Study habits:</strong> Hours studied vs exam score — does more time actually help?</li>
+    <li><strong>Fitness:</strong> Daily steps vs sleep duration — do active days sleep better?</li>
+    <li><strong>Apps:</strong> Session length vs in-app purchases — where’s the sweet spot?</li>
+    <li><strong>Business:</strong> Ad spend vs conversions — are you spending smart or just spending?</li>
 </ul>
-<br>
-<br>
-<br>
-<details>
-  <summary><b>New to Python?</b> Don't worry — installing Matplotlib is super easy </summary>
-  <p>Just open your terminal and run: <code>pip install matplotlib</code>. That’s all you need to get started!</p>
-</details>
-<br>
-<br>
 
-  <h2>Step-by-Step Code Example</h2>
-  <p>Here’s a simple example of how to create a pie chart in Matplotlib:
-    <br>
-  </p>
+
+
+<br><br>
+<h2>Quick Start: Your first scatter plot</h2>
+<p>Let’s plot hours studied vs scores.</p>
 
       <div class="code-container" aria-label="Code example for Pandas groupby method">
         <div class="code-header">
@@ -478,200 +463,89 @@ Let’s slice through the code and make your data deliciously visual
           <div class="tooltip" role="alert" aria-live="assertive">Copied!</div>
         </div>
         <pre><code>
-import matplotlib.pyplot as plt
-
-# Meme names
-memes = [
-    "Pepe the Frog",
-    "Doge",
-    "This Is Fine Dog",
-    "Distracted Boyfriend",
-    "Woman Yelling at a Cat",
-    "Grumpy Cat"
-]
-
-# Years they've been famous (as of 2025)
-years_famous = [17, 12, 12, 8, 6, 13]
-
-colors = ['#9fcbf5', '#67a6e0', '#2b85d9', '#1862a8', '#1b4f80', '#073b6b']
-
-plt.pie(years_famous, labels=memes, autopct='%1.1f%%', startangle=140, colors=colors)
-plt.title("Top 6 Memes by Years of Popularity (as of 2025)", fontdict={'fontsize': 16, 'fontname': 'Comic Sans MS'})
-plt.show()
+          import matplotlib.pyplot as plt
+          import numpy as np
+          
+          # Sample data
+          hours = [1, 2, 2.5, 3, 3.5, 4, 4.5, 5, 6, 7, 8]
+          scores = [40, 42, 48, 52, 55, 60, 64, 70, 78, 85, 90]
+          
+          plt.figure(figsize=(7,4))
+          
+          # Scatter plot
+          plt.scatter(hours, scores, s=75, alpha=0.85)
+          
+          # Labels & title
+          plt.title("Do More Study Hours Lead to Better Scores?")
+          plt.xlabel("Hours Studied")
+          plt.ylabel("Score (%)")
+          plt.grid(True, linestyle="--", alpha=0.35)
+          
+          plt.tight_layout()
+          plt.show()
 
         </code></pre>
       </div>
 
-<p>This pie chart visualizes how long the top 6 legendary internet memes have been famous (as of 2025). Instead of numbers or dry stats, it celebrates meme culture with flair.</p>
-
-<p style="font-size: 20px;"><b>Quick Highlights:</b></p>
-<ul style="line-height: 1.6;">
-  <li>
-    <code style="font-size: 16px;">memes = [...]</code><br>
-    🔹We’ve got 6 legendary memes — each one’s a certified icon 
-  </li>
-
-  <li>
-    <code style="font-size: 16px;">years_famous = [...]</code><br>
-    🔹This list stores how many years each meme has ruled the internet (as of 2025).
-  </li>
-
-  <li>
-    <code style="font-size: 16px;">colors = [...]</code><br>
-    🔹Custom pastel shades to keep things cute and not chaotic.
-  </li>
-
-  <li>
-    <code style="font-size: 16px;">plt.pie(...)</code><br>
-    🔹This draws the pie. We added labels, % values, custom colors, and a starting angle for flair.
-  </li>
-
-  <li>
-    <code style="font-size: 16px;">autopct='%1.1f%%'</code><br>
-    🔹Shows percentage with 1 decimal — because details matter 
-  </li>
-
-  <li>
-    <code style="font-size: 16x;">startangle=140</code><br>
-    🔹Rotates the pie for better balance and ✨aesthetic vibes✨
-  </li>
-
-  <li>
-    <code style="font-size: 16px;">plt.title(...)</code><br>
-    🔹Adds a fun title in Comic Sans — because memes deserve drama 
-  </li>
-
-  <li>
-    <code style="font-size: 16px;">plt.show()</code><br>
-    🔹Opens up the final pie chart. Boom. Done.
-  </li>
-</ul>
 
 
-<br>
-<br>
+      <h2 style="margin-bottom: 5px;">Explanation</h2>
+      <ul style="line-height: 1.8;">
+          <li><code style="font-size: 16px;">plt.scatter()</code> creates the scatter plot.</li>
+          <li><b>hours</b> → x-axis values (study hours).</li>
+          <li><b>scores</b> → y-axis values (exam scores).</li>
+          <li><code style="font-size: 16px;">s=75</code> sets the size of each point.</li>
+          <li><code style="font-size: 16px;">alpha=0.85</code> controls point transparency.</li>
+          <li><code style="font-size: 16px;">plt.grid()</code> adds dashed grid lines for better readability.</li>
+      </ul>
 
-<h4>Here's the output : </h4>
-<br>
-<img src = "../matplotlib/pie.png" alter = "graph.png">
-<br>
-<i>Not gonna lie, my color palette feels pretty pro.</i>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<h3 style="color: #7b9ebe; text-align: center;">Brace yourself — cool pie chart stuff incoming</h3>
-<br>
-<br>
-<br>
-<h4>🔹Exploding Slices: Making One Piece Pop</h4>
-<div class="code-container" aria-label="Code example for Pandas groupby method">
-        <pre><code>
-explodes = [0, 0.1, 0, 0, 0, 0]
-        </code></pre>
-      </div>
-<p>Sometimes, you want a slice of the pie to stand out — maybe it’s the most important, or you just want it to scream “look at me!”
-That’s where explode comes in — it pulls out specific slices to grab attention.</p>
-<img src = "../matplotlib/explode.png" alter = "explode pie chart">
-<br>
-<br>
-<br>
-<h4>🔹Separate Legends, Clearer Vibes</h4>
-<div class="code-container" aria-label="Code example for Pandas groupby method">
-        <pre><code>
-plt.legend(memes, title="Memes", loc="upper left", bbox_to_anchor=(1, 1))
-        </code></pre>
-      </div>
-<p>Instead of crowding the pie chart with labels inside the slices (which can get messy), we used plt.legend() to place the labels outside the chart — neat and clear.</p>
-<ul>
-    <li><code style="font-size: 16px;">memes</code> → The list of labels.</li>
-    <li><code style="font-size: 16px;">title="Memes"</code> → Adds a cute title to the legend box.</li>
-    <li><code style="font-size: 16px;">loc="upper left"</code> → Places the legend near the top-left.</li>
-    <li><code style="font-size: 16px;">bbox_to_anchor=(1, 1)</code> → Pushes the legend outside the chart so it doesn’t overlap.</li>
-</ul>
-<br>
-<br>
-<img src = "../matplotlib/label.png" alter = "pie chart">
-<br>
-<br>
-<br>
-<h4>🔹Donut Vibes with wedgeprops</h4>
-<div class="code-container" aria-label="Code example for Pandas groupby method">
-        <pre><code>
-plt.pie(data, wedgeprops=dict(width=0.7))
-        </code></pre>
-      </div>
-<p>Want to turn your regular pie chart into a <i>donut chart?</i> That’s where wedgeprops comes in!</p>
-<ul>
-    <li><code style="font-size: 16px;">wedgeprops</code> lets you style the pie slices.</li>
-    <li><code style="font-size: 16px;">width=0.7 </code>hollows out the center — making it look like a donut.</li>
-</ul>
-<br>
-<br>
-<img src = "../matplotlib/wedgeprops.png" alter = "wedgeprops image">
-<br>
-<br>
-<br>
-<h2>When to Use Pie Charts (And When You Definitely Shouldn’t)</h2>
-<p>Pie charts are great, but not for every situation. Let’s break it down:</p>
 
-<ul>
-  <li><b>🔹Use pie charts when:</b>
-    <ul>
-      <li>You’re showing parts of a whole (like budget, votes, or proportions).</li>
-      <li>There are fewer categories (ideally less than 6).</li>
-      <li>You want a quick, visual idea of “who got the biggest slice.”</li>
-    </ul>
-  </li>
   <br>
-<br>
-
-  <li><b>🔹Avoid pie charts when:</b>
-    <ul>
-      <li>You have too many categories — it’ll look like a pizza explosion.</li>
-      <li>The values are very close — bar charts will show the differences better.</li>
-      <li>You’re doing serious analysis — pie charts are for quick vibes, not deep insights.</li>
-    </ul>
-  </li>
+<h4 style="text-align: center;"><i>Output of the above code : </i></h4><br>
+<img src="../matplotlib/scatter.png" alt="Output">
+<br><br><br>
+<h2 style="margin-bottom: 5px;">Make it pop: easy customizations</h2>
+<ul style="line-height:1.8;">
+  <li><strong>Color by category:</strong> Use different colors for groups (e.g., class A vs B).</li>
+  <li><strong>Size encodes a third variable:</strong> Pass a list to <code style="font-size: 16px;">s=[...]</code> (e.g., study breaks taken).</li>
+  <li><strong>Transparency:</strong> <code style="font-size: 16px;">alpha=0.5</code> helps when many points overlap.</li>
+  <li><strong>Markers:</strong> Try <code style="font-size: 16px;">marker='x'</code>, <code>'^'</code>, or <code>'s'</code> for different vibes.</li>
+  <li><strong>Annotations:</strong> Highlight outliers with <code style="font-size: 16px;">plt.annotate()</code>.</li>
 </ul>
-<br>
-<br>
-<br>
-<br>
-  <h1 class="text-3xl md:text-4xl font-bold mb-6 text-purple-600">Mini Project: Visualize Your Social Media Usage</h1>
 
-  <p class="text-lg mb-4">
-    Ever wondered how much time you spend scrolling through Instagram or watching YouTube shorts? In this mini project, you'll create a simple Python pie chart that shows how you spend your time on different social media apps.
-  </p>
+<br><br>
+<h2>Mini Project: Weekly Temperature Tracker</h2>
+<p>
+    In this mini project, we’ll track the daily temperature for a week using a Python list and then plot it visually with Matplotlib.
+    The twist? We’ll automatically find the hottest day of the week and highlight it in a different color on the chart.
+</p>
 
-  <h2 class="text-2xl font-semibold mt-6 mb-3 text-teal-600">Your Challenge</h2>
-  <p class="mb-4">
-    Try building the chart yourself! You can use any sample data — maybe the time you spent on Instagram, WhatsApp, YouTube, Twitter, and Snapchat last week.
-  </p>
-
-  <h2 class="text-2xl font-semibold mt-6 mb-3 text-teal-600">Bonus Ideas</h2>
-  <ul class="list-disc ml-6 mb-8">
-    <li>Use real data from your phone's screen time tracker</li>
-    <li>Add your own custom colors to the pie chart</li>
-    <li>Animate or export the chart as an image</li>
-  </ul>
-
-  <div class="border-l-4 border-purple-500 pl-4 text-purple-900 bg-purple-50 p-4 rounded">
-    <p class="font-medium">Once you're done, try applying the same logic to other areas of life — study time, expenses, or hobbies. This is just the start.</p>
-  </div>
-
-<br>
-<br>
-<br>
-<p><b><i>Looking to level up? Explore more premium learning content through the links below : </i></b></p>
+<p>
+    This project will help you practice:
+</p>
 <ul>
-  <li><a href="../matplotlib/bar.html" style="color: #6a8ea7;", target="_blank"><i>Click here - To learn how to plot bar graphs</i></a></li>
-  <li><a href="../matplotlib/scatter.html" style="color: #6a8ea7;", target="_blank"><i>Click here - to learn how to plot scatter graphs</i></a></li>
-    <li><a href="../matplotlib/multi-line-g.html" style="color: #6a8ea7;", target="_blank"><i>Click here - To learn how to plot multiple line graphs</i></a></li>
-    <li><a href="../matplotlib/line-g.html" style="color: #6a8ea7;", target="_blank"><i>Click here - To learn how to plot line graphs</i></a></li>
-    <li><a href="../matplotlib/histogram.html" style="color: #6a8ea7;", target="_blank"><i>Click here - To learn how to plot histogram charts</i></a></li>
+    <li>Storing and managing data in Python lists</li>
+    <li>Finding the maximum value and its index</li>
+    <li>Customizing scatter plots with different colors and sizes</li>
+    <li>Adding labels, titles, and legends in Matplotlib</li>
+</ul>
+
+<p>
+    <strong>Challenge:</strong> Try modifying the project so that it highlights both the hottest and coldest days with different colors, 
+    and experiment with more than one week of data.
+</p>
+
+<p>
+    <em>Hint:</em> You’ll need to use <code>max()</code>, <code>min()</code>, list indexing, and multiple <code>plt.scatter()</code> calls.
+</p>
+
+
+<br>
+<p><b><i>More educational content : </i></b></p>
+<ul>
+  <li><a href="../matplotlib/line-g.html" style="color: #6a8ea7;"><i>Click here - To learn how to plot multiple line graphs</i></a></li>
+  <li><a href="../matplotlib/histogram.html" style="color: #6a8ea7;"><i>Click here - To learn how to plot histogram charts</i></a></li>
+  <li><a href="../matplotlib/pie.html" style="color: #6a8ea7;"><i>Click here - To learn how to plot pie charts</i></a></li>
 </ul>
    </main>
   </div>
