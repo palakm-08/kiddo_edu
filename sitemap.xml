@@ -9,92 +9,102 @@
 
 <url>
   <loc>https://kiddoedu.org/</loc>
-  <lastmod>2025-08-04T13:26:05+00:00</lastmod>
+  <lastmod>2025-08-17T06:39:15+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://kiddoedu.org/index.html</loc>
-  <lastmod>2025-08-04T13:26:05+00:00</lastmod>
+  <lastmod>2025-08-17T06:39:15+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://kiddoedu.org/info/about.html</loc>
-  <lastmod>2025-08-04T13:26:05+00:00</lastmod>
+  <lastmod>2025-08-17T06:39:15+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://kiddoedu.org/info/contact.html</loc>
-  <lastmod>2025-08-04T13:26:05+00:00</lastmod>
+  <lastmod>2025-08-17T06:39:15+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://kiddoedu.org/faq/doubt1.html</loc>
-  <lastmod>2025-08-04T13:26:05+00:00</lastmod>
+  <lastmod>2025-08-17T06:39:15+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://kiddoedu.org/python/list-comp.html</loc>
-  <lastmod>2025-08-04T13:26:05+00:00</lastmod>
+  <lastmod>2025-08-17T06:39:15+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://kiddoedu.org/matplotlib/line-g.html</loc>
-  <lastmod>2025-08-04T13:26:05+00:00</lastmod>
+  <lastmod>2025-08-17T06:39:15+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://kiddoedu.org/info/privacy.html</loc>
-  <lastmod>2025-08-04T13:26:05+00:00</lastmod>
+  <lastmod>2025-08-17T06:39:15+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://kiddoedu.org/info/terms.html</loc>
-  <lastmod>2025-08-04T13:26:05+00:00</lastmod>
+  <lastmod>2025-08-17T06:39:15+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://kiddoedu.org/faq/doubt3.html</loc>
-  <lastmod>2025-08-04T13:26:05+00:00</lastmod>
+  <lastmod>2025-08-17T06:39:15+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://kiddoedu.org/faq/doubt4.html</loc>
-  <lastmod>2025-08-04T13:26:05+00:00</lastmod>
+  <lastmod>2025-08-17T06:39:15+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://kiddoedu.org/faq/doubt2.html</loc>
-  <lastmod>2025-08-04T13:26:05+00:00</lastmod>
+  <lastmod>2025-08-17T06:39:15+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://kiddoedu.org/python/list.html</loc>
-  <lastmod>2025-08-04T13:26:05+00:00</lastmod>
+  <lastmod>2025-08-17T06:39:15+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://kiddoedu.org/python/password.html</loc>
-  <lastmod>2025-08-04T13:26:05+00:00</lastmod>
+  <lastmod>2025-08-17T06:39:15+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://kiddoedu.org/matplotlib/multi-line-g.html</loc>
-  <lastmod>2025-08-04T13:26:05+00:00</lastmod>
+  <lastmod>2025-08-17T06:39:15+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://kiddoedu.org/matplotlib/customise.html</loc>
-  <lastmod>2025-08-04T13:26:05+00:00</lastmod>
+  <lastmod>2025-08-17T06:39:15+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://kiddoedu.org/matplotlib/bar.html</loc>
-  <lastmod>2025-08-04T13:26:05+00:00</lastmod>
+  <lastmod>2025-08-17T06:39:15+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kiddoedu.org/matplotlib/scatter.html</loc>
+  <lastmod>2025-08-17T06:39:15+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kiddoedu.org/matplotlib/histogram.html</loc>
+  <lastmod>2025-08-17T06:39:15+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://kiddoedu.org/matplotlib/pie.html</loc>
-  <lastmod>2025-08-04T13:26:05+00:00</lastmod>
+  <lastmod>2025-08-17T06:39:15+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 
