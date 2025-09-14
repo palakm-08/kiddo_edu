@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="Master Python list comprehension with 7 real-life examples. Learn how to replace for loops and write cleaner, faster code in this beginner Python tutorial.">
-<title>Python List Comprehension Explained with 7 Real-Life Examples</title>
+<meta name="description" content="Learn how Python’s while loops work with this beginner-friendly guide! Explore examples for counting, input validation, break/continue statements, and avoid common mistakes to write better, error-free code.">
+<title>Python While Loops for Beginners – Easy Guide with Examples and Common Errors</title>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ESNWS8F9HE"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -476,182 +476,147 @@ aside {
 
 
     <main>
-  <h1>Python List Comprehension Explained with 7 Real-Life Examples</h1><br>
-  <p class="meta" >⏱ 5 min read · Skill: Beginner</p>
+  <h1>Python While Loops – Repeat Until You’re Done!</h1>
+  <p class="meta">⏱ 5 min read · Skill: Beginner</p>
   <p class="last-updated">Last Updated: September 2025</p>
 
-    <p>
-      Ever seen something like <code>[x for x in items]</code> in Python and thought, “Wait, what sorcery is this?”  
-      Don’t worry — list comprehension isn’t scary. In fact, it’s one of the coolest Python tricks to write cleaner, shorter, and more readable code.
-    </p>
+  <br>
+  <p>Sometimes you want Python to keep doing something until a condition is no longer true — that’s when a <code>while</code> loop becomes your best friend! It’s super helpful when you don’t know in advance how many times you need to repeat something.</p>
 
-    <h2>What is List Comprehension?</h2>
-    <p>
-      List comprehension is just a fancy way to build a list in one line. Instead of writing a full for loop, you can condense it into a single, readable expression.
-    </p>
+  <br><br>
+  <h2>What’s a While Loop?</h2>
+  <p>A <code>while</code> loop keeps running as long as a condition stays true. Once the condition becomes false, Python stops the loop. This makes it perfect for situations where you’re waiting for something to happen!</p>
 
-     <div class="code-container" aria-label="Code example for Pandas groupby method">
-        <div class="code-header">
-          <span>Python</span>
-          <button class="copy-btn" aria-label="Copy code snippet">Copy</button>
-          <div class="tooltip" role="alert" aria-live="assertive">Copied!</div>
-        </div>
-        <pre><code>
-[expression for item in iterable if condition]
- </code></pre>
-      </div>
-
-<p>Yeah, that’s the whole syntax. Simple once you see it in action.</p>
-
-<h2>7 Real-Life Examples</h2><br><br>
-<h3>1. Convert Names to Uppercase</h3>
-<div class="code-container" aria-label="Code example for Pandas groupby method">
-        <div class="code-header">
-          <span>Python</span>
-          <button class="copy-btn" aria-label="Copy code snippet">Copy</button>
-          <div class="tooltip" role="alert" aria-live="assertive">Copied!</div>
-        </div>
-        <pre><code>
-names = ["alice", "bob", "charlie"]
-upper_names = [name.upper() for name in names]
-print(upper_names)
- </code></pre>
-      </div>
-<p>🔹Output: <code>['ALICE', 'BOB', 'CHARLIE']</code></p>
-
-
-    <h3>2. Filter Even Numbers</h3>
-    <div class="code-container" aria-label="Code example for Pandas groupby method">
-        <div class="code-header">
-          <span>Python</span>
-          <button class="copy-btn" aria-label="Copy code snippet">Copy</button>
-          <div class="tooltip" role="alert" aria-live="assertive">Copied!</div>
-        </div>
-        <pre><code>
-nums = [1, 2, 3, 4, 5, 6]
-evens = [n for n in nums if n % 2 == 0]
-print(evens)
- </code></pre>
+  <br>
+  <h2>Example 1: Counting Up</h2>
+  <div class="code-container" aria-label="Code example for Python while loop counting up">
+    <div class="code-header">
+      <span>Python</span>
+      <button class="copy-btn" aria-label="Copy code snippet">Copy</button>
+      <div class="tooltip" role="alert" aria-live="assertive">Copied!</div>
     </div>
-     <p>🔹Output: <code>[2, 4, 6]</code></p>
+    <pre><code>
+i = 1
+while i <= 5:
+    print(i)
+    i += 1
+    </code></pre>
+  </div>
+  <p>🔹Here, the loop keeps counting from 1 to 5. Don’t forget to update the value inside the loop, or it could go on forever!</p>
 
-
-     <h3>3. Extract Domain Names from Emails</h3>
-<div class="code-container" aria-label="Code example for Pandas groupby method">
-        <div class="code-header">
-          <span>Python</span>
-          <button class="copy-btn" aria-label="Copy code snippet">Copy</button>
-          <div class="tooltip" role="alert" aria-live="assertive">Copied!</div>
-        </div>
-        <pre><code>
-emails = ["alice@gmail.com", "bob@yahoo.com"]
-domains = [email.split("@")[1] for email in emails]
-print(domains)
- </code></pre>
+  <br>
+  <h2>Example 2: Asking for Correct Input</h2>
+  <div class="code-container" aria-label="Code example for Python while loop with input validation">
+    <div class="code-header">
+      <span>Python</span>
+      <button class="copy-btn" aria-label="Copy code snippet">Copy</button>
+      <div class="tooltip" role="alert" aria-live="assertive">Copied!</div>
     </div>
-    <p>🔹Output: <code>['gmail.com', 'yahoo.com']</code></p>
+    <pre><code>
+password = ""
+while password != "python123":
+    password = input("Enter the password: ")
+print("Access granted!")
+    </code></pre>
+  </div>
+  <p>🔹The loop keeps asking until you enter the correct password. Perfect for making programs interactive!</p>
 
-
-    <h3>4. Flatten a Nested List</h3>
-    <div class="code-container" aria-label="Code example for Pandas groupby method">
-        <div class="code-header">
-          <span>Python</span>
-          <button class="copy-btn" aria-label="Copy code snippet">Copy</button>
-          <div class="tooltip" role="alert" aria-live="assertive">Copied!</div>
-        </div>
-        <pre><code>
-matrix = [[1, 2], [3, 4], [5, 6]]
-flat = [num for row in matrix for num in row]
-print(flat)
- </code></pre>
+  <br>
+  <h2>Example 3: Using <code>break</code> to Exit Early</h2>
+  <div class="code-container" aria-label="Code example for Python while loop with break">
+    <div class="code-header">
+      <span>Python</span>
+      <button class="copy-btn" aria-label="Copy code snippet">Copy</button>
+      <div class="tooltip" role="alert" aria-live="assertive">Copied!</div>
     </div>
-    <p>🔹Output: <code>[1, 2, 3, 4, 5, 6]</code></p>
+    <pre><code>
+i = 0
+while True:
+    print(i)
+    i += 1
+    if i == 3:
+        break
+    </code></pre>
+  </div>
+  <p>🔹<code>break</code> lets you stop the loop even if the condition hasn’t turned false yet. This way you can exit early when needed!</p>
 
-
-    <h3>5. Create a List of Squares</h3>
-    <div class="code-container" aria-label="Code example for Pandas groupby method">
-        <div class="code-header">
-          <span>Python</span>
-          <button class="copy-btn" aria-label="Copy code snippet">Copy</button>
-          <div class="tooltip" role="alert" aria-live="assertive">Copied!</div>
-        </div>
-        <pre><code>
-squares = [n**2 for n in range(1, 6)]
-print(squares)
- </code></pre>
+  <br>
+  <h2>Example 4: Skipping Iterations with <code>continue</code></h2>
+  <div class="code-container" aria-label="Code example for Python while loop with continue">
+    <div class="code-header">
+      <span>Python</span>
+      <button class="copy-btn" aria-label="Copy code snippet">Copy</button>
+      <div class="tooltip" role="alert" aria-live="assertive">Copied!</div>
     </div>
-    <p>🔹Output: <code>[1, 4, 9, 16, 25]</code></p>
+    <pre><code>
+i = 0
+while i < 5:
+    i += 1
+    if i == 3:
+        continue
+    print(i)
+    </code></pre>
+  </div>
+  <p>🔹This loop skips printing the number 3 and continues with the next iteration — neat for filtering unwanted cases!</p>
 
-
-    <h3>6. Remove Punctuation from a Sentence</h3>
-    <div class="code-container" aria-label="Code example for Pandas groupby method">
-        <div class="code-header">
-          <span>Python</span>
-          <button class="copy-btn" aria-label="Copy code snippet">Copy</button>
-          <div class="tooltip" role="alert" aria-live="assertive">Copied!</div>
-        </div>
-        <pre><code>
-sentence = "Hello, world!"
-clean = [ch for ch in sentence if ch.isalnum() or ch.isspace()]
-print("".join(clean))
- </code></pre>
+  <br>
+  <h2>Example 5: Loops with Else</h2>
+  <div class="code-container" aria-label="Code example for Python while loop with else">
+    <div class="code-header">
+      <span>Python</span>
+      <button class="copy-btn" aria-label="Copy code snippet">Copy</button>
+      <div class="tooltip" role="alert" aria-live="assertive">Copied!</div>
     </div>
-    <p>🔹Output: <code>Hello world</code></p>
+    <pre><code>
+i = 1
+while i <= 3:
+    print(i)
+    i += 1
+else:
+    print("Loop finished!")
+    </code></pre>
+  </div>
+  <p>🔹You can attach <code>else</code> to a <code>while</code> loop to run code after it completes. Great for final messages or cleanup!</p>
 
-
-    <h3>7. Filter Available Products</h3>
-    <div class="code-container" aria-label="Code example for Pandas groupby method">
-        <div class="code-header">
-          <span>Python</span>
-          <button class="copy-btn" aria-label="Copy code snippet">Copy</button>
-          <div class="tooltip" role="alert" aria-live="assertive">Copied!</div>
-        </div>
-        <pre><code>
-products = {"pen": True, "pencil": False, "eraser": True}
-available = [item for item, in_stock in products.items() if in_stock]
-print(available)
- </code></pre>
-    </div>
-    <p>🔹Output: <code>['pen', 'eraser']</code></p><br>
-
-
-    <h2>When *Not* to Use List Comprehension</h2>
-    <p>
-      Just because you can, doesn’t mean you should!  
-      If your comprehension looks like a spaghetti mess of <code>for</code> and <code>if</code>, consider using a regular loop for readability. Clean code > short code.
-    </p>
-    <br><br>
-     <h2>🔹Bonus: Dictionary Comprehension</h2>
-    <p>You can do the same thing with dictionaries too!</p>
-    <div class="code-container" aria-label="Code example for Pandas groupby method">
-        <div class="code-header">
-          <span>Python</span>
-          <button class="copy-btn" aria-label="Copy code snippet">Copy</button>
-          <div class="tooltip" role="alert" aria-live="assertive">Copied!</div>
-        </div>
-        <pre><code>
-original = {"a": 1, "b": 2, "c": 3}
-squared = {k: v**2 for k, v in original.items()}
-print(squared)
- </code></pre>
-    </div>
-<p>🔹Output: <code>{'a': 1, 'b': 4, 'c': 9}</code></p>
+  <br><br>
+  <h2>Why Learn While Loops?</h2>
+  <br>
+  <ul style="line-height: 1.8;">
+    <li>They help you run code repeatedly when you don’t know how many times ahead of time.</li>
+    <li>Useful for input validation, waiting for events, and more.</li>
+    <li>Every interactive Python program uses loops like this!</li>
+  </ul>
+<br><br>
+<h2>Common Errors to Watch Out For</h2>
 <br>
+<ul style="line-height: 1.8;">
+    <li><strong>Forgetting to update the condition:</strong>  
+    If the condition never changes, the loop will run forever!</li>
 
-<h2>Conclusion</h2>
-    <p>
-      List comprehension might look intimidating at first, but once you practice it a few times, it becomes second nature.
-      It's clean, powerful, and just a bit magical.
-    </p>
+    <li><strong>Using <code>=</code> instead of <code>==</code>:</strong>  
+    One is for assigning, the other for checking equality—don’t mix them up!</li>
 
-    <div class="bg-yellow-100 p-4 rounded-lg">
-    <strong>Ready to level up?</strong> Explore more Python tricks:
-    <a href="../python/for_loop.html" class="underline text-blue-600">Learn For Loops</a>,
-        <a href="../python/while_loop.html" class="underline text-blue-600">Learn While Loops</a> and 
-    <a href="../python/list.html" class="underline text-blue-600">Master Lists in python </a> with hands-on examples!
+    <li><strong>Infinite loops without <code>break</code>:</strong>  
+    A loop that never ends can freeze your program. Always plan an exit!</li>
+</ul>
+
+  <br><br>
+  <h2>Practice Challenge</h2>
+  <br>
+  <p>Create a program that keeps asking for your favorite fruit until you type “stop”. Use a <code>while</code> loop and print a fun message each time!</p>
+
+  <br><br>
+<div class="bg-yellow-100 p-4 rounded-lg">
+  <strong>Ready to go deeper?</strong> Explore more Python essentials:
+  <a href="../python/list.html" class="underline text-blue-600">Lists</a>, 
+  <a href="../python/list-comp.html" class="underline text-blue-600">List Comprehensions</a>, 
+  <a href="../python/for_loop.html" class="underline text-blue-600">For Loops</a>, and 
+  <a href="../python/string-functions.html" class="underline text-blue-600">String Functions</a>.
 </div>
 
-   </main>
+</main>
+
+
   </div>
 
   <footer>
