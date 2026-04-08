@@ -3,159 +3,931 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <meta name="description" content="Kiddo is your fun, beginner-friendly coding guide! Learn Python, data visualization, and core CS concepts with colorful examples, GenZ explanations, and zero confusion. Start your tech journey now!">
   <meta name="google-site-verification" content="BZrtfY9VVnP8zQypJKFnNL4FfIYB2KmpZDcNoIive5Y" />
   <title>Kiddo</title>
   <link rel="canonical" href="https://kiddoedu.org/">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-ESNWS8F9HE"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ESNWS8F9HE');
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 
-  gtag('config', 'G-ESNWS8F9HE');
-</script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href = "info/random.css" />
+  <style>
+    /* ── CSS Variables ── */
+    :root {
+      --bg: #f5f3ee;
+      --surface: #ffffff;
+      --surface2: #eceae4;
+      --text: #1a1814;
+      --text-muted: #6b6760;
+      --accent: #e86c2f;
+      --accent2: #3d5afe;
+      --accent3: #00b894;
+      --border: rgba(0,0,0,0.08);
+      --shadow: 0 4px 24px rgba(0,0,0,0.08);
+      --shadow-lg: 0 12px 48px rgba(0,0,0,0.14);
+      --radius: 16px;
+      --radius-sm: 10px;
+      --header-h: 70px;
+      --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+    body.dark {
+      --bg: #0f0e0c;
+      --surface: #1c1a17;
+      --surface2: #252320;
+      --text: #f0ede6;
+      --text-muted: #918e87;
+      --accent: #ff7d3e;
+      --accent2: #7986cb;
+      --accent3: #55efc4;
+      --border: rgba(255,255,255,0.07);
+      --shadow: 0 4px 24px rgba(0,0,0,0.4);
+      --shadow-lg: 0 12px 48px rgba(0,0,0,0.6);
+    }
+
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      transition: background var(--transition), color var(--transition);
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* ── Noise texture overlay ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    /* ── Floating blobs ── */
+    .blob-wrap {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.12;
+      animation: drift 18s ease-in-out infinite alternate;
+    }
+    body.dark .blob { opacity: 0.08; }
+    .blob-1 { width: 500px; height: 500px; background: var(--accent); top: -150px; left: -100px; animation-delay: 0s; }
+    .blob-2 { width: 400px; height: 400px; background: var(--accent2); bottom: -100px; right: -80px; animation-delay: -6s; }
+    .blob-3 { width: 300px; height: 300px; background: var(--accent3); top: 40%; left: 50%; animation-delay: -12s; }
+    @keyframes drift {
+      0%   { transform: translate(0,0) scale(1); }
+      50%  { transform: translate(30px, -30px) scale(1.05); }
+      100% { transform: translate(-20px, 20px) scale(0.95); }
+    }
+
+    /* ── Everything above blobs ── */
+    header, .mobile-header, .container, footer, .hero { position: relative; z-index: 1; }
+
+    /* ── Header ── */
+    header {
+      height: var(--header-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      background: rgba(245,243,238,0.72);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      transition: background var(--transition);
+    }
+    body.dark header { background: rgba(15,14,12,0.75); }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .logo img {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+    .logo span {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.5rem;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+    .logo span em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    nav a {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 6px 14px;
+      border-radius: 8px;
+      transition: color var(--transition), background var(--transition);
+    }
+    nav a:hover { color: var(--text); background: var(--surface2); }
+
+    .theme-btn {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      width: 38px;
+      height: 38px;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background var(--transition), transform var(--transition);
+      margin-left: 8px;
+    }
+    .theme-btn:hover { transform: rotate(20deg); background: var(--surface); }
+
+    /* ── Mobile Header ── */
+    .mobile-header {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      height: var(--header-h);
+      background: rgba(245,243,238,0.82);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      transition: background var(--transition);
+    }
+    body.dark .mobile-header { background: rgba(15,14,12,0.82); }
+    .mobile-header .logo img { width: 32px; height: 32px; }
+    .mobile-header .logo span { font-size: 1.3rem; }
+    .mobile-right { display: flex; align-items: center; gap: 8px; }
+
+    .hamburger {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      width: 38px;
+      height: 38px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .menu-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-lg);
+      padding: 8px;
+      min-width: 160px;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .menu-dropdown.open { display: flex; }
+    .menu-dropdown a {
+      display: block;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: var(--text);
+      text-decoration: none;
+      padding: 9px 14px;
+      border-radius: 8px;
+      transition: background var(--transition);
+    }
+    .menu-dropdown a:hover { background: var(--surface2); }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 80px 40px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .hero-text { }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 24px;
+      box-shadow: var(--shadow);
+      animation: fadeSlideUp 0.6s ease both;
+    }
+    .hero-badge::before { content: '✦'; font-size: 0.7rem; }
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.8rem, 5vw, 4.2rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 20px;
+      animation: fadeSlideUp 0.6s 0.1s ease both;
+    }
+    .hero h1 .accent { color: var(--accent); }
+    .hero h1 .accent2 { color: var(--accent2); }
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 440px;
+      margin-bottom: 32px;
+      animation: fadeSlideUp 0.6s 0.2s ease both;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      animation: fadeSlideUp 0.6s 0.3s ease both;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      padding: 13px 28px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+      box-shadow: 0 4px 16px rgba(232,108,47,0.35);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,108,47,0.45); }
+    .btn-secondary {
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 13px 28px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 0.95rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform var(--transition), background var(--transition);
+    }
+    .btn-secondary:hover { transform: translateY(-2px); background: var(--surface2); }
+
+    /* Hero visual */
+    .hero-visual {
+      position: relative;
+      animation: fadeSlideUp 0.7s 0.15s ease both;
+    }
+    .code-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow-lg);
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem;
+      line-height: 1.7;
+      position: relative;
+      overflow: hidden;
+    }
+    .code-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(232,108,47,0.04), rgba(61,90,254,0.04));
+    }
+    .code-dots {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    .code-dots span {
+      width: 12px; height: 12px; border-radius: 50%;
+    }
+    .code-dots span:nth-child(1) { background: #ff5f57; }
+    .code-dots span:nth-child(2) { background: #febc2e; }
+    .code-dots span:nth-child(3) { background: #28c840; }
+    .code-line { display: flex; gap: 8px; }
+    .kw { color: #e06c75; }
+    .fn { color: #61afef; }
+    .str { color: var(--accent3); }
+    .cm { color: var(--text-muted); font-style: italic; }
+    .nm { color: #d19a66; }
+    .typing-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1em;
+      background: var(--accent);
+      margin-left: 2px;
+      vertical-align: text-bottom;
+      animation: blink 1s step-end infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0;} }
+
+    .floating-tag {
+      position: absolute;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 8px 14px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      animation: floatY 3s ease-in-out infinite alternate;
+    }
+    .floating-tag-1 { top: -20px; right: -10px; animation-delay: 0s; color: var(--accent2); }
+    .floating-tag-2 { bottom: -18px; left: -10px; animation-delay: -1.5s; color: var(--accent); }
+    @keyframes floatY {
+      0%   { transform: translateY(0); }
+      100% { transform: translateY(-10px); }
+    }
+
+    /* ── Stats bar ── */
+    .stats-bar {
+      max-width: 1200px;
+      margin: 0 auto 60px;
+      padding: 0 40px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .stat-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      box-shadow: var(--shadow);
+      transition: transform var(--transition);
+    }
+    .stat-item:hover { transform: translateY(-3px); }
+    .stat-icon {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .si-orange { background: rgba(232,108,47,0.12); }
+    .si-blue   { background: rgba(61,90,254,0.12); }
+    .si-green  { background: rgba(0,184,148,0.12); }
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.6rem;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+    .stat-label { font-size: 0.85rem; color: var(--text-muted); margin-top: 2px; }
+
+    /* ── Main content ── */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px 80px;
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    /* Sidebar */
+    aside {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: calc(var(--header-h) + 20px);
+    }
+    aside h3 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    aside ul { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+    aside ul li a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 12px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: background var(--transition), color var(--transition);
+    }
+    aside ul li a:hover { background: var(--surface2); color: var(--text); }
+    aside ul li a .s-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--text-muted);
+      flex-shrink: 0;
+      transition: background var(--transition);
+    }
+    aside ul li a:hover .s-dot { background: var(--accent); }
+
+    /* Main */
+    main {}
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .section-header h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.6rem;
+      letter-spacing: -0.02em;
+    }
+    .section-header .pill {
+      background: var(--surface2);
+      border-radius: 999px;
+      padding: 3px 10px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    /* Course grid */
+    .course-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 20px;
+    }
+
+    .course-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      text-decoration: none;
+      color: var(--text);
+      box-shadow: var(--shadow);
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    .course-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .course-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--card-color, var(--accent)), transparent 60%);
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+    .course-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: var(--card-color, var(--accent)); }
+    .course-card:hover::after { opacity: 0.05; }
+
+    .card-icon {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      background: color-mix(in srgb, var(--card-color, var(--accent)) 12%, transparent);
+      flex-shrink: 0;
+      position: relative; z-index: 1;
+    }
+    .course-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: -0.01em;
+      position: relative; z-index: 1;
+    }
+    .course-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      position: relative; z-index: 1;
+    }
+    .card-arrow {
+      margin-top: auto;
+      color: var(--card-color, var(--accent));
+      font-size: 1rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.82rem;
+      position: relative; z-index: 1;
+      opacity: 0;
+      transform: translateX(-6px);
+      transition: opacity var(--transition), transform var(--transition);
+    }
+    .course-card:hover .card-arrow { opacity: 1; transform: translateX(0); }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 32px 40px;
+      position: relative; z-index: 1;
+    }
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-container p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .footer-links a:hover { color: var(--accent); }
+
+    /* ── Animations ── */
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Scroll progress ── */
+    .progress-bar {
+      position: fixed;
+      top: 0; left: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      z-index: 999;
+      width: 0%;
+      transition: width 0.1s linear;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; gap: 40px; padding: 60px 32px 32px; }
+      .hero-visual { max-width: 520px; }
+      .stats-bar { padding: 0 32px; }
+      .container { padding: 0 32px 80px; }
+    }
+
+    @media (max-width: 768px) {
+      header { display: none; }
+      .mobile-header { display: flex; }
+      .hero { padding: 40px 20px 24px; }
+      .hero h1 { font-size: 2.2rem; }
+      .stats-bar { grid-template-columns: 1fr; padding: 0 20px; }
+      .container { grid-template-columns: 1fr; padding: 0 20px 60px; gap: 24px; }
+      aside { position: static; }
+      aside ul { flex-direction: row; flex-wrap: wrap; }
+      .course-grid { grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 14px; }
+      footer { padding: 24px 20px; }
+      .footer-container { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 1.9rem; }
+      .hero-btns { flex-direction: column; }
+      .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+      .course-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .course-card { padding: 18px; }
+      .stats-bar { gap: 12px; }
+    }
+  </style>
 </head>
 <body>
+
+  <!-- Scroll progress -->
+  <div class="progress-bar" id="progressBar"></div>
+
+  <!-- Background blobs -->
+  <div class="blob-wrap">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <!-- Desktop Header -->
   <header>
-    <div class="logo">
-      <img src="assests/logo.png" alt="Kiddo Logo" />
-      <span>Kiddo</span>
-    </div>
+    <a class="logo" href="index.html">
+      <img src="assests/logo.png" alt="Kiddo Logo" onerror="this.style.display='none'" />
+      <span>Kid<em>do</em></span>
+    </a>
     <nav>
-      <a href= "index.html">Home</a>
+      <a href="index.html">Home</a>
       <a href="info/about.html">About</a>
       <a href="info/contact.html">Contact</a>
-      <button id="desktopToggleTheme">🌙</button>
+      <button class="theme-btn" id="desktopToggleTheme" title="Toggle theme">🌙</button>
     </nav>
   </header>
-<div class="mobile-header">
-  <div class="mobile-left">
-    <img src="assests/logo.png" alt="Kiddo Logo" />
+
+  <!-- Mobile Header -->
+  <div class="mobile-header">
+    <a class="logo" href="index.html">
+      <img src="assests/logo.png" alt="Kiddo Logo" onerror="this.style.display='none'" />
+      <span>Kid<em>do</em></span>
+    </a>
+    <div class="mobile-right">
+      <button class="theme-btn" id="mobileToggleTheme" title="Toggle theme">🌙</button>
+      <button class="hamburger" id="hamburgerBtn" title="Menu">☰</button>
+      <div class="menu-dropdown" id="menuDropdown">
+        <a href="index.html">Home</a>
+        <a href="info/about.html">About</a>
+        <a href="info/contact.html">Contact</a>
+      </div>
+    </div>
   </div>
 
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-text">
+      <div class="hero-badge">Now with 7 subjects live</div>
+      <h1>Learn to code<br><span class="accent">without</span> the<br><span class="accent2">confusion.</span></h1>
+      <p>Kiddo breaks down programming into bite-sized, beginner-friendly lessons. Python, C, C++, data viz — all explained in plain language.</p>
+      <div class="hero-btns">
+        <a href="python/list-comp.html" class="btn-primary">Start Learning →</a>
+        <a href="python/for_loop.html" class="btn-secondary">Learn Python</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="floating-tag floating-tag-1">⚡ Python 3.x</div>
+      <div class="code-card">
+        <div class="code-dots"><span></span><span></span><span></span></div>
+        <div class="code-line"><span class="cm"># Your first Kiddo lesson 🎉</span></div>
+        <br>
+        <div class="code-line"><span class="kw">def</span> <span class="fn">greet</span>(name):</div>
+        <div class="code-line">&nbsp;&nbsp;<span class="kw">return</span> <span class="str">f"Hey </span><span class="nm">{name}</span><span class="str">, let's code!"</span></div>
+        <br>
+        <div class="code-line"><span class="fn">print</span>(<span class="fn">greet</span>(<span class="str">"you"</span>))</div>
+        <br>
+        <div class="code-line"><span class="cm"># Output:</span></div>
+        <div class="code-line"><span class="str">Hey you, let's code!</span><span class="typing-cursor"></span></div>
+      </div>
+      <div class="floating-tag floating-tag-2">📊 Data viz ready</div>
+    </div>
+  </section>
 
-  <div class="mobile-right">
-    <button id="mobileToggleTheme" class="theme-toggle">🌙</button>
-    <div class="mobile-menu">
-  <span class="menu-icon">☰</span>
-  <div class="menu-dropdown">
-    <a href="index.html">Home</a>
-    <a href="info/about.html">About</a>
-    <a href="info/contact.html">Contact</a>
+  <!-- Stats bar -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="stat-icon si-orange">📚</div>
+      <div>
+        <div class="stat-num" data-target="7">0</div>
+        <div class="stat-label">Subjects covered</div>
+      </div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-icon si-blue">🌍</div>
+      <div>
+        <div class="stat-num" data-target="40">0</div>
+        <div class="stat-label">Countries with learners</div>
+      </div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-icon si-green">✅</div>
+      <div>
+        <div class="stat-num" data-target="100">0</div>
+        <div class="stat-label">% free forever</div>
+      </div>
+    </div>
   </div>
-</div>
-  </div>
-</div>
 
+  <!-- Main content -->
   <div class="container">
     <aside>
       <h3>Subjects</h3>
       <ul>
-        <li><a href="faq/doubt1.html">FAQ</a></li>
-        <li><a href="#">C++</a></li>
-        <li><a href="python/list-comp.html">Python</a></li>
-        <li><a href="#">Pandas</a></li>
-        <li><a href="matplotlib/line-g.html" target="_blank">Matplotlib</a></li>
-        <li><a href="#">Numpy</a></li>
-        <li><a href="C-programming/for_loops.html">C Programming</a></li>
+        <li><a href="faq/doubt1.html"><span class="s-dot"></span>FAQ</a></li>
+        <li><a href="#"><span class="s-dot"></span>C++</a></li>
+        <li><a href="python/list-comp.html"><span class="s-dot"></span>Python</a></li>
+        <li><a href="#"><span class="s-dot"></span>Pandas</a></li>
+        <li><a href="matplotlib/line-g.html"><span class="s-dot"></span>Matplotlib</a></li>
+        <li><a href="#"><span class="s-dot"></span>Numpy</a></li>
+        <li><a href="C-programming/for_loops.html"><span class="s-dot"></span>C Programming</a></li>
       </ul>
     </aside>
 
     <main>
-      <h1>Welcome to Kiddo !</h1>
-      <p>Your interactive platform for mastering programming.</p>
+      <div class="section-header">
+        <h2>All Subjects</h2>
+        <span class="pill">7 courses</span>
+      </div>
+      <div class="course-grid">
 
-      <section class="card">
-        <h2>Start Learning Today</h2>
-        <p>Explore these topics to build your programming and data skills:</p>
-        <div class="course-grid">
-          <a href="faq/doubt1.html" class="course-card" target="_blank" rel="noopener noreferrer" data-aos="fade-up">
-  <h3>FAQ</h3>
-  <p>Common doubts? We’ve answered the most asked questions below.</p>
-</a>
+        <a href="faq/doubt1.html" class="course-card" style="--card-color: #e8a030" target="_blank" rel="noopener noreferrer">
+          <div class="card-icon">❓</div>
+          <h3>FAQ</h3>
+          <p>Common doubts answered — the most asked questions, solved clearly.</p>
+          <div class="card-arrow">Explore →</div>
+        </a>
 
-<a href="cpp.html" class="course-card" target="_blank" rel="noopener noreferrer" data-aos="fade-up" data-aos-delay="100">
-  <h3>C++</h3>
-  <p>Master OOP and system-level programming.</p>
-</a>
+        <a href="cpp.html" class="course-card" style="--card-color: #3d5afe" target="_blank" rel="noopener noreferrer">
+          <div class="card-icon">⚙️</div>
+          <h3>C++</h3>
+          <p>Master OOP and system-level programming with real examples.</p>
+          <div class="card-arrow">Explore →</div>
+        </a>
 
-<a href="python/list-comp.html" class="course-card" target="_blank" rel="noopener noreferrer" data-aos="fade-up" data-aos-delay="200">
-  <h3>Python</h3>
-  <p>From basics to data science essentials.</p>
-</a>
+        <a href="python/list-comp.html" class="course-card" style="--card-color: #e8c530" target="_blank" rel="noopener noreferrer">
+          <div class="card-icon">🐍</div>
+          <h3>Python</h3>
+          <p>From basics to data science essentials — beginner to builder.</p>
+          <div class="card-arrow">Explore →</div>
+        </a>
 
-<a href="pandas.html" class="course-card" target="_blank" rel="noopener noreferrer" data-aos="fade-up" data-aos-delay="300">
-  <h3>Pandas</h3>
-  <p>Powerful data analysis and manipulation tools.</p>
-</a>
+        <a href="pandas.html" class="course-card" style="--card-color: #00b894" target="_blank" rel="noopener noreferrer">
+          <div class="card-icon">🐼</div>
+          <h3>Pandas</h3>
+          <p>Powerful data analysis and manipulation tools, made simple.</p>
+          <div class="card-arrow">Explore →</div>
+        </a>
 
-<a href="matplotlib/line-g.html" class="course-card" target="_blank" rel="noopener noreferrer" data-aos="fade-up" data-aos-delay="400">
-  <h3>Matplotlib</h3>
-  <p>Visualize your data with powerful charts.</p>
-</a>
+        <a href="matplotlib/line-g.html" class="course-card" style="--card-color: #e8463c" target="_blank" rel="noopener noreferrer">
+          <div class="card-icon">📈</div>
+          <h3>Matplotlib</h3>
+          <p>Visualize your data with powerful, beautiful charts and plots.</p>
+          <div class="card-arrow">Explore →</div>
+        </a>
 
-<a href="numpy.html" class="course-card" target="_blank" rel="noopener noreferrer" data-aos="fade-up" data-aos-delay="500">
-  <h3>Numpy</h3>
-  <p>Numerical computing made easy and efficient.</p>
-</a>
+        <a href="numpy.html" class="course-card" style="--card-color: #6c5ce7" target="_blank" rel="noopener noreferrer">
+          <div class="card-icon">🔢</div>
+          <h3>Numpy</h3>
+          <p>Numerical computing made easy, fast, and efficient for all.</p>
+          <div class="card-arrow">Explore →</div>
+        </a>
 
-<a href="C-programming/for_loops.html" class="course-card" target="_blank" rel="noopener noreferrer" data-aos="fade-up" data-aos-delay="300">
-  <h3>C Programming</h3>
-  <p>Basics and fundamentals of structured programming.</p>
-</a>
-        </div>
-      </section>
+        <a href="C-programming/for_loops.html" class="course-card" style="--card-color: #e8a030" target="_blank" rel="noopener noreferrer">
+          <div class="card-icon">🖥️</div>
+          <h3>C Programming</h3>
+          <p>The fundamentals of structured programming, from zero to flow.</p>
+          <div class="card-arrow">Explore →</div>
+        </a>
+
+      </div>
     </main>
   </div>
 
-  <!--  Footer -->
+  <!-- Footer -->
   <footer>
     <div class="footer-container">
-      <p>&copy; 2025 Kiddo. All rights reserved.</p>
+      <p>© 2025 Kiddo. Built with ♥ for curious minds.</p>
       <div class="footer-links">
-        <a href="info/privacy.html">Privacy Policy</a>
-        <a href="info/terms.html">Terms of Service</a>
+        <a href="info/privacy.html">Privacy</a>
+        <a href="info/terms.html">Terms</a>
         <a href="info/contact.html">Contact</a>
       </div>
     </div>
   </footer>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    /* ── Theme ── */
+    const desktopToggle = document.getElementById('desktopToggleTheme');
+    const mobileToggle  = document.getElementById('mobileToggleTheme');
 
-<script>
-  
-  const desktopToggle = document.getElementById('desktopToggleTheme');
-const mobileToggle = document.getElementById('mobileToggleTheme');
+    const applyTheme = (dark) => {
+      document.body.classList.toggle('dark', dark);
+      const icon = dark ? '☀️' : '🌙';
+      if (desktopToggle) desktopToggle.textContent = icon;
+      if (mobileToggle)  mobileToggle.textContent  = icon;
+    };
 
-// Sync theme on page load
-if (localStorage.getItem('theme') === 'dark') {
-  document.body.classList.add('dark');
-  if (desktopToggle) desktopToggle.textContent = '☀️';
-  if (mobileToggle) mobileToggle.textContent = '☀️';
-}
+    applyTheme(localStorage.getItem('theme') === 'dark');
 
-// Toggle handler function
-const toggleTheme = () => {
-  document.body.classList.toggle('dark');
-  const isDark = document.body.classList.contains('dark');
-  localStorage.setItem('theme', isDark ? 'dark' : 'light');
-  if (desktopToggle) desktopToggle.textContent = isDark ? '☀️' : '🌙';
-  if (mobileToggle) mobileToggle.textContent = isDark ? '☀️' : '🌙';
-};
+    const toggleTheme = () => {
+      const isDark = !document.body.classList.contains('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      applyTheme(isDark);
+    };
 
-// Attach event listeners
-if (desktopToggle) desktopToggle.addEventListener('click', toggleTheme);
-if (mobileToggle) mobileToggle.addEventListener('click', toggleTheme);
+    if (desktopToggle) desktopToggle.addEventListener('click', toggleTheme);
+    if (mobileToggle)  mobileToggle.addEventListener('click', toggleTheme);
 
-  // AOS Animation Initialization
-  AOS.init({
-    duration: 800,     
-    once: true         
-  });
-</script>
+    /* ── Mobile menu ── */
+    const hamburger    = document.getElementById('hamburgerBtn');
+    const menuDropdown = document.getElementById('menuDropdown');
+    hamburger?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      menuDropdown.classList.toggle('open');
+    });
+    document.addEventListener('click', () => menuDropdown?.classList.remove('open'));
+
+    /* ── Scroll progress ── */
+    const progressBar = document.getElementById('progressBar');
+    window.addEventListener('scroll', () => {
+      const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+      progressBar.style.width = Math.min(pct, 100) + '%';
+    });
+
+    /* ── Card scroll reveal ── */
+    const cards = document.querySelectorAll('.course-card');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    cards.forEach(c => observer.observe(c));
+
+    /* ── Counter animation ── */
+    const counters = document.querySelectorAll('[data-target]');
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = +el.dataset.target;
+        const suffix = target === 100 ? '%' : '+';
+        let current = 0;
+        const step = Math.ceil(target / 40);
+        const timer = setInterval(() => {
+          current = Math.min(current + step, target);
+          el.textContent = current + suffix;
+          if (current >= target) clearInterval(timer);
+        }, 35);
+        counterObserver.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(c => counterObserver.observe(c));
+  </script>
 </body>
 </html>

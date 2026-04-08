@@ -3,182 +3,302 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Contact - Kiddo</title>
-  <link rel="canonical" href="https://kiddoedu.org/info/contact.html">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <title>About – Kiddo</title>
+  <link rel="canonical" href="https://kiddoedu.org/info/about.html">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
   <style>
-   
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root {
+      --bg: #f5f3ee;
+      --surface: #ffffff;
+      --surface2: #eceae4;
+      --text: #1a1814;
+      --text-muted: #6b6760;
+      --accent: #e86c2f;
+      --accent2: #3d5afe;
+      --border: rgba(0,0,0,0.08);
+      --shadow: 0 4px 24px rgba(0,0,0,0.07);
+      --radius: 16px;
+      --radius-sm: 10px;
+      --header-h: 70px;
+      --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+    body.dark {
+      --bg: #0f0e0c;
+      --surface: #1c1a17;
+      --surface2: #252320;
+      --text: #f0ede6;
+      --text-muted: #918e87;
+      --accent: #ff7d3e;
+      --accent2: #7986cb;
+      --border: rgba(255,255,255,0.07);
+      --shadow: 0 4px 24px rgba(0,0,0,0.4);
     }
 
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', sans-serif;
-      background: #f9f9f9;
-      color: #333;
-      transition: background 0.3s ease, color 0.3s ease;
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      transition: background var(--transition), color var(--transition);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
 
+    /* ── Header ── */
     header {
+      height: var(--header-h);
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: center;
-      padding: 15px 30px;
-      background: #1E3A8A;
-      color: #fff;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 0 40px;
+      background: rgba(245,243,238,0.82);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      transition: background var(--transition);
     }
+    body.dark header { background: rgba(15,14,12,0.82); }
 
-    header .logo {
+    .logo {
       display: flex;
       align-items: center;
-      gap: 15px;
-    }
-
-    header .logo img {
-      width: 50px;
-      height: 50px;
-    }
-
-    header .logo span {
-      font-size: 24px;
-      font-weight: 600;
-    }
-
-    header nav {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-
-    header nav a {
-      color: #fff;
+      gap: 10px;
       text-decoration: none;
+    }
+    .logo img { width: 34px; height: 34px; border-radius: 8px; object-fit: cover; }
+    .logo span {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.4rem;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+    .logo span em { font-style: normal; color: var(--accent); }
+
+    nav { display: flex; align-items: center; gap: 8px; }
+    nav a {
       font-weight: 500;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 6px 14px;
+      border-radius: 8px;
+      transition: color var(--transition), background var(--transition);
     }
+    nav a:hover, nav a.active { color: var(--text); background: var(--surface2); }
 
-    header nav a:hover {
-      text-decoration: underline;
-    }
-
-    header button {
-      background: none;
-      border: none;
-      font-size: 20px;
+    .theme-btn {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      width: 38px; height: 38px;
       cursor: pointer;
-      color: white;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background var(--transition), transform var(--transition);
+      margin-left: 8px;
     }
+    .theme-btn:hover { transform: rotate(20deg); background: var(--surface); }
 
+    /* ── Mobile Header ── */
+    .mobile-header {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      height: var(--header-h);
+      background: rgba(245,243,238,0.82);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      transition: background var(--transition);
+    }
+    body.dark .mobile-header { background: rgba(15,14,12,0.82); }
+    .mobile-right { display: flex; align-items: center; gap: 8px; }
+
+    .hamburger {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      width: 38px; height: 38px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .menu-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      box-shadow: 0 12px 48px rgba(0,0,0,0.13);
+      padding: 8px;
+      min-width: 160px;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .menu-dropdown.open { display: flex; }
+    .menu-dropdown a {
+      display: block;
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: var(--text);
+      text-decoration: none;
+      padding: 9px 14px;
+      border-radius: 8px;
+      transition: background var(--transition);
+    }
+    .menu-dropdown a:hover { background: var(--surface2); }
+
+    /* ── Main ── */
     main {
       flex: 1;
       display: flex;
-      justify-content: center;
       align-items: center;
-      padding: 40px 20px;
+      justify-content: center;
+      padding: 60px 20px;
     }
 
-    .contact-container {
-      max-width: 700px;
-      background: white;
-      padding: 30px 40px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      text-align: center;
+    .about-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 48px 52px;
+      max-width: 640px;
+      width: 100%;
     }
 
-    .contact-container h2 {
-      font-size: 28px;
+    .about-card .tag {
+      display: inline-block;
+      background: rgba(232,108,47,0.1);
+      color: var(--accent);
+      border-radius: 999px;
+      padding: 5px 14px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
       margin-bottom: 20px;
-      color: #1E3A8A;
     }
 
-    .contact-container p {
-      font-size: 16px;
-      margin-bottom: 15px;
-      line-height: 1.6;
+    .about-card h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.9rem;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: var(--text);
+      margin-bottom: 28px;
     }
 
-    .contact-email {
-      margin-top: 25px;
-      font-weight: 600;
-      font-size: 18px;
-      color: #2563EB;
-      word-break: break-word;
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin-bottom: 28px;
     }
 
-    /* Dark Mode */
-    body.dark {
-      background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a);
-      background-size: 400% 400%;
-      animation: darkBackground 20s ease infinite;
-      color: #e0e0e0;
+    .about-card p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--text-muted);
+      margin-bottom: 16px;
     }
+    .about-card p:last-child { margin-bottom: 0; }
+    .about-card p strong { color: var(--text); font-weight: 600; }
 
-    body.dark header {
-      background: #1e1e1e;
+    /* ── Footer ── */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 28px 40px;
     }
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .footer-container p { font-size: 0.85rem; color: var(--text-muted); }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .footer-links a:hover { color: var(--accent); }
 
-    body.dark .contact-container {
-      background: #1e1e1e;
-      color: #e0e0e0;
-      box-shadow: 0 0 15px 3px rgba(74, 110, 177, 0.2);
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      header { display: none; }
+      .mobile-header { display: flex; }
+      .about-card { padding: 32px 28px; }
+      footer { padding: 20px; }
+      .footer-container { flex-direction: column; align-items: flex-start; }
     }
-
-    body.dark .contact-email {
-      color: #93c5fd;
-    }
-    
-    body.dark main h2 {
-      color: #93c5fd;
-    }
-    
-    @keyframes darkBackground {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    @media (max-width: 600px) {
-      nav a{
-        display:none
-      }
-
-    .logo span {
-      font-size: 24px;
-      font-weight: 600;
-    }
-    
-      main {
-        padding: 20px 15px;
-      }
-
-      .contact-container {
-        padding: 20px 25px;
-      }
+    @media (max-width: 480px) {
+      .about-card h2 { font-size: 1.5rem; }
     }
   </style>
 </head>
 <body>
+
+  <!-- Desktop Header -->
   <header>
-    <div class="logo">
-      <img src="../assests/logo.png" alt="Kiddo Logo" />
-      <span>Kiddo</span>
-    </div>
+    <a class="logo" href="../index.html">
+      <img src="../assests/logo.png" alt="Kiddo Logo" onerror="this.style.display='none'" />
+      <span>Kid<em>do</em></span>
+    </a>
     <nav>
       <a href="../index.html">Home</a>
       <a href="../info/about.html">About</a>
-      <a href="../info/contact.html">Contact</a>
-      <button id="toggleTheme">🌙</button>
+      <a href="../info/contact.html" class="active">Contact</a>
+      <button class="theme-btn" id="desktopToggleTheme" title="Toggle theme">🌙</button>
     </nav>
   </header>
 
+  <!-- Mobile Header -->
+  <div class="mobile-header">
+    <a class="logo" href="../index.html">
+      <img src="../assests/logo.png" alt="Kiddo Logo" onerror="this.style.display='none'" />
+      <span>Kid<em>do</em></span>
+    </a>
+    <div class="mobile-right">
+      <button class="theme-btn" id="mobileToggleTheme" title="Toggle theme">🌙</button>
+      <button class="hamburger" id="hamburgerBtn">☰
+        <div class="menu-dropdown" id="menuDropdown">
+          <a href="../index.html">Home</a>
+          <a href="../info/about.html">About</a>
+          <a href="../info/contact.html">Contact</a>
+        </div>
+      </button>
+    </div>
+  </div>
+
   <main>
-    <div class="contact-container">
+    <div class="about-card">
+      <span class="tag">Contact</span>
+      <div class="divider"></div>
       <h2>Contact Us</h2>
       <p>Have questions or want to get in touch? We'd love to hear from you!</p>
       <p>You can reach us at the following email address:</p>
@@ -186,20 +306,42 @@
     </div>
   </main>
 
+  <footer>
+    <div class="footer-container">
+      <p>© 2025 Kiddo. Built with ♥ for curious minds.</p>
+      <div class="footer-links">
+        <a href="../info/privacy.html">Privacy</a>
+        <a href="../info/terms.html">Terms</a>
+        <a href="../info/contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
   <script>
-    const toggleBtn = document.getElementById('toggleTheme');
-
-    if (localStorage.getItem('theme') === 'dark') {
-      document.body.classList.add('dark');
-      toggleBtn.textContent = '☀️';
-    }
-
-    toggleBtn.onclick = () => {
-      document.body.classList.toggle('dark');
-      const isDark = document.body.classList.contains('dark');
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
-      toggleBtn.textContent = isDark ? '☀️' : '🌙';
+    const desktopToggle = document.getElementById('desktopToggleTheme');
+    const mobileToggle  = document.getElementById('mobileToggleTheme');
+    const applyTheme = (dark) => {
+      document.body.classList.toggle('dark', dark);
+      const icon = dark ? '☀️' : '🌙';
+      if (desktopToggle) desktopToggle.textContent = icon;
+      if (mobileToggle)  mobileToggle.textContent  = icon;
     };
+    applyTheme(localStorage.getItem('theme') === 'dark');
+    const toggleTheme = () => {
+      const isDark = !document.body.classList.contains('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      applyTheme(isDark);
+    };
+    if (desktopToggle) desktopToggle.addEventListener('click', toggleTheme);
+    if (mobileToggle)  mobileToggle.addEventListener('click', toggleTheme);
+
+    const hamburger    = document.getElementById('hamburgerBtn');
+    const menuDropdown = document.getElementById('menuDropdown');
+    hamburger?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      menuDropdown.classList.toggle('open');
+    });
+    document.addEventListener('click', () => menuDropdown?.classList.remove('open'));
   </script>
 </body>
 </html>
