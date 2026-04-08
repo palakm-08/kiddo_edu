@@ -22,4 +22,4 @@ Kiddo is a beginner-friendly platform with tutorials, tips, and small projects t
 Open the site and start exploring the tutorials.
 
 # Contact
-Feel free to reach out via GitHub or email for feedback or collaboration.
+Feel free to reach out via GitHub or email for feedback.
