@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="Learn how to customize Matplotlib graphs in Python. Beginner-friendly guide to colors, labels, titles, styles, and more with practical examples." />  <title>Matplotlib Graph Customization in Python (Beginner Tutorial)</title>
-  <link rel="canonical" href="https://kiddoedu.org/matplotlib/customise.html">
+  <meta name="description" content="Learn how to create subplots in Python using Matplotlib. Beginner-friendly guide with step-by-step code, visuals, and a mini project to practice side-by-side charts.">
+  <title>Subplots in Python (Matplotlib) – Beginner Guide + Mini Project</title>
+  <link rel="canonical" href="https://kiddoedu.org/matplotlib/subplots.html">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-ESNWS8F9HE"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -177,6 +178,7 @@
       font-weight: 500; color: var(--text-muted);
     }
     .meta-pill.green { background: rgba(0,184,148,0.1); color: var(--accent3); border-color: rgba(0,184,148,0.2); }
+    .meta-pill.blue  { background: rgba(61,90,254,0.08); color: var(--accent2); border-color: rgba(61,90,254,0.2); }
 
     main h1 {
       font-family: 'Syne', sans-serif; font-weight: 800;
@@ -186,6 +188,10 @@
     main h2 {
       font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.2rem;
       letter-spacing: -0.01em; margin-top: 36px; margin-bottom: 14px;
+    }
+    main h3 {
+      font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.05rem;
+      margin-top: 28px; margin-bottom: 12px;
     }
     main h4 {
       font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem;
@@ -245,7 +251,7 @@
       white-space: pre; tab-size: 2;
     }
 
-    /* ── Callout ── */
+    /* ── Callout / note ── */
     .callout {
       background: var(--surface); border: 1px solid var(--border);
       border-left: 3px solid var(--accent); border-radius: var(--radius-sm);
@@ -253,6 +259,12 @@
     }
     .callout a { color: var(--accent2); text-decoration: none; font-weight: 500; }
     .callout a:hover { text-decoration: underline; }
+
+    .note-box {
+      background: rgba(61,90,254,0.06); border: 1px solid rgba(61,90,254,0.15);
+      border-radius: var(--radius-sm); padding: 14px 18px;
+      margin: 20px 0; font-size: 0.9rem; color: var(--text); line-height: 1.6;
+    }
 
     .section-divider { height: 1px; background: var(--border); margin: 40px 0; }
 
@@ -324,12 +336,12 @@
       <ul>
         <li><a href="../matplotlib/line-g.html"><span class="dot"></span>Line Graphs</a></li>
         <li><a href="../matplotlib/multi-line-g.html"><span class="dot"></span>Multiple Line Graphs</a></li>
-        <li><a href="../matplotlib/customise.html" class="active"><span class="dot"></span>Customize Graphs</a></li>
+        <li><a href="../matplotlib/customise.html"><span class="dot"></span>Customize Graphs</a></li>
         <li><a href="../matplotlib/bar.html"><span class="dot"></span>Bar Graphs</a></li>
         <li><a href="../matplotlib/scatter.html"><span class="dot"></span>Scatter Plots</a></li>
         <li><a href="../matplotlib/histogram.html"><span class="dot"></span>Histogram</a></li>
         <li><a href="../matplotlib/pie.html"><span class="dot"></span>Pie Charts</a></li>
-        <li><a href="../matplotlib/subplots.html"><span class="dot"></span>Subplots</a></li>
+        <li><a href="../matplotlib/subplots.html" class="active"><span class="dot"></span>Subplots</a></li>
         <li><a href=""><span class="dot"></span>Legends & Annotations</a></li>
       </ul>
     </aside>
@@ -341,113 +353,203 @@
         <span>›</span>
         <a href="../matplotlib/line-g.html">Matplotlib</a>
         <span>›</span>
-        Customise graphs
+        Subplots
       </div>
 
-  <h1>Customize Matplotlib Graphs in Python: Add Title, Labels, Grid & Fonts</h1>
+      <h1>Subplots in Matplotlib — Multiple Charts, One Figure</h1>
 
-  <div class="meta-row">
-      <span class="meta-pill">📊 Data Viz</span>
-      <span class="meta-pill green">Beginner</span>
-  </div>
+      <div class="meta-row">
+        <span class="meta-pill">📊 Data Viz</span>
+        <span class="meta-pill green">Beginner</span>
+        <span class="meta-pill blue">⏱ 6 min read</span>
+      </div>
 
-  <p> Making a graph is cool and all — but making it *look good*? That’s a whole other level. Whether you're showing off a data project or just want your charts to make sense at first glance, customizing your Matplotlib graphs is key. In this tutorial, we’ll show you how to glow up your plots by adding titles, labeling your axes, turning on gridlines (so your data isn’t just floating in space), and styling everything with custom fonts. It’s all about turning basic into polished — and trust, your graphs will be serving pro vibes in no time. </p>
+      <p>Ever wanted to show a line graph and a bar chart side by side without jumping between separate figures? That's exactly what subplots are for. With <code>plt.subplots()</code>, you can pack multiple charts into one neat figure — perfect for comparisons, dashboards, and looking like you really know what you're doing.</p>
 
-  <h2>Why Use  Customization?</h2>
-  <p> A basic graph shows the data, but a customized one makes it *make sense*. With Matplotlib, adding titles, labels, gridlines, and font styling helps your plot look clean, clear, and actually readable. Customization isn’t just about looks — it’s about making your data speak. </p>
+      <h2>Why Use Subplots?</h2>
+      <p>When you have multiple datasets or chart types that tell related stories, cramming them all into a single graph gets messy fast. Subplots let you split the figure into a grid of individual panels — each with its own data, type, and style — while keeping everything visually connected in one place.</p>
+      <p>Think of it like a newspaper front page — multiple stories, one layout, zero chaos.</p>
 
-<div class="section-divider"></div>
+      <h2>What You'll Learn</h2>
+      <ul>
+        <li>Create a basic 1-row, 2-column subplot layout</li>
+        <li>Understand the <code>fig</code> and <code>ax</code> objects returned by <code>plt.subplots()</code></li>
+        <li>Plot different chart types in the same figure</li>
+        <li>Share axes between subplots for clean comparisons</li>
+        <li>Build a 2×2 grid with four different charts at once</li>
+        <li>Adjust spacing so nothing overlaps or gets cut off</li>
+      </ul>
 
-  <h2>Step-by-Step Code Example</h2>
+      <div class="section-divider"></div>
 
+      <h2>Example 1: Basic Side-by-Side Subplots</h2>
+      <p>The simplest case — two charts sitting next to each other in one row:</p>
 
-      <div class="code-container" aria-label="Code example for Pandas groupby method">
+      <div class="code-container">
         <div class="code-header">
           <span class="lang-tag">Python</span>
-          <button class="copy-btn" aria-label="Copy code snippet">Copy</button>
-          <div class="tooltip" role="alert" aria-live="assertive">Copied!</div>
+          <button class="copy-btn">Copy<div class="tooltip">Copied!</div></button>
         </div>
-        <pre><code>
-import matplotlib.pyplot as plt
+        <pre><code>import matplotlib.pyplot as plt
 
-# Days of the week
+months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']
+sales  = [120, 145, 160, 130, 175, 190]
+profit = [30,  40,  45,  35,  55,  60]
 
-days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
 
-mobile_visitors = [70, 90, 85, 100, 120, 140, 110]
-desktop_visitors = [50, 60, 45, 70, 80, 80, 70]
+# Left chart — line graph
+ax1.plot(months, sales, color='#e86c2f', marker='o', linewidth=2)
+ax1.set_title('Monthly Sales')
+ax1.set_xlabel('Month')
+ax1.set_ylabel('Units Sold')
+ax1.grid(True, linestyle='--', alpha=0.5)
 
-plt.figure(figsize = (8, 4))
-plt.plot(days, mobile_visitors, marker="o")
-plt.plot(days, desktop_visitors, marker="o")
+# Right chart — bar graph
+ax2.bar(months, profit, color='#3d5afe', width=0.5)
+ax2.set_title('Monthly Profit')
+ax2.set_xlabel('Month')
+ax2.set_ylabel('Profit (₹ thousands)')
+ax2.grid(True, linestyle='--', alpha=0.5)
 
-plt.show()
- </code></pre>
+plt.suptitle('Sales & Profit Overview — 2025', fontsize=14, fontweight='bold')
+plt.tight_layout()
+plt.show()</code></pre>
       </div>
 
+      <h2>Understanding the Code</h2>
+      <ul>
+        <li><b><code>plt.subplots(1, 2)</code>:</b> Creates a figure with 1 row and 2 columns — so two charts side by side. Returns a <code>fig</code> (the whole canvas) and a tuple of axes <code>(ax1, ax2)</code>.</li>
+        <li><b><code>figsize=(12, 5)</code>:</b> Sets the total width and height of the entire figure — both charts share this space.</li>
+        <li><b><code>ax1.plot()</code> and <code>ax2.bar()</code>:</b> Each axis gets its own chart type. No interference between them.</li>
+        <li><b><code>ax.set_title()</code>, <code>ax.set_xlabel()</code>:</b> Labels go on individual axes, not on the whole figure.</li>
+        <li><b><code>plt.suptitle()</code>:</b> Adds a shared title above both charts — the "headline" of the whole figure.</li>
+        <li><b><code>plt.tight_layout()</code>:</b> Automatically adjusts padding so labels don't overlap or get clipped.</li>
+      </ul>
 
+      <div class="section-divider"></div>
 
-<p>1. First up, let’s add a title to the graph.</p>
+      <h2>Example 2: Sharing the X-Axis</h2>
+      <p>When both charts track the same time period, sharing the x-axis makes comparisons cleaner and removes redundant labels:</p>
 
-<div class="code-container" aria-label="Code example for Pandas groupby method">
-        <pre><code>
-plt.title("Website Visitors Over a Week", fontdict={'fontsize': 14, 'family': 'Comic Sans MS'})
- </code></pre>
+      <div class="code-container">
+        <div class="code-header">
+          <span class="lang-tag">Python</span>
+          <button class="copy-btn">Copy<div class="tooltip">Copied!</div></button>
+        </div>
+        <pre><code>import matplotlib.pyplot as plt
+
+days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+steps     = [4200, 8100, 6500, 9300, 7800, 11200, 5400]
+calories  = [1800, 2100, 1950, 2300, 2050, 2600,  1700]
+
+fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 7), sharex=True)
+
+ax1.plot(days, steps, color='#e86c2f', marker='o', linewidth=2)
+ax1.set_ylabel('Steps')
+ax1.set_title('Daily Steps')
+ax1.grid(True, linestyle='--', alpha=0.5)
+
+ax2.bar(days, calories, color='#00b894', width=0.5)
+ax2.set_ylabel('Calories')
+ax2.set_title('Calories Burned')
+ax2.grid(True, linestyle='--', alpha=0.5)
+
+plt.suptitle('Weekly Fitness Summary', fontsize=14, fontweight='bold')
+plt.tight_layout()
+plt.show()</code></pre>
       </div>
-<p><strong>Quick tip:</strong> <code>fontdict</code> lets you style your text in Matplotlib — you can change the font size, font family (like <code>'Comic Sans MS'</code>), and more. It helps make your titles and labels look just the way you want.</p>
 
-
-<p>2. Next, let’s label the axes so everyone knows what each part of the graph represents — the days on the bottom and visitors on the side.</p>
-
-<div class="code-container" aria-label="Code example for Pandas groupby method">
-        <pre><code>
-plt.xlabel("Days")
-plt.ylabel("Visitors")
- </code></pre>
+      <div class="note-box">
+        <strong>sharex=True</strong> — When you stack charts vertically and they share the same x-axis categories, this removes the duplicate x labels on the top chart. Keeps things clean and avoids confusion.
       </div>
 
-    <p>3. To make the graph easier to read and way more attractive, let’s add gridlines — they help your eyes follow the data points like a pro.</p>
+      <div class="section-divider"></div>
 
-<div class="code-container" aria-label="Code example for Pandas groupby method">
-        <pre><code>
-plt.grid(True, aplha = 0.7, linestyle="--")
- </code></pre>
+      <h2>Example 3: A 2×2 Grid of Charts</h2>
+      <p>Four charts, one figure — the classic dashboard layout. This is where subplots really shine:</p>
+
+      <div class="code-container">
+        <div class="code-header">
+          <span class="lang-tag">Python</span>
+          <button class="copy-btn">Copy<div class="tooltip">Copied!</div></button>
+        </div>
+        <pre><code>import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.linspace(0, 10, 100)
+
+fig, axes = plt.subplots(2, 2, figsize=(12, 8))
+
+# Top-left — sine wave
+axes[0, 0].plot(x, np.sin(x), color='#e86c2f')
+axes[0, 0].set_title('Sine Wave')
+axes[0, 0].grid(True, linestyle='--', alpha=0.4)
+
+# Top-right — cosine wave
+axes[0, 1].plot(x, np.cos(x), color='#3d5afe')
+axes[0, 1].set_title('Cosine Wave')
+axes[0, 1].grid(True, linestyle='--', alpha=0.4)
+
+# Bottom-left — scatter plot
+axes[1, 0].scatter(x, np.random.rand(100), color='#00b894', s=15, alpha=0.7)
+axes[1, 0].set_title('Random Scatter')
+axes[1, 0].grid(True, linestyle='--', alpha=0.4)
+
+# Bottom-right — bar chart
+categories = ['A', 'B', 'C', 'D', 'E']
+values = [23, 45, 31, 60, 42]
+axes[1, 1].bar(categories, values, color='#e86c2f', width=0.5)
+axes[1, 1].set_title('Category Values')
+axes[1, 1].grid(True, linestyle='--', alpha=0.4)
+
+plt.suptitle('Chart Dashboard — 4 Panels', fontsize=14, fontweight='bold')
+plt.tight_layout()
+plt.show()</code></pre>
       </div>
-<p><strong>Quick tip:</strong> <code>alpha</code> controls the transparency of the gridlines (0 is invisible, 1 is solid), and <code>linestyle="--"</code> makes the gridlines dashed instead of solid.</p>
 
+      <p>With a 2×2 grid, <code>axes</code> is a 2D array — so you access each panel with <code>axes[row, col]</code>. Top-left is <code>axes[0, 0]</code>, bottom-right is <code>axes[1, 1]</code>. Easy to remember once you think of it like a table.</p>
 
-<p>4. Finally, let’s add labels directly on the lines to clearly show what each data set represents — making your graph super easy to understand at a glance.</p>
+      <div class="section-divider"></div>
 
-<div class="code-container" aria-label="Code example for Pandas groupby method">
-        <pre><code>
-plt.plot(days, mobile_visitors, label="Mobile Visitors")
-plt.plot(days, desktop_visitors, label="Desktop Visitors", color = "tab:red") #you can also change the color of the line
+      <h2>Quick Reference</h2>
+      <ul>
+        <li><code>plt.subplots(1, 2)</code> — 1 row, 2 columns (side by side)</li>
+        <li><code>plt.subplots(2, 1)</code> — 2 rows, 1 column (stacked)</li>
+        <li><code>plt.subplots(2, 2)</code> — 2×2 grid (4 charts)</li>
+        <li><code>sharex=True</code> — share the x-axis across all panels in a column</li>
+        <li><code>sharey=True</code> — share the y-axis across all panels in a row</li>
+        <li><code>plt.suptitle()</code> — add a title above the entire figure</li>
+        <li><code>plt.tight_layout()</code> — fix spacing so nothing overlaps</li>
+        <li><code>fig.set_size_inches(w, h)</code> — resize the figure after creation</li>
+      </ul>
 
-plt.legend()
- </code></pre>
+      <div class="section-divider"></div>
+
+      <h2>Mini Project: Build a Personal Dashboard</h2>
+      <p>Time to put it all together. Create a 2×2 subplot figure that tracks four aspects of your week:</p>
+      <ul>
+        <li><b>Top-left:</b> Daily step count as a line graph</li>
+        <li><b>Top-right:</b> Hours of sleep as a bar chart</li>
+        <li><b>Bottom-left:</b> Screen time per day as a horizontal bar</li>
+        <li><b>Bottom-right:</b> Mood score (1–10) plotted as a scatter chart</li>
+      </ul>
+      <p>Use real data from your phone's health or screen time app if you can — it hits different when the numbers are actually yours.</p>
+
+      <div class="callout">
+        Bonus: add <code>plt.suptitle("My Week at a Glance")</code> as the headline and use consistent colors across all four panels so the dashboard feels cohesive.
       </div>
-<p><strong>Quick tip:</strong> Don’t forget to add <code>plt.legend()</code> — it’s what actually makes the labels show up on the graph. Without it, your lines will have names but no one will ever see them!</p>
 
-<h4>And here’s what the graph looks like</h4>
-<br>
-<img src = "../matplotlib/customise.png" alter = "graph.png">
-<br>
-<i>Ommo, this looks so cool!</i>
-<br>
-
-<div class="section-divider"></div>
-
-
-<div class="callout">
+      <div class="callout">
         <strong>More to explore →</strong><br><br>
-        <a href="../matplotlib/bar.html">Bar Graphs</a> ·
-        <a href="../matplotlib/customise.html">Multiple line graphs Graphs</a> ·
-        <a href="../matplotlib/pie.html">Pie Charts</a> ·
-        <a href="../matplotlib/histogram.html">Histogram</a> ·
         <a href="../matplotlib/line-g.html">Line Graphs</a> ·
-        <a href="../matplotlib/scatter.html">Scatter Plots</a>
+        <a href="../matplotlib/bar.html">Bar Graphs</a> ·
+        <a href="../matplotlib/pie.html">Pie Charts</a> ·
+        <a href="../matplotlib/scatter.html">Scatter Plots</a> ·
+        <a href="../matplotlib/histogram.html">Histogram</a> ·
+        <a href="../matplotlib/multi-line-g.html">Multiple Line Graphs</a>
       </div>
-   </main>
+    </main>
 
   </div>
 
